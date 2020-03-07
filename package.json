@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.prod.js",
+    "clean": "rimraf -rf ./build && mkdir ./build",
+    "format": "prettier --write \"src/**/*.js\"",
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "stat": "cross-env NODE_ENV=production npm_config_report=true npm run build"
+  },
+  "author": "xuanye",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.42.0",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cdn-plugin": "^3.2.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@pixi/filter-drop-shadow": "^3.1.0",
+    "animejs": "^3.1.0",
+    "javascript-state-machine": "^3.1.0",
+    "pixi-sound": "^3.0.4",
+    "pixi.js": "^5.2.1",
+    "pubsub-js": "^1.8.0"
+  }
+}
