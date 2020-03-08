@@ -40,7 +40,7 @@ export default class App extends Game {
     }
 
     progress(loader, resources) {
-        //console.log('Loading...', loader.progress);
+        //console.log('Loading...', resources);
     }
 
     create() {
@@ -49,59 +49,6 @@ export default class App extends Game {
         this.fsm.play();
     }
     update() {}
-
-    //------------------------
-    // 屏幕适配 强制竖屏
-    //-----------------------
-    __resize() {
-        const { width, height, designWidth, designHeight } = this.options;
-        const screenRect = document.body.getBoundingClientRect();
-        //console.log('App -> __resize -> screenRect', screenRect);
-        this.renderer.resize(screenRect.width, screenRect.height);
-
-        let offsetWidth = 0;
-        let offsetHeight = 0;
-        if (window.orientation === 90 || window.orientation === -90) {
-            offsetWidth = screenRect.height;
-            offsetHeight = screenRect.width;
-        } else {
-            offsetWidth = screenRect.width;
-            offsetHeight = screenRect.height;
-        }
-
-        const aspectRatio = offsetHeight / offsetWidth;
-
-        // fixWidth, orientation="portrait"
-        const newWidth = offsetWidth;
-        const scale = newWidth / width;
-        const newHeight = height * scale;
-
-        const root = this.stage;
-        root.scale.x = newWidth / width;
-        root.scale.y = newHeight / height;
-
-        if (window.orientation === 90 || window.orientation === -90) {
-            root.rotation = -Math.PI / 2;
-            root.y = newWidth;
-        } else {
-            root.rotation = 0;
-            root.y = 0;
-        }
-
-        this.realScreen = {
-            realWidth: offsetWidth,
-            realHeight: offsetHeight,
-            width,
-            height,
-            top: 0,
-            bottom: offsetHeight / scale,
-            left: 0,
-            right: width,
-            aspectRatio,
-        };
-        this.realScreen.width = this.realScreen.right - this.realScreen.left;
-        this.realScreen.height = this.realScreen.bottom - this.realScreen.top;
-    }
 
     //------------------------
     // 状态机的事件

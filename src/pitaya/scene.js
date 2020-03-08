@@ -8,6 +8,7 @@ export default class Scene extends Container {
     constructor(game) {
         super();
         this._game = game;
+        this.loader = game.loader;
         this.init();
         this.preload();
     }

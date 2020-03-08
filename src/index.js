@@ -1,8 +1,4 @@
-import * as PIXI from 'pixi.js';
 import { extend } from './extensions/graphics';
-
-//扩展绘图功能
-extend(PIXI.Graphics);
 
 import App from './app';
 
@@ -11,8 +7,6 @@ let designHeight = 375;
 
 let screenWidth = window.innerWidth;
 let screenHeight = window.innerHeight;
-
-global.PIXI = window.PIXI = PIXI;
 
 let app = new App({
     width: screenWidth,

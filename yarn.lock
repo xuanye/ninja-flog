@@ -4628,6 +4628,11 @@ pixi-sound@^3.0.4:
     "@pixi/ticker" "^5.0.1"
     "@pixi/utils" "^5.0.1"
 
+pixi-tilemap@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npm.taobao.org/pixi-tilemap/download/pixi-tilemap-2.0.6.tgz#52d463e4d8bf8ba0ee759bd0ae1e8f7533b5b935"
+  integrity sha1-UtRj5Ni/i6DudZvQrh6PdTO1uTU=
+
 pixi.js@^5.2.1:
   version "5.2.1"
   resolved "https://registry.npm.taobao.org/pixi.js/download/pixi.js-5.2.1.tgz#523caaa64a9f8c15f380ace30520b991206c4ad5"

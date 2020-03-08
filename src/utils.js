@@ -4,7 +4,10 @@ import SpriteUtilities from './helpers/sprite-utilities';
 //import './helpers/charm';
 import Bump from './helpers/bump';
 
+//import TiledUtils from './helpers/tiled-utils';
+
 export default {
+    //tu: new TiledUtils(PIXI),
     bump: new Bump(PIXI),
     su: new SpriteUtilities(PIXI),
     spriteFrame(base, rectArray) {

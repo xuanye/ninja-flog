@@ -1,6 +1,7 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 module.exports = {
     mode: 'development',
@@ -14,6 +15,9 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify('development'),
             },
+        }),
+        new ProvidePlugin({
+            PIXI: 'pixi.js',
         }),
         new CopyWebpackPlugin([
             {

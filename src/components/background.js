@@ -28,7 +28,7 @@ export class Background {
         //背景移动
         this.cloudsBack.tilePosition.x -= 0.4 * delta;
         this.cloudFront.tilePosition.x -= 0.3 * delta;
-        this.bgBack.tilePosition.x -= 0.25 * delta;
-        this.bgFront.tilePosition.x -= 0.2 * delta;
+        //this.bgBack.tilePosition.x -= 0.25 * delta;
+        //this.bgFront.tilePosition.x -= 0.2 * delta;
     }
 }
