@@ -26,7 +26,7 @@ export class Character extends AnimatedSprite {
 
     playState(state) {
         let name = this.modeNames[state];
-        console.log('playState -> name', name);
+        //console.log('playState -> name', name);
         if (name && this.modeFrames[name]) {
             this.playAnimation(this.modeFrames[name]);
         }

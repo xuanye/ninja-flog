@@ -1,4 +1,4 @@
-import { Rectangle, Texture } from 'pixi.js';
+import { Rectangle, Texture, Graphics } from 'pixi.js';
 import { Scene } from '../core/pitaya';
 import { Background, Keyboard, CollisionManager } from '../components';
 
@@ -78,9 +78,16 @@ export class PlayScene extends Scene {
                 this.gameState.character.sprite = flog;
                 super.sync(flog);
                 this.addChild(flog);
+
+                let g = new Graphics();
+                g.lineStyle(1, 0x555555);
+                g.drawRect(this.gameState.character.x + 50, this.gameState.character.y - 20, 50, 50);
+                this.addChild(g);
+
+                this.csm.addObjects({ x: this.gameState.character.x + 50, y: this.gameState.character.y - 20, width: 50, height: 50 });
             } else if (o.type == ObjectType.CollisionObject) {
                 //碰撞物主要是地面
-                this.csm.addObjects(o);
+                //this.csm.addObjects(o);
                 //this.csm.test(this.gameState, o);
             }
         });

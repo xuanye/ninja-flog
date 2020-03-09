@@ -8,6 +8,7 @@ export class Keyboard {
             ArrowRight: false,
             ArrowLeft: false,
             ArrowDown: false,
+            ArrowUp: false,
         };
 
         this.keyCodes = Object.keys(this.keyboardState);
@@ -61,6 +62,13 @@ export class Keyboard {
             gameState.character.mode = CharacterMode.Idle;
         }
 
+        if (this.keyboardState.ArrowDown) {
+            gameState.character.vy = 1;
+        }
+        if (this.keyboardState.ArrowUp) {
+            gameState.character.vy = -1;
+        }
+        return;
         gameState.character.jump--;
         if (gameState.character.jump < 0) {
             gameState.character.jump = 0;
