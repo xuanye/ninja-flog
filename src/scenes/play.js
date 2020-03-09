@@ -1,21 +1,52 @@
-import { Scene } from '../pitaya';
-import { Background } from '../components';
+import { Rectangle, Texture } from 'pixi.js';
+import { Scene } from '../core/pitaya';
+import { Background, Keyboard, CollisionManager } from '../components';
 
 import Tiled from '../core/tiled';
-import { Rectangle, Texture } from 'pixi.js';
+
 import { NinjaFlog } from '../character';
 
 import 'pixi-tilemap';
+import { ObjectType, GameInitState } from '../constants';
+
 export class PlayScene extends Scene {
+    constructor(app) {
+        super(app);
+
+        this.gameState = GameInitState;
+        this.gameState.world.screenWidth = this.state.width;
+        this.gameState.world.screenHeight = this.state.height;
+
+        this.keyboard = new Keyboard(this.gameState);
+        this.sync(this.keyboard); //第一个同步就是键盘操作
+
+        this.csm = new CollisionManager();
+        this.sync(this.csm); //第二个同步就是碰撞检测
+    }
+    resume() {
+        super.resume();
+        this.keyboard.resume();
+        this.csm.resume();
+    }
+    pause() {
+        super.pause();
+        this.keyboard.pause();
+        this.csm.pause();
+    }
     create() {
         this.background = new Background({
             width: this.state.width,
             height: this.state.height,
         });
         this.background.addTo(this);
+        super.sync(this.background);
 
         let tiled = new Tiled();
-        let world = tiled.loadTiledMap(this._game.loader.resources['level1']);
+        let world = tiled.loadTiledMap(this._game.loader.resources['level2']);
+
+        //设置场景的高度和宽度
+        this.gameState.world.width = world.worldWidth;
+        this.gameState.world.height = world.worldHeight;
 
         let textures = [];
 
@@ -35,25 +66,28 @@ export class PlayScene extends Scene {
         });
         this.addChild(this.groundTiles);
 
-        this.groundTiles.children.forEach(c => {
-            console.log(c);
-        });
+        console.log('PlayScene -> create -> world.objects', world.objects);
         world.objects.forEach(o => {
-            if (o.type == 'character') {
+            // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
+            if (o.type == ObjectType.Character) {
+                this.gameState.character.x = o.x;
+                this.gameState.character.y = o.y;
+
                 //角色的位置
-                let flog = new NinjaFlog(this.loader.resources);
-                flog.x = o.x;
-                flog.y = o.y;
-                //flog.pivot.set(0, 0);
-                //flog.rotation = -Math.PI / 2;
+                let flog = new NinjaFlog(this.gameState);
+                this.gameState.character.sprite = flog;
+                super.sync(flog);
                 this.addChild(flog);
+            } else if (o.type == ObjectType.CollisionObject) {
+                //碰撞物主要是地面
+                this.csm.addObjects(o);
+                //this.csm.test(this.gameState, o);
             }
         });
     }
     update(delta) {
-        //背景移动
-        this.background.update(delta);
-
-        //this.groundTiles.pivot.x += 0.2;
+        super.update(delta, this.gameState);
+        //更新镜头的位置
+        this.groundTiles.pivot.x = this.gameState.world.pivotX;
     }
 }

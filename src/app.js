@@ -1,8 +1,12 @@
-import { Game } from './pitaya';
-import { assets, eventNames } from './constants';
+import { Game } from './core/pitaya';
+import { Assets, EventNames } from './constants';
 import scenes from './scenes';
 import config from './config';
 
+let Stats = null;
+if (process.env.NODE_ENV != 'production') {
+    Stats = require('stats.js');
+}
 /**
  * Pixi 主程序，用于控制场景展示
  */
@@ -11,6 +15,12 @@ export default class App extends Game {
         super(options);
         this.options = Object.assign({}, options);
         document.body.appendChild(this.view);
+
+        if (Stats) {
+            this.stats = new Stats();
+            this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+            document.body.appendChild(this.stats.dom);
+        }
     }
 
     /**
@@ -33,7 +43,7 @@ export default class App extends Game {
     }
 
     preload() {
-        this.loader.add(assets.textures, {
+        this.loader.add(Assets.textures, {
             // 跨域
             crossOrigin: true,
         });
@@ -48,7 +58,16 @@ export default class App extends Game {
         //默认开启初始状态
         this.fsm.play();
     }
-    update() {}
+    update(delta) {
+        if (this.stats) {
+            this.stats.begin();
+        }
+        super.update(delta);
+
+        if (this.stats) {
+            this.stats.end();
+        }
+    }
 
     //------------------------
     // 状态机的事件

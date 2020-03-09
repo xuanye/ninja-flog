@@ -647,6 +647,7 @@ var Bump = (function() {
                 //Figure out the combined half-widths and half-heights
                 combinedHalfWidths = Math.abs(r1.halfWidth) + Math.abs(r2.halfWidth);
                 combinedHalfHeights = Math.abs(r1.halfHeight) + Math.abs(r2.halfHeight);
+                //console.log(vx, vy, combinedHalfWidths, combinedHalfHeights);
 
                 //Check whether vx is less than the combined half widths
                 if (Math.abs(vx) < combinedHalfWidths) {
@@ -1459,6 +1460,8 @@ var Bump = (function() {
                     //If one of the arguments isn't an array, find out what type of
                     //collision check to run
                     collision = findCollisionType(a, b);
+                    //console.log('hit -> collision', collision);
+
                     if (collision && extra) extra(collision);
                 }
 
@@ -1540,8 +1543,10 @@ var Bump = (function() {
                     //If the rectangles shouldn't react to the collision, just
                     //test to see if they're touching
                     if (!react) {
+                        //console.log('rectangleVsRectangle -> hitTestRectangle');
                         return hitTestRectangle(a, b, global);
                     } else {
+                        //console.log('rectangleVsRectangle -> rectangleCollision');
                         return rectangleCollision(a, b, bounce, global);
                     }
                 }

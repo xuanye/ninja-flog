@@ -1,4 +1,4 @@
-import { Component } from '../pitaya';
+import { Component } from '../core/pitaya';
 import { GroundSpritesPool } from '../core/ground-sprites-pool';
 import utils from '../utils';
 /**

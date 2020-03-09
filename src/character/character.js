@@ -1,56 +1,57 @@
 import { AnimatedSprite } from 'pixi.js';
 import utils from '../utils';
+import { CharacterDirections, CharacterMode } from '../constants';
 
 export class Character extends AnimatedSprite {
-    constructor({ baseTexture, statesFrame, frameWidth, frameHeight }) {
+    constructor({ baseTexture, modeFrames, frameWidth, frameHeight, initState }) {
         let frames = utils.su.filmstrip(baseTexture, frameWidth, frameHeight);
         super(frames);
-        this.vX = 0;
-        this.vY = 0;
-
-        this.states = statesFrame;
-        utils.su.addStatePlayer(this);
+        this.modeFrames = modeFrames;
+        this.init(initState.character);
     }
+    init(initState) {
+        Object.keys(initState).forEach(key => {
+            this[key] = initState[key];
+        });
+        this.modeNames = [];
+        Object.keys(CharacterMode).forEach(name => {
+            this.modeNames.push(name);
+        });
+        //设置精灵的的原点位置为中心
+        this.anchor.set(0.5, 0.5);
+
+        utils.su.addStatePlayer(this);
+        this.playState(initState.mode);
+    }
+
     playState(state) {
-        if (this.states[state]) {
-            this.playAnimation(this.states[state]);
+        let name = this.modeNames[state];
+        console.log('playState -> name', name);
+        if (name && this.modeFrames[name]) {
+            this.playAnimation(this.modeFrames[name]);
         }
     }
-    idle() {
-        this.playAnimation(this.states['idle']);
+
+    update(delta, gameState) {
+        let { character } = gameState;
+
+        if (!character) {
+            return;
+        }
+        if (this.direction != character.direction) {
+            this.direction = character.direction;
+            this.scale.x = character.direction ? 1 * character.direction : 1;
+        }
+
+        if (this.mode != character.mode) {
+            this.mode = character.mode;
+            this.playState(this.mode);
+        }
+
+        this.x += character.vx;
+        this.y += character.vy;
+
+        character.x = this.x;
+        character.y = this.y;
     }
-    run() {
-        this.playAnimation(this.states['run']);
-    }
-    jump() {
-        this.playAnimation(this.states['jump']);
-    }
-    doubleJump() {
-        this.playAnimation(this.states['doubleJump']);
-    }
-    fall() {
-        this.playAnimation(this.states['fall']);
-    }
-    hit() {
-        this.playAnimation(this.states['hit']);
-    }
-    walkJump() {
-        this.playAnimation(this.states['walkJump']);
-    }
-    update(delta) {}
 }
-
-export let CharactorMode = {
-    idle: 0, //空闲状态
-    run: 1, //跑起来
-    jump: 2, //跳跃
-    doubleJump: 3, //空中翻滚
-    fall: 4, //下坠，
-    hit: 5, //被撞击了
-    walkJump: 6, //我都不知道干嘛
-};
-
-export let CharacterDirections = {
-    left: 1, //向左
-    right: 2, //向右
-};

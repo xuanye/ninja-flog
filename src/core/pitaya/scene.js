@@ -9,6 +9,7 @@ export default class Scene extends Container {
         super();
         this._game = game;
         this.loader = game.loader;
+        this.syncItems = [];
         this.init();
         this.preload();
     }
@@ -34,5 +35,22 @@ export default class Scene extends Container {
         this.visible = false;
     }
     create() {}
-    update() {}
+    /**
+     * 注册需要同步的元素，该元素必须有update方法
+     * @param {Object} item  需要同步的元素，该元素必须有update方法
+     */
+    sync(item) {
+        if (item && item.update && typeof item.update == 'function') {
+            this.syncItems.push(item);
+        }
+    }
+    update(delta, ...args) {
+        if (this.syncItems) {
+            this.syncItems.forEach(item => {
+                if (item && item.update && typeof item.update == 'function') {
+                    item.update.call(item, delta, ...args);
+                }
+            });
+        }
+    }
 }

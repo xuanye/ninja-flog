@@ -1,4 +1,4 @@
-import { extend } from './extensions/graphics';
+//import { extend } from './extensions/graphics';
 
 import App from './app';
 
