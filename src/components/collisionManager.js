@@ -1,6 +1,7 @@
 import PubSub from 'pubsub-js';
 import Sat from 'Sat';
-import { CollisionType } from '../constants';
+import { CharacterMode } from '../constants';
+
 /**
  * 游戏的碰撞管理器
  */
@@ -75,16 +76,20 @@ export class CollisionManager {
         if (!this.characterBox) {
             this.characterBox = new Sat.Box(
                 new Sat.Vector(gameState.character.sprite.x - anchorOffsetX, gameState.character.sprite.y - anchorOffsetY),
-                gameState.character.sprite.width,
+                gameState.character.sprite.width - 6,
                 gameState.character.sprite.height
             ).toPolygon();
         }
         this.characterBox.pos.x = gameState.character.sprite.x - anchorOffsetX + gameState.character.vx;
         this.characterBox.pos.y = gameState.character.sprite.y - anchorOffsetY + gameState.character.vy;
 
+        gameState.collision.x = 0;
+        gameState.collision.y = 0;
+        gameState.collision.collision = false;
+
         this.collisionObjects.forEach(obj => {
             //处理主角和每个物体的碰撞情况
-            obj.v.pos.x = obj.vpx + this.parentPivotX;
+            obj.v.pos.x = obj.vpx - this.parentPivotX;
             let collision = false;
             if (obj.ellipse) {
                 //圆形，椭圆形
@@ -93,10 +98,14 @@ export class CollisionManager {
                 collision = Sat.testPolygonPolygon(this.characterBox, obj.v, this.collisionResult);
             }
             if (collision) {
-                gameState.character.vx = 0;
-                gameState.character.vy = 0;
-                console.log('碰撞了');
-                console.log(this.collisionResult);
+                gameState.collision.collision = true;
+                //console.log(this.collisionResult.overlapV);
+                if (this.collisionResult.overlapN.x != 0 && gameState.collision.x == 0) {
+                    gameState.collision.x = this.collisionResult.overlapV.x;
+                }
+                if (this.collisionResult.overlapN.y != 0 && gameState.collision.y == 0) {
+                    gameState.collision.y = this.collisionResult.overlapV.y;
+                }
             }
             this.collisionResult.clear();
         });

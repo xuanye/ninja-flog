@@ -1,4 +1,4 @@
-import { Rectangle, Texture, Graphics } from 'pixi.js';
+import { Rectangle, Texture, Graphics, Point } from 'pixi.js';
 import { Scene } from '../core/pitaya';
 import { Background, Keyboard, CollisionManager } from '../components';
 
@@ -21,7 +21,7 @@ export class PlayScene extends Scene {
         this.sync(this.keyboard); //第一个同步就是键盘操作
 
         this.csm = new CollisionManager();
-        this.sync(this.csm); //第二个同步就是碰撞检测
+        this.sync(this.csm); //第二个计算运动碰撞检测
     }
     resume() {
         super.resume();
@@ -79,15 +79,33 @@ export class PlayScene extends Scene {
                 super.sync(flog);
                 this.addChild(flog);
 
-                let g = new Graphics();
-                g.lineStyle(1, 0x555555);
-                g.drawRect(this.gameState.character.x + 50, this.gameState.character.y - 20, 50, 50);
-                this.addChild(g);
-
-                this.csm.addObjects({ x: this.gameState.character.x + 50, y: this.gameState.character.y - 20, width: 50, height: 50 });
+                /*
+                        let g = new Graphics();
+                        g.lineStyle(1, 0x555555);
+                        g.drawRect(this.gameState.character.x + 50, this.gameState.character.y - 20, 50, 50);
+                        this.addChild(g);
+        */
             } else if (o.type == ObjectType.CollisionObject) {
                 //碰撞物主要是地面
-                //this.csm.addObjects(o);
+                this.csm.addObjects(o);
+
+                /* 
+                let g = new Graphics();
+
+                g.lineStyle(1, 0xffffff);
+                g.beginFill(0x66ff33);
+                if (o.ellipse) {
+                    g.drawEllipse(o.x, o.y, o.width, o.height);
+                } else if (o.polygon) {
+                    g.drawPolygon(o.polygon.map(p => new Point(p.x, p.y)));
+                    g.x = o.x;
+                    g.y = o.y;
+                } else {
+                    g.drawRect(o.x, o.y, o.width, o.height);
+                }
+                g.endFill();
+                console.log('PlayScene -> create -> g', o.id);
+                this.addChild(g);*/
                 //this.csm.test(this.gameState, o);
             }
         });
@@ -95,6 +113,7 @@ export class PlayScene extends Scene {
     update(delta) {
         super.update(delta, this.gameState);
         //更新镜头的位置
-        this.groundTiles.pivot.x = this.gameState.world.pivotX;
+        this.groundTiles.pivot.x += this.gameState.world.pivotOffsetX;
+        this.gameState.world.pivotX = this.groundTiles.pivot.x;
     }
 }

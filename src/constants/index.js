@@ -26,10 +26,11 @@ export const ObjectType = {
 export const World = {
     Character: {
         Speed: 2, //移动速度
-        JumpSpeed: 3, //跳跃速度
-        JumpThreshold: 50, //跳跃的阈值
+        JumpSpeed: 4, //跳跃速度
+        JumpThreshold: 80, //跳跃的阈值
     },
-    Gravity: 3, //重力加速度
+    Gravity: (10 / 1000) * 0.3, //重力加速度
+    InitVelocity: Math.sqrt(2 * 80 * (10 / 1000) * 0.3),
 };
 
 export const JumpType = {
@@ -44,7 +45,13 @@ export const GameInitState = {
         screenHeight: 0,
         width: 0,
         height: 0,
+        pivotOffsetX: 0,
         pivotX: 0,
+    },
+    collision: {
+        x: 0,
+        y: 0,
+        collision: false,
     },
     character: {
         x: 0,
@@ -52,7 +59,8 @@ export const GameInitState = {
         vx: 0,
         vy: 0,
         direction: CharacterDirections.Right,
-        jump: 0,
+        jumpTime: 0,
+        jump: 0, //当前跳跃的高度
         onGrand: true,
         jumpType: JumpType.Nope, //0 =没跳 1 =一级跳  2 =二级跳
         mode: CharacterMode.Idle,

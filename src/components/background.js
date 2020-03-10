@@ -24,11 +24,12 @@ export class Background {
 
         parent.addChild(this.cloudsBack, this.cloudFront, this.bgBack, this.bgFront);
     }
-    update(delta) {
+    update(delta, gameState) {
         //背景移动
-        this.cloudsBack.tilePosition.x -= 0.4 * delta;
-        this.cloudFront.tilePosition.x -= 0.3 * delta;
-        //this.bgBack.tilePosition.x -= 0.25 * delta;
-        //this.bgFront.tilePosition.x -= 0.2 * delta;
+        this.cloudsBack.tilePosition.x -= 0.4 * delta + gameState.world.pivotOffsetX * 0.25;
+        this.cloudFront.tilePosition.x -= 0.3 * delta + gameState.world.pivotOffsetX * 0.25;
+
+        this.bgBack.tilePosition.x -= gameState.world.pivotOffsetX * 0.25;
+        this.bgFront.tilePosition.x -= gameState.world.pivotOffsetX * 0.22;
     }
 }
