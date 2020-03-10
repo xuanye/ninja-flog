@@ -7,12 +7,11 @@ import Tiled from '../core/tiled';
 import { NinjaFlog } from '../character';
 
 import 'pixi-tilemap';
-import { ObjectType, GameInitState } from '../constants';
+import { ObjectType, GameInitState, World } from '../constants';
 
 export class PlayScene extends Scene {
-    constructor(app) {
-        super(app);
-
+    init() {
+        super.init(); //调用父方法用于初始化场景状态
         this.gameState = GameInitState;
         this.gameState.world.screenWidth = this.state.width;
         this.gameState.world.screenHeight = this.state.height;
@@ -22,6 +21,16 @@ export class PlayScene extends Scene {
 
         this.csm = new CollisionManager();
         this.sync(this.csm); //第二个计算运动碰撞检测
+
+        let duration = World.JumpDuration;
+        //计算重力加速度 g =2*h / (t ^2)
+        this.gameState.world.gravity = (2 * World.MaxJumpThreshold * World.Unit) / (((duration / 2) * duration) / 2);
+        console.log('PlayScene -> init -> 2 * World.MaxJumpThreshold * World.Unit', 2 * World.MaxJumpThreshold * World.Unit);
+        // 计算最大跳跃初始速度 v = gt ; 往上所以是负数
+        this.gameState.world.maxJumpSpeed = (-this.gameState.world.gravity * duration) / 2;
+        //计算最小跳跃初始速度 v = gt = sqrt(2gh);
+        this.gameState.world.minJumpSpeed = -Math.sqrt(2 * this.gameState.world.gravity * World.MinJumpThreshold * World.Unit);
+        console.log('PlayScene -> init -> this.gameState.world', this.gameState.world);
     }
     resume() {
         super.resume();
@@ -42,7 +51,7 @@ export class PlayScene extends Scene {
         super.sync(this.background);
 
         let tiled = new Tiled();
-        let world = tiled.loadTiledMap(this._game.loader.resources['level2']);
+        let world = tiled.loadTiledMap(this._game.loader.resources['level1']);
 
         //设置场景的高度和宽度
         this.gameState.world.width = world.worldWidth;
@@ -66,7 +75,7 @@ export class PlayScene extends Scene {
         });
         this.addChild(this.groundTiles);
 
-        console.log('PlayScene -> create -> world.objects', world.objects);
+        //console.log('PlayScene -> create -> world.objects', world.objects);
         world.objects.forEach(o => {
             // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
             if (o.type == ObjectType.Character) {

@@ -24,13 +24,15 @@ export const ObjectType = {
 };
 
 export const World = {
-    Character: {
-        Speed: 2, //移动速度
-        JumpSpeed: 4, //跳跃速度
-        JumpThreshold: 80, //跳跃的阈值
-    },
-    Gravity: (10 / 1000) * 0.3, //重力加速度
-    InitVelocity: Math.sqrt(2 * 80 * (10 / 1000) * 0.3),
+    Speed: 2, //移动速度
+    JumpSpeed: 4, //跳跃速度
+    MinJumpThreshold: 1.75, //跳跃的阈值,1.25个单位
+    MaxJumpThreshold: 5, //跳跃的阈值,5个单位
+    DoubleJumpThreshold: 1.25, //二段跳跃的阈值,1.25个单位
+    JumpDuration: 2000, //跳跃空中的时长 2T
+    JumpVelocity: 0, //跳跃时的基础速度,程序中计算
+
+    Unit: 16, //单位像素
 };
 
 export const JumpType = {
@@ -47,6 +49,11 @@ export const GameInitState = {
         height: 0,
         pivotOffsetX: 0,
         pivotX: 0,
+        gravity: 0, //重力加速度，程序中计算
+        moveSpeed: 2, //移动速度，单位时间 1/60 秒所移动的距离
+        maxJumpSpeed: 0, //最大跳跃初始速度，程序中计算
+        minJumpSpeed: 0, //最小跳跃初始速度，程序中计算
+        doubleJumpSpeed: 0, //二段速度，程序中计算
     },
     collision: {
         x: 0,

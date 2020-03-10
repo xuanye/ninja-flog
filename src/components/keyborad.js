@@ -66,22 +66,31 @@ export class Keyboard {
         //是否已经落在地面
         onTheGrand = gameState.collision.collision && gameState.collision.y > 0;
 
-        if (this.keyboardState.Space && onTheGrand) {
-            this.gameState.jump = World.Character.JumpSpeed;
-        } else if (this.gameState.jump > 0 && this.gameState.jump < World.Character.JumpThreshold) {
-            this.gameState.jump =
-                World.Character.JumpThreshold - this.gameState.jump < World.Character.JumpSpeed
-                    ? World.Character.JumpThreshold
-                    : this.gameState.jump + World.Character.JumpSpeed;
+        if (onTheGrand) {
+            this.gameState.character.jumpType = 0;
+        }
+        if (this.keyboardState.Space) {
+            if (onTheGrand) {
+                console.log('onTheGrand');
+                this.gameState.character.jumpType = 1;
+                this.gameState.character.vy = this.gameState.world.maxJumpSpeed;
+            } else {
+                if (this.gameState.character.jumpType != 2) {
+                    //处理二段跳的逻辑
+                }
+            }
         } else {
-            this.gameState.jump = 0;
+            if (onTheGrand) {
+                this.gameState.character.vy = 0;
+            }
         }
 
-        jumping = this.gameState.jump > 0;
+        jumping = this.gameState.character.jumpType > 0;
 
-        this.gameState.character.vy = jumping ? -World.Character.JumpSpeed : World.Gravity;
-        //console.log('Keyboard -> update ->  this.gameState.character.vy', this.gameState.character.vy);
-        this.gameState.character.vx = moving ? moveDirection * World.Character.Speed - gameState.collision.x : 0;
+        //无时无刻不受重力影响
+        this.gameState.character.vy += delta * this.gameState.world.gravity;
+        console.log('Keyboard -> update ->  this.gameState.character.vy', this.gameState.character.vy);
+        this.gameState.character.vx = moving ? moveDirection * this.gameState.world.moveSpeed : 0;
 
         if (jumping) {
             gameState.character.mode = CharacterMode.Jump;

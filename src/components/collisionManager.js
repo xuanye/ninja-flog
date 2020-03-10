@@ -1,7 +1,5 @@
 import PubSub from 'pubsub-js';
 import Sat from 'Sat';
-import { CharacterMode } from '../constants';
-
 /**
  * 游戏的碰撞管理器
  */
@@ -22,7 +20,7 @@ export class CollisionManager {
         this.paused = true;
     }
     resume() {
-        console.log(Sat);
+        //console.log(Sat);
         this.paused = false;
     }
 
