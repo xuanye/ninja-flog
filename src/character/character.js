@@ -67,9 +67,11 @@ export class Character extends AnimatedSprite {
             // this.y += character.vy;
         }
         this.y += vy;
+
         if (vx > 0) {
             if (this.x + vx > 200) {
                 world.pivotOffsetX = this.x + vx - 200;
+                console.log('update ->  world.pivotOffsetX', world.pivotOffsetX);
                 //场景尽头
                 if (world.pivotX + world.pivotOffsetX + world.screenWidth > world.width) {
                     world.pivotOffsetX = world.width - world.screenWidth - world.pivotX;

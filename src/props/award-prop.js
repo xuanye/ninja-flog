@@ -58,15 +58,16 @@ export class AwardProps {
             parent.removeChild(this.sprite);
             this.pool.return(this.sprite, this.state.awardType);
             //this.sprite = null;
-
+            /**/
             this.state.collecting = true;
             //播放一个动画
             this.collectSprite = this.pool.get(AwardNames.Collected);
+            this.collectSprite.loop = false;
             this.collectSprite.x = x;
             this.collectSprite.y = y;
             this.collectSprite.onComplete = this.clearCollected.bind(this);
-            this.collectSprite.play();
-            parent.addChild(this.sprite);
+            this.collectSprite.gotoAndPlay(0);
+            parent.addChild(this.collectSprite);
         }
     }
     update(delta, gameState, parent) {
