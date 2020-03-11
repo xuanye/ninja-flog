@@ -35,12 +35,12 @@ export class PlayBoard extends Component {
     }
     createRandom(startX) {
         let distance = 0;
-        let randomIndex = utils.getRandomInt(0, 100) % this.lookupPools.length;
+        let randomIndex = utils.randomInt(0, 100) % this.lookupPools.length;
         let proxy = this.lookupPools[randomIndex];
         if (typeof proxy == 'function') {
             console.log(proxy.name);
-            let r = utils.getRandomInt(0, 100) % 2;
-            distance = proxy.call(this, { startX: startX, partCount: utils.getRandomInt(4, 8), withDecorate: r == 0, withTrap: r == 1 });
+            let r = utils.randomInt(0, 100) % 2;
+            distance = proxy.call(this, { startX: startX, partCount: utils.randomInt(4, 8), withDecorate: r == 0, withTrap: r == 1 });
         }
         return distance;
     }

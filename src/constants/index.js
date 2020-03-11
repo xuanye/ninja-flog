@@ -2,6 +2,8 @@ export * from './assets';
 
 export * from './event-names';
 
+export * from './texture-names';
+
 export const CharacterDirections = {
     Left: -1,
     Right: 1,
@@ -21,17 +23,14 @@ export const ObjectType = {
     Character: 'character',
     CoinObject: 'awardObject',
     CollisionObject: 'collisionObject',
+    AwardObject: 'awardObject',
 };
 
 export const World = {
-    Speed: 2, //移动速度
-    JumpSpeed: 4, //跳跃速度
     MinJumpThreshold: 1.75, //跳跃的阈值,1.25个单位
-    MaxJumpThreshold: 5, //跳跃的阈值,5个单位
-    DoubleJumpThreshold: 1.25, //二段跳跃的阈值,1.25个单位
-    JumpDuration: 2000, //跳跃空中的时长 2T
-    JumpVelocity: 0, //跳跃时的基础速度,程序中计算
-
+    MaxJumpThreshold: 4.5, //跳跃的阈值,5个单位
+    DoubleJumpThreshold: 2.5, //二段跳跃的阈值,1.25个单位
+    JumpDuration: 60, //跳跃空中的时长 2T
     Unit: 16, //单位像素
 };
 
@@ -52,7 +51,7 @@ export const GameInitState = {
         gravity: 0, //重力加速度，程序中计算
         moveSpeed: 2, //移动速度，单位时间 1/60 秒所移动的距离
         maxJumpSpeed: 0, //最大跳跃初始速度，程序中计算
-        minJumpSpeed: 0, //最小跳跃初始速度，程序中计算
+        minJumpSpeed: 0, //最小跳跃初始速度，程序中计算 大小跳的处理，本例中没有
         doubleJumpSpeed: 0, //二段速度，程序中计算
     },
     collision: {
@@ -79,4 +78,21 @@ export const CollisionType = {
     Right: 'right',
     Top: 'top',
     Bottom: 'bottom',
+};
+
+export const Levels = {
+    Level1: 'level1',
+    Level2: 'level2',
+};
+//奖励的名称
+export const AwardNames = {
+    Apple: 'apple',
+    Banana: 'banana',
+    Cherry: 'cherry',
+    Kiwi: 'kiwi',
+    Melon: 'melon',
+    Orange: 'orange',
+    Pineapple: 'pineapple',
+    Strawberry: 'strawberry',
+    Collected: 'collected',
 };

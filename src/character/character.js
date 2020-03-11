@@ -46,8 +46,8 @@ export class Character extends AnimatedSprite {
             vx = character.vx - collision.x;
             vy = character.vy - collision.y;
 
-            vx = vx > 0 ? Math.ceil(vx) : Math.floor(vx);
-            vy = vy > 0 ? Math.ceil(vy) : Math.floor(vy);
+            vx = vx > 0 ? Math.floor(vx) : Math.ceil(vx);
+            vy = vy > 0 ? Math.floor(vy) : Math.ceil(vy);
 
             //console.log('->', ',碰撞Y=', collision.y, '预定加速度=', character.vy, ',计算后Y=', vy);
 

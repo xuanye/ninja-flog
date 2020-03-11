@@ -1,14 +1,9 @@
 import * as PIXI from 'pixi.js';
 
 import SpriteUtilities from './helpers/sprite-utilities';
-//import './helpers/charm';
-import Bump from './helpers/bump';
-
-//import TiledUtils from './helpers/tiled-utils';
 
 export default {
     //tu: new TiledUtils(PIXI),
-    bump: new Bump(PIXI),
     su: new SpriteUtilities(PIXI),
     spriteFrame(base, rectArray) {
         let textureArray = [];
@@ -21,8 +16,11 @@ export default {
     newId() {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     },
-    getRandomInt(min = 0, max = 10000) {
-        return min + Math.floor(Math.random() * Math.floor(max - min + 1));
+    randomFloat(min, max) {
+        return min + Math.random() * (max - min);
+    },
+    randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 };
 

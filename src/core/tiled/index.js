@@ -116,7 +116,7 @@ export default class TileUtilities {
                     // so that we can decide what to do with it later
 
                     // Get a reference to the layer group the object is in
-                    object.group = layerGroup;
+                    //object.group = layerGroup;
 
                     // Because this is an object layer, it doesn't contain any
                     // sprites, just data object. That means it won't be able to
@@ -124,7 +124,13 @@ export default class TileUtilities {
                     // the `layerGroup` the same `width` and `height` as the `world`
                     // layerGroup.width = world.width;
                     // layerGroup.height = world.height;
-
+                    if (object.properties) {
+                        object.properties.forEach(p => {
+                            if (!object.hasOwnProperty(p.name)) {
+                                object[p.name] = p.value;
+                            }
+                        });
+                    }
                     // Push the object into the world's `objects` array
                     world.objects.push(object);
                 });
