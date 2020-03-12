@@ -22,20 +22,8 @@ export class AwardProps {
     checkCollision(gameState) {
         let parentPivotX = gameState.world.pivotX;
 
-        let anchorOffsetX = gameState.character.sprite.width * gameState.character.sprite.anchor.x;
-        let anchorOffsetY = gameState.character.sprite.height * gameState.character.sprite.anchor.y;
-
-        if (!this.characterBox) {
-            this.characterBox = new Sat.Box(
-                new Sat.Vector(gameState.character.sprite.x - anchorOffsetX, gameState.character.sprite.y - anchorOffsetY),
-                gameState.character.sprite.width - 6,
-                gameState.character.sprite.height
-            ).toPolygon();
-        }
-        this.characterBox.pos.x = gameState.character.sprite.x - anchorOffsetX + gameState.character.vx;
-        this.characterBox.pos.y = gameState.character.sprite.y - anchorOffsetY + gameState.character.vy;
         this.v.pos.x = this.vpx - parentPivotX;
-        let isHit = Sat.testPolygonCircle(this.characterBox, this.v, this.collisionResult);
+        let isHit = Sat.testPolygonCircle(gameState.characterBox, this.v, this.collisionResult);
         if (isHit) {
             this.state.collision = true;
             this.publish(EventNames.Award, this.state, this.gameState);

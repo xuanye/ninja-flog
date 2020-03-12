@@ -19,11 +19,19 @@ export const CharacterMode = {
     WalkJump: 6, //我都不知道干嘛
 };
 
+export const EnemyState = {
+    Idle: 0, //空闲状态
+    Run: 1, //跑起来
+    Hit: 2, //被主角搞定了
+    Walk: 3, //走路
+};
+
 export const ObjectType = {
     Character: 'character',
     CoinObject: 'awardObject',
     CollisionObject: 'collisionObject',
     AwardObject: 'awardObject',
+    EnemyObject: 'enemyObject',
 };
 
 export const World = {
@@ -70,6 +78,8 @@ export const GameInitState = {
         onGrand: true,
         jumpType: JumpType.Nope, //0 =没跳 1 =一级跳  2 =二级跳
         mode: CharacterMode.Idle,
+        health: 3,
+        invincible: false, //true时不和怪物碰撞
     },
 };
 
@@ -95,4 +105,20 @@ export const AwardNames = {
     Pineapple: 'pineapple',
     Strawberry: 'strawberry',
     Collected: 'collected',
+};
+
+export const EnemyInfos = {
+    AngryPig: {
+        name: 'angry-pig',
+        width: 36,
+        height: 30,
+        texture: 'angry-pig_image',
+        initState: EnemyState.Idle,
+        states: [
+            [5, 13], //空闲状态
+            [14, 25], //跑起来
+            [0, 4], //被打中
+            [26, 41], //我都不知道干嘛
+        ],
+    },
 };

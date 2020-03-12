@@ -1,0 +1,854 @@
+{
+    "frames": {
+        "angry-pig0.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig1.png": {
+            "frame": {
+                "x": 36,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig2.png": {
+            "frame": {
+                "x": 72,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig3.png": {
+            "frame": {
+                "x": 108,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig4.png": {
+            "frame": {
+                "x": 144,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig5.png": {
+            "frame": {
+                "x": 180,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig6.png": {
+            "frame": {
+                "x": 0,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig7.png": {
+            "frame": {
+                "x": 36,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig8.png": {
+            "frame": {
+                "x": 72,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig9.png": {
+            "frame": {
+                "x": 108,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig10.png": {
+            "frame": {
+                "x": 144,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig11.png": {
+            "frame": {
+                "x": 180,
+                "y": 30,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig12.png": {
+            "frame": {
+                "x": 0,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig13.png": {
+            "frame": {
+                "x": 36,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig14.png": {
+            "frame": {
+                "x": 72,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig15.png": {
+            "frame": {
+                "x": 108,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig16.png": {
+            "frame": {
+                "x": 144,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig17.png": {
+            "frame": {
+                "x": 180,
+                "y": 60,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig18.png": {
+            "frame": {
+                "x": 0,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig19.png": {
+            "frame": {
+                "x": 36,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig20.png": {
+            "frame": {
+                "x": 72,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig21.png": {
+            "frame": {
+                "x": 108,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig22.png": {
+            "frame": {
+                "x": 144,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig23.png": {
+            "frame": {
+                "x": 180,
+                "y": 90,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig24.png": {
+            "frame": {
+                "x": 0,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig25.png": {
+            "frame": {
+                "x": 36,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig26.png": {
+            "frame": {
+                "x": 72,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig27.png": {
+            "frame": {
+                "x": 108,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig28.png": {
+            "frame": {
+                "x": 144,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig29.png": {
+            "frame": {
+                "x": 180,
+                "y": 120,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig30.png": {
+            "frame": {
+                "x": 0,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig31.png": {
+            "frame": {
+                "x": 36,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig32.png": {
+            "frame": {
+                "x": 72,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig33.png": {
+            "frame": {
+                "x": 108,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig34.png": {
+            "frame": {
+                "x": 144,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig35.png": {
+            "frame": {
+                "x": 180,
+                "y": 150,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig36.png": {
+            "frame": {
+                "x": 0,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig37.png": {
+            "frame": {
+                "x": 36,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig38.png": {
+            "frame": {
+                "x": 72,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig39.png": {
+            "frame": {
+                "x": 108,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig40.png": {
+            "frame": {
+                "x": 144,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        },
+        "angry-pig41.png": {
+            "frame": {
+                "x": 180,
+                "y": 180,
+                "w": 36,
+                "h": 30
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 36,
+                "h": 30
+            },
+            "sourceSize": {
+                "w": 36,
+                "h": 30
+            }
+        }
+    },
+    "meta": {
+        "app": "https://github.com/piskelapp/piskel/",
+        "version": "1.0",
+        "image": "angry-pig.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 216,
+            "h": 210
+        }
+    }
+}

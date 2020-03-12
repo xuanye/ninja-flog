@@ -100,13 +100,18 @@ export class Keyboard {
                 gameState.character.vy = 0;
             }
         }
+        //顶部碰头
+        if (gameState.collision.collision && gameState.collision.y < 0) {
+            gameState.character.vy = 0;
+        }
 
         //无时无刻不受重力影响
         gameState.character.vy += delta * gameState.world.gravity;
 
         if (!onTheGrand && gameState.character.vx != 0) {
             //角色在空中，并有初始速度，则继续沿抛物线前进
-            moveDirection = gameState.character.direction;
+            //飘落的逻辑很诡异
+            //moveDirection = gameState.character.direction;
         }
         //console.log('Keyboard -> update ->  gameState.character.vy', gameState.character.vy);
         gameState.character.vx = moveDirection * gameState.world.moveSpeed;
@@ -116,7 +121,7 @@ export class Keyboard {
             gameState.character.mode = CharacterMode.DoubleJump;
         } else if (gameState.character.jumpType == 1) {
             gameState.character.mode = CharacterMode.Jump;
-        } else if (!onTheGrand) {
+        } else if (!onTheGrand && gameState.collision.y > 1) {
             gameState.character.mode = CharacterMode.Fall;
         } else if (moving) {
             gameState.character.mode = CharacterMode.Run;

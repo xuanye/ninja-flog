@@ -4,8 +4,8 @@ import App from './app';
 let designWidth = 667;
 let designHeight = 375;
 
-let screenWidth = 667; //window.innerWidth;
-let screenHeight = 375; //window.innerHeight;
+let screenWidth = window.innerWidth;
+let screenHeight = window.innerHeight;
 
 let app = new App({
     width: screenWidth,
@@ -14,7 +14,7 @@ let app = new App({
     screenHeight,
     designWidth,
     designHeight,
-    antialias: true,
+    //antialias: true,
 });
 
 //app.__resize();

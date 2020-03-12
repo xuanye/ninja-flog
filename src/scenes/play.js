@@ -7,6 +7,7 @@ import { NinjaFlog } from '../character';
 import { AwardManager } from '../props';
 
 import { ObjectType, GameInitState, World, Levels } from '../constants';
+import { EnemyManager } from '../enemy/enemy-manager';
 
 export class PlayScene extends Scene {
     init() {
@@ -24,6 +25,9 @@ export class PlayScene extends Scene {
         this.am = new AwardManager(this);
         this.sync(this.am); //同步道具
 
+        this.em = new EnemyManager(this);
+        this.sync(this.em);
+
         let duration = World.JumpDuration;
         //计算重力加速度 g =2*h / (t ^2)
         this.gameState.world.gravity = (2 * World.MaxJumpThreshold * World.Unit) / (((duration / 2) * duration) / 2);
@@ -36,18 +40,7 @@ export class PlayScene extends Scene {
         //计算二段跳的初始速度v = gt = sqrt(2gh);
         this.gameState.world.doubleJumpSpeed = -Math.sqrt(2 * this.gameState.world.gravity * World.DoubleJumpThreshold * World.Unit);
     }
-    resume() {
-        super.resume();
-        this.keyboard.resume();
-        this.csm.resume();
-        this.am.resume();
-    }
-    pause() {
-        super.pause();
-        this.keyboard.pause();
-        this.csm.pause();
-        this.am.pause();
-    }
+
     create() {
         this.createBackground();
 
@@ -71,6 +64,8 @@ export class PlayScene extends Scene {
                 this.csm.addObjects(o);
             } else if (o.type == ObjectType.AwardObject) {
                 this.createAward(o);
+            } else if (o.type == ObjectType.EnemyObject) {
+                this.createEnemy(o);
             }
         });
 
@@ -107,6 +102,9 @@ export class PlayScene extends Scene {
     }
     createAward(awardObject) {
         this.am.createAward(awardObject);
+    }
+    createEnemy(enemyObject) {
+        this.em.createEnemy(enemyObject);
     }
     createBackground() {
         this.background = new Background({

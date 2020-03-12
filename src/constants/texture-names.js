@@ -10,4 +10,7 @@ export const TextureNames = {
         Strawberry: 'award_strawberry',
         Collected: 'award_collected',
     },
+    Enemy: {
+        AngryPig: 'angry-pig_image',
+    },
 };

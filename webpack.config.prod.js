@@ -18,7 +18,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        //new BundleAnalyzerPlugin(),
         new DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),

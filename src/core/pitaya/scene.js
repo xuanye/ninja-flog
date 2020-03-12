@@ -30,9 +30,23 @@ export default class Scene extends Container {
     resume() {
         //显示的方法
         this.visible = true;
+        if (this.syncItems) {
+            this.syncItems.forEach(item => {
+                if (item && item.resume && typeof item.resume == 'function') {
+                    item.resume.call(item);
+                }
+            });
+        }
     }
     pause() {
         this.visible = false;
+        if (this.syncItems) {
+            this.syncItems.forEach(item => {
+                if (item && item.pause && typeof item.pause == 'function') {
+                    item.pause.call(item);
+                }
+            });
+        }
     }
     create() {}
     /**

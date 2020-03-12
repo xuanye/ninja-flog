@@ -71,15 +71,15 @@ export class CollisionManager {
         let anchorOffsetX = gameState.character.sprite.width * gameState.character.sprite.anchor.x;
         let anchorOffsetY = gameState.character.sprite.height * gameState.character.sprite.anchor.y;
 
-        if (!this.characterBox) {
-            this.characterBox = new Sat.Box(
+        if (!gameState.characterBox) {
+            gameState.characterBox = new Sat.Box(
                 new Sat.Vector(gameState.character.sprite.x - anchorOffsetX, gameState.character.sprite.y - anchorOffsetY),
                 gameState.character.sprite.width - 6,
                 gameState.character.sprite.height
             ).toPolygon();
         }
-        this.characterBox.pos.x = gameState.character.sprite.x - anchorOffsetX + gameState.character.vx;
-        this.characterBox.pos.y = gameState.character.sprite.y - anchorOffsetY + gameState.character.vy;
+        gameState.characterBox.pos.x = gameState.character.sprite.x - anchorOffsetX + gameState.character.vx;
+        gameState.characterBox.pos.y = gameState.character.sprite.y - anchorOffsetY + gameState.character.vy;
 
         gameState.collision.x = 0;
         gameState.collision.y = 0;
@@ -91,9 +91,9 @@ export class CollisionManager {
             let collision = false;
             if (obj.ellipse) {
                 //圆形，椭圆形
-                collision = Sat.testPolygonCircle(this.characterBox, obj.v, this.collisionResult);
+                collision = Sat.testPolygonCircle(gameState.characterBox, obj.v, this.collisionResult);
             } else {
-                collision = Sat.testPolygonPolygon(this.characterBox, obj.v, this.collisionResult);
+                collision = Sat.testPolygonPolygon(gameState.characterBox, obj.v, this.collisionResult);
             }
             if (collision) {
                 gameState.collision.collision = true;

@@ -32,7 +32,7 @@ export class Character extends AnimatedSprite {
         }
     }
 
-    update(delta, gameState) {
+    update(_, gameState) {
         let { character, collision, world } = gameState;
 
         if (!character || !collision) {
@@ -41,15 +41,10 @@ export class Character extends AnimatedSprite {
         let vx = 0;
         let vy = 0;
         if (collision.collision) {
-            //console.log('update -> (collision.collision', collision);
-
             vx = character.vx - collision.x;
             vy = character.vy - collision.y;
-
             vx = vx > 0 ? Math.floor(vx) : Math.ceil(vx);
             vy = vy > 0 ? Math.floor(vy) : Math.ceil(vy);
-
-            //console.log('->', ',碰撞Y=', collision.y, '预定加速度=', character.vy, ',计算后Y=', vy);
 
             if (vx != 0) {
                 //console.log('update -> vx', vx);
@@ -70,8 +65,8 @@ export class Character extends AnimatedSprite {
 
         if (vx > 0) {
             if (this.x + vx > 200) {
-                world.pivotOffsetX = this.x + vx - 200;
-                console.log('update ->  world.pivotOffsetX', world.pivotOffsetX);
+                world.pivotOffsetX = this.x + vx - 201; //201 是用于修正碰撞
+                //console.log('update ->  world.pivotOffsetX', world.pivotOffsetX);
                 //场景尽头
                 if (world.pivotX + world.pivotOffsetX + world.screenWidth > world.width) {
                     world.pivotOffsetX = world.width - world.screenWidth - world.pivotX;

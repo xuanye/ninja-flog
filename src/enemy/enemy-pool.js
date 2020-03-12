@@ -1,8 +1,8 @@
 import { AnimatedSprite } from 'pixi.js';
 import utils from '../utils';
-import { TextureNames, AwardNames } from '../constants';
+import { EnemyInfos } from '../constants';
 
-export class AwardSpritePool {
+export class EnemySpritePool {
     constructor() {
         this.pools = {};
 
@@ -10,9 +10,9 @@ export class AwardSpritePool {
     }
 
     init() {
-        Object.keys(AwardNames).forEach(name => {
-            this.pools[name.toLowerCase()] = [];
-            this.prepareSprite(name.toLowerCase(), 5);
+        Object.keys(EnemyInfos).forEach(name => {
+            this.pools[name] = [];
+            this.prepareSprite(name, 2);
         });
         //console.log(this.pools);
     }
@@ -23,22 +23,29 @@ export class AwardSpritePool {
     }
     createProxy(name) {
         if (typeof this.pools[name] == undefined) {
-            throw new Error('奖励类型不存在', name);
+            throw new Error('怪物类型不存在', name);
         } else {
-            return this.createSprite(name.replace(/^\S/, s => s.toUpperCase()));
+            return this.createSprite(name);
         }
     }
     createSprite(name) {
-        let frames = utils.su.filmstrip(TextureNames.Award[name], 32, 32);
+        let enemy = EnemyInfos[name];
+        if (!enemy) {
+            throw new Error('怪物类型不存在');
+        }
+        let frames = utils.su.filmstrip(enemy.texture, enemy.width, enemy.height);
         //创建动画精灵
         let pixie = new AnimatedSprite(frames);
+        pixie._enemy_name = name;
         //设置动画精灵的速度
         pixie.animationSpeed = 0.3;
+        utils.su.addStatePlayer(pixie);
+
         return pixie;
     }
     get(name) {
         if (typeof this.pools[name] == undefined) {
-            throw new Error('奖励类型不存在');
+            throw new Error('怪物类型不存在');
         }
         //console.log('借用');
         let sprite = this.pools[name].shift();
@@ -50,7 +57,7 @@ export class AwardSpritePool {
 
     return(sprite, name) {
         if (typeof this.pools[name] == undefined) {
-            throw new Error('奖励类型不存在');
+            throw new Error('怪物类型不存在');
         }
         //console.log(name, this.pools[name]);
         this.pools[name].push(sprite);
