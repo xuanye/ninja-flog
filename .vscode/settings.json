@@ -6,6 +6,7 @@
         "keyborad",
         "pitaya",
         "playboard",
+        "pubsub",
         "tilelayer",
         "tilemap",
         "tileset",

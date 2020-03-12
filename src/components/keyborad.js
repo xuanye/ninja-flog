@@ -60,6 +60,10 @@ export class Keyboard {
     }
 
     update(delta, gameState) {
+        //角色死亡了
+        if (gameState.character.health <= 0) {
+            return;
+        }
         let moving = false;
         let onTheGrand = false;
         let moveDirection = 0;

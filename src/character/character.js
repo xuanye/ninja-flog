@@ -1,7 +1,7 @@
 import { AnimatedSprite } from 'pixi.js';
 import utils from '../utils';
 import { CharacterMode } from '../constants';
-
+import anime from 'animejs';
 export class Character extends AnimatedSprite {
     constructor({ baseTexture, modeFrames, frameWidth, frameHeight, initState }) {
         let frames = utils.su.filmstrip(baseTexture, frameWidth, frameHeight);
@@ -26,18 +26,35 @@ export class Character extends AnimatedSprite {
 
     playState(state) {
         let name = this.modeNames[state];
-        //console.log('playState -> name', name);
+
         if (name && this.modeFrames[name]) {
             this.playAnimation(this.modeFrames[name]);
         }
     }
+    playDeadState(gameState) {
+        this.playState(CharacterMode.Hit);
+        setTimeout(() => {
+            this.parent && this.parent.removeChild(this);
+        }, 1000);
 
+        console.log('it is dead');
+    }
     update(_, gameState) {
         let { character, collision, world } = gameState;
 
         if (!character || !collision) {
             return;
         }
+        if (character.isDead) {
+            return;
+        }
+        if (character.health <= 0) {
+            world.pivotOffsetX = 0;
+            character.isDead = true;
+            this.playDeadState(gameState);
+            return;
+        }
+
         let vx = 0;
         let vy = 0;
         if (collision.collision) {

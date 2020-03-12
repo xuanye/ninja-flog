@@ -78,7 +78,7 @@ export const GameInitState = {
         onGrand: true,
         jumpType: JumpType.Nope, //0 =没跳 1 =一级跳  2 =二级跳
         mode: CharacterMode.Idle,
-        health: 3,
+        health: 1,
         invincible: false, //true时不和怪物碰撞
     },
 };

@@ -265,11 +265,11 @@
                  "type":"collisionObject",
                  "visible":true,
                  "width":6341,
-                 "x":377,
-                 "y":321
+                 "x":378.333333333333,
+                 "y":322.333333333333
                 }, 
                 {
-                 "height":44.6666666666667,
+                 "height":44.6667,
                  "id":19,
                  "name":"",
                  "rotation":0,
@@ -335,7 +335,7 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":11.3333333333333,
+                 "height":11.3333,
                  "id":36,
                  "name":"",
                  "properties":[
@@ -347,9 +347,9 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":13.3333333333333,
+                 "width":13.3333,
                  "x":681,
-                 "y":237.666666666667
+                 "y":237.667
                 }, 
                 {
                  "ellipse":true,
@@ -365,7 +365,7 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":15.9999666666666,
+                 "height":16,
                  "id":38,
                  "name":"",
                  "rotation":0,
@@ -373,7 +373,7 @@
                  "visible":true,
                  "width":14,
                  "x":885,
-                 "y":261.333333333333
+                 "y":261.333
                 }, 
                 {
                  "ellipse":true,
@@ -575,9 +575,9 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":8.66666666666652,
-                 "x":1758.33333333333,
-                 "y":213.666666666667
+                 "width":8.66667,
+                 "x":1758.33,
+                 "y":213.667
                 }, 
                 {
                  "ellipse":true,
@@ -600,7 +600,7 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":1830.33333333333,
+                 "x":1830.33,
                  "y":169
                 }, 
                 {
@@ -612,20 +612,20 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":1858.33333333333,
-                 "y":197.333333333333
+                 "x":1858.33,
+                 "y":197.333
                 }, 
                 {
                  "ellipse":true,
-                 "height":17.3333333333333,
+                 "height":17.3333,
                  "id":66,
                  "name":"",
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":12.6666666666665,
-                 "x":1744.66666666667,
-                 "y":244.333333333333
+                 "width":12.6667,
+                 "x":1744.67,
+                 "y":244.333
                 }, 
                 {
                  "ellipse":true,
@@ -918,8 +918,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":2400,
-                 "y":249
+                 "x":2356,
+                 "y":242.333333333333
                 }, 
                 {
                  "ellipse":true,
@@ -1044,8 +1044,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":2734,
-                 "y":237
+                 "x":3043.33333333333,
+                 "y":279.666666666667
                 }, 
                 {
                  "ellipse":true,
@@ -1058,18 +1058,6 @@
                  "width":6,
                  "x":2798,
                  "y":230
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":104,
-                 "name":"",
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":2946,
-                 "y":267
                 }, 
                 {
                  "ellipse":true,
@@ -1110,50 +1098,14 @@
                 {
                  "ellipse":true,
                  "height":12,
-                 "id":110,
-                 "name":"",
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":2996,
-                 "y":250
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":111,
-                 "name":"",
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":3033,
-                 "y":254
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
                  "id":117,
                  "name":"",
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":2868,
-                 "y":212
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":118,
-                 "name":"",
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":2976,
-                 "y":249
+                 "x":2984,
+                 "y":232
                 }, 
                 {
                  "ellipse":true,
@@ -1217,7 +1169,7 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":16.6666666666667,
+                 "height":16.6667,
                  "id":185,
                  "name":"",
                  "properties":[
@@ -1231,7 +1183,7 @@
                  "visible":true,
                  "width":13,
                  "x":659,
-                 "y":284.333333333333
+                 "y":284.333
                 }, 
                 {
                  "ellipse":true,
@@ -1428,8 +1380,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":2353,
-                 "y":270
+                 "x":3107.66666666667,
+                 "y":291.333333333333
                 }, 
                 {
                  "ellipse":true,
@@ -1524,42 +1476,6 @@
                 {
                  "ellipse":true,
                  "height":12,
-                 "id":202,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"awardType",
-                         "type":"string",
-                         "value":"kiwi"
-                        }],
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":2962,
-                 "y":221
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":203,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"awardType",
-                         "type":"string",
-                         "value":"kiwi"
-                        }],
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":2906,
-                 "y":241
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
                  "id":204,
                  "name":"",
                  "properties":[
@@ -1592,42 +1508,6 @@
                  "width":6,
                  "x":3196,
                  "y":231
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":206,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"awardType",
-                         "type":"string",
-                         "value":"kiwi"
-                        }],
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":3118,
-                 "y":278
-                }, 
-                {
-                 "ellipse":true,
-                 "height":12,
-                 "id":207,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"awardType",
-                         "type":"string",
-                         "value":"kiwi"
-                        }],
-                 "rotation":0,
-                 "type":"awardObject",
-                 "visible":true,
-                 "width":6,
-                 "x":3062,
-                 "y":277
                 }, 
                 {
                  "ellipse":true,
@@ -1716,8 +1596,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":3431,
-                 "y":211
+                 "x":2229.66666666667,
+                 "y":204.333333333333
                 }, 
                 {
                  "height":30,
@@ -1727,11 +1607,11 @@
                  "type":"collisionObject",
                  "visible":true,
                  "width":16,
-                 "x":228.666666666667,
-                 "y":254.333333333333
+                 "x":228.667,
+                 "y":254.333
                 }, 
                 {
-                 "height":21.3333333333333,
+                 "height":24,
                  "id":214,
                  "name":"",
                  "properties":[
@@ -1743,9 +1623,196 @@
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":21.3333333333333,
-                 "x":202.666666666667,
-                 "y":297.333333333333
+                 "width":175.999966666667,
+                 "x":141.333666666667,
+                 "y":294
+                }, 
+                {
+                 "height":24,
+                 "id":215,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":218.666633333333,
+                 "x":413.33335,
+                 "y":294
+                }, 
+                {
+                 "height":24,
+                 "id":216,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":233.3333,
+                 "x":681.33335,
+                 "y":294
+                }, 
+                {
+                 "height":21.3333,
+                 "id":217,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.666633333333,
+                 "x":1562.66668333333,
+                 "y":80.0000166666666
+                }, 
+                {
+                 "height":24,
+                 "id":218,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":1405.33316666667,
+                 "y":294
+                }, 
+                {
+                 "height":21.3333,
+                 "id":219,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":915.999833333333,
+                 "y":80.0000166666667
+                }, 
+                {
+                 "height":24,
+                 "id":220,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":1753.33316666667,
+                 "y":294
+                }, 
+                {
+                 "height":21.3333,
+                 "id":221,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":2335.99983333333,
+                 "y":90.6666833333333
+                }, 
+                {
+                 "height":24,
+                 "id":222,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":2303.99983333333,
+                 "y":294
+                }, 
+                {
+                 "height":24,
+                 "id":223,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":253.333333333333,
+                 "x":1054.66666666667,
+                 "y":291.33335
+                }, 
+                {
+                 "height":24,
+                 "id":224,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":2761.33316666667,
+                 "y":292
+                }, 
+                {
+                 "height":24,
+                 "id":225,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"AngryPig"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":3085.33316666667,
+                 "y":290.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1754,10 +1821,10 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":215,
+ "nextobjectid":226,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.3.3",
+ "tiledversion":"2020.02.26",
  "tileheight":16,
  "tilesets":[
         {

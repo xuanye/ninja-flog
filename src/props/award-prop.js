@@ -20,6 +20,9 @@ export class AwardProps {
     }
     create() {}
     checkCollision(gameState) {
+        if (!this.sprite) {
+            return;
+        }
         let parentPivotX = gameState.world.pivotX;
 
         this.v.pos.x = this.vpx - parentPivotX;

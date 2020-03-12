@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="420" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="215">
+<map version="1.2" tiledversion="2020.02.26" orientation="orthogonal" renderorder="right-down" width="420" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="226">
  <editorsettings>
   <export target="level2.json" format="json"/>
  </editorsettings>
@@ -228,7 +228,7 @@
   <object id="14" type="collisionObject" x="89" y="185" width="44" height="22"/>
   <object id="15" type="collisionObject" x="125" y="321" width="203" height="16"/>
   <object id="16" type="collisionObject" x="330" y="336" width="46" height="16"/>
-  <object id="17" type="collisionObject" x="377" y="321" width="6341" height="17"/>
+  <object id="17" type="collisionObject" x="378.333" y="322.333" width="6341" height="17"/>
   <object id="19" type="collisionObject" x="246" y="240" width="50" height="44.6667"/>
   <object id="32" type="awardObject" x="477" y="270" width="11" height="12">
    <ellipse/>
@@ -398,7 +398,7 @@
   <object id="88" type="awardObject" x="2357" y="207" width="6" height="12">
    <ellipse/>
   </object>
-  <object id="89" type="awardObject" x="2400" y="249" width="6" height="12">
+  <object id="89" type="awardObject" x="2356" y="242.333" width="6" height="12">
    <properties>
     <property name="awardType" value="strawberry"/>
    </properties>
@@ -434,13 +434,10 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="102" type="awardObject" x="2734" y="237" width="6" height="12">
+  <object id="102" type="awardObject" x="3043.33" y="279.667" width="6" height="12">
    <ellipse/>
   </object>
   <object id="103" type="awardObject" x="2798" y="230" width="6" height="12">
-   <ellipse/>
-  </object>
-  <object id="104" type="awardObject" x="2946" y="267" width="6" height="12">
    <ellipse/>
   </object>
   <object id="105" type="awardObject" x="3614" y="188" width="6" height="12">
@@ -452,16 +449,7 @@
   <object id="109" type="awardObject" x="2725" y="276" width="6" height="12">
    <ellipse/>
   </object>
-  <object id="110" type="awardObject" x="2996" y="250" width="6" height="12">
-   <ellipse/>
-  </object>
-  <object id="111" type="awardObject" x="3033" y="254" width="6" height="12">
-   <ellipse/>
-  </object>
-  <object id="117" type="awardObject" x="2868" y="212" width="6" height="12">
-   <ellipse/>
-  </object>
-  <object id="118" type="awardObject" x="2976" y="249" width="6" height="12">
+  <object id="117" type="awardObject" x="2984" y="232" width="6" height="12">
    <ellipse/>
   </object>
   <object id="119" type="awardObject" x="3319" y="250" width="6" height="12">
@@ -545,7 +533,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="196" type="awardObject" x="2353" y="270" width="6" height="12">
+  <object id="196" type="awardObject" x="3107.67" y="291.333" width="6" height="12">
    <properties>
     <property name="awardType" value="strawberry"/>
    </properties>
@@ -581,18 +569,6 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="202" type="awardObject" x="2962" y="221" width="6" height="12">
-   <properties>
-    <property name="awardType" value="kiwi"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="203" type="awardObject" x="2906" y="241" width="6" height="12">
-   <properties>
-    <property name="awardType" value="kiwi"/>
-   </properties>
-   <ellipse/>
-  </object>
   <object id="204" type="awardObject" x="3095" y="232" width="6" height="12">
    <properties>
     <property name="awardType" value="kiwi"/>
@@ -600,18 +576,6 @@
    <ellipse/>
   </object>
   <object id="205" type="awardObject" x="3196" y="231" width="6" height="12">
-   <properties>
-    <property name="awardType" value="kiwi"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="206" type="awardObject" x="3118" y="278" width="6" height="12">
-   <properties>
-    <property name="awardType" value="kiwi"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="207" type="awardObject" x="3062" y="277" width="6" height="12">
    <properties>
     <property name="awardType" value="kiwi"/>
    </properties>
@@ -641,14 +605,69 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="212" type="awardObject" x="3431" y="211" width="6" height="12">
+  <object id="212" type="awardObject" x="2229.67" y="204.333" width="6" height="12">
    <properties>
     <property name="awardType" value="kiwi"/>
    </properties>
    <ellipse/>
   </object>
   <object id="213" type="collisionObject" x="228.667" y="254.333" width="16" height="30"/>
-  <object id="214" type="enemyObject" x="202.667" y="297.333" width="21.3333" height="21.3333">
+  <object id="214" type="enemyObject" x="141.334" y="294" width="176" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="215" type="enemyObject" x="413.333" y="294" width="218.667" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="216" type="enemyObject" x="681.333" y="294" width="233.333" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="217" type="enemyObject" x="1562.67" y="80" width="274.667" height="21.3333">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="218" type="enemyObject" x="1405.33" y="294" width="274.667" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="219" type="enemyObject" x="916" y="80" width="274.667" height="21.3333">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="220" type="enemyObject" x="1753.33" y="294" width="274.667" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="221" type="enemyObject" x="2336" y="90.6667" width="274.667" height="21.3333">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="222" type="enemyObject" x="2304" y="294" width="274.667" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="223" type="enemyObject" x="1054.67" y="291.333" width="253.333" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="224" type="enemyObject" x="2761.33" y="292" width="274.667" height="24">
+   <properties>
+    <property name="enemyType" value="AngryPig"/>
+   </properties>
+  </object>
+  <object id="225" type="enemyObject" x="3085.33" y="290.667" width="274.667" height="24">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
