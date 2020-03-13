@@ -39,7 +39,9 @@ export const World = {
     MaxJumpThreshold: 4.5, //跳跃的阈值,5个单位
     DoubleJumpThreshold: 2.5, //二段跳跃的阈值,1.25个单位
     JumpDuration: 60, //跳跃空中的时长 2T
-    Unit: 16, //单位像素
+    Unit: 16, //单位像素,
+    groundHeight: 4, //4个单位
+    worldHeight: 24, //24个单位
 };
 
 export const JumpType = {
@@ -75,7 +77,7 @@ export const GameInitState = {
         direction: CharacterDirections.Right,
         jumpTime: 0,
         jump: 0, //当前跳跃的高度
-        onGrand: true,
+        onGround: true,
         jumpType: JumpType.Nope, //0 =没跳 1 =一级跳  2 =二级跳
         mode: CharacterMode.Idle,
         health: 1,
@@ -119,6 +121,32 @@ export const EnemyInfos = {
             [14, 25], //跑起来
             [0, 4], //被打中
             [26, 41], //我都不知道干嘛
+        ],
+    },
+    Chicken: {
+        name: 'chicken',
+        width: 32,
+        height: 34,
+        texture: 'chicken_image',
+        initState: EnemyState.Idle,
+        states: [
+            [5, 17], //空闲状态
+            [18, 31], //跑起来
+            [0, 4], //被打中
+            [18, 31], //我都不知道干嘛
+        ],
+    },
+    BlueBird: {
+        name: 'blue-bird',
+        width: 32,
+        height: 32,
+        texture: 'blue-bird_image',
+        initState: EnemyState.Idle,
+        states: [
+            [0, 8], //空闲状态
+            [0, 8], //跑起来
+            [9, 13], //被打中
+            [0, 8], //我都不知道干嘛
         ],
     },
 };

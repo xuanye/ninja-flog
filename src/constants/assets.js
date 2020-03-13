@@ -22,6 +22,8 @@ export const Assets = {
 
         { name: 'ninja-frog', url: '/assets/characters/ninja-frog.json' },
         { name: 'angry-pig', url: '/assets/enemies/angry-pig.json' },
+        { name: 'chicken', url: '/assets/enemies/chicken.json' },
+        { name: 'blue-bird', url: '/assets/enemies/blue-bird.json' },
     ],
     audios: [{ name: 'bg_audio', url: '/assets/audio/bg.mp3' }],
 };

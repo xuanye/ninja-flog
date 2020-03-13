@@ -14,7 +14,7 @@ export class Enemy {
         this.instance = EnemyInfos[this.state.enemyType];
 
         this.state.enemyState = this.instance.initState;
-        this.v = new Sat.Box(new Sat.Vector(state.x, state.y), this.instance.width * 0.8, this.instance.height * 0.8).toPolygon();
+        this.v = new Sat.Box(new Sat.Vector(state.x, state.y), this.instance.width * 0.9, this.instance.height * 0.8).toPolygon();
         //console.log(new Sat.Box(state.x, state.y, this.instance.width, this.instance.height));
         this.state.offsetX = this.state.width;
         this.state.vx = 0;
@@ -29,7 +29,7 @@ export class Enemy {
         PubSub.publish(...args);
     }
     checkCollision(gameState) {
-        if (!this.sprite || this.state.collision) {
+        if (!this.sprite || this.state.collision || gameState.character.invincible) {
             return;
         }
         this.v.pos.x = this.sprite.x - this.instance.width / 2;
@@ -37,6 +37,7 @@ export class Enemy {
         if (isHit) {
             let overlap = this.collisionResult.overlapV;
             if (overlap.x == 0 && overlap.x == 0 && overlap.y > 0) {
+                //console.log('Enemy -> checkCollision -> overlap', overlap);
                 gameState.character.vy = gameState.world.gravity; //碰撞后重置加速度
                 this.publish(EventNames.HitEnemy, this.state, this.gameState);
                 this.state.collision = true;
@@ -65,7 +66,7 @@ export class Enemy {
             //parent.removeChild(this.sprite);
             if (this.state.collision) {
                 this.state.collecting = true;
-                console.log(this.sprite.x, this.state.x);
+                //console.log(this.sprite.x, this.state.x);
                 anime({
                     targets: this.sprite,
                     x: this.sprite.x + 50,

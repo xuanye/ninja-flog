@@ -65,7 +65,7 @@ export class Keyboard {
             return;
         }
         let moving = false;
-        let onTheGrand = false;
+        let onTheGround = false;
         let moveDirection = 0;
         //是否在移动
         moving = this.keyboardState.ArrowLeft || this.keyboardState.ArrowRight;
@@ -79,14 +79,14 @@ export class Keyboard {
             gameState.character.direction = CharacterDirections.Right;
         }
         //是否已经落在地面
-        onTheGrand = gameState.collision.collision && gameState.collision.y > 0;
+        onTheGround = gameState.collision.collision && gameState.collision.y > 0;
 
-        if (onTheGrand) {
+        if (onTheGround) {
             gameState.character.jumpType = 0;
         }
         if (this.keyboardState.Space) {
-            if (onTheGrand) {
-                //console.log('onTheGrand');
+            if (onTheGround) {
+                //console.log('onTheGround');
                 //console.log('Jump');
                 gameState.character.jumpType = 1;
                 gameState.character.vy = gameState.world.maxJumpSpeed;
@@ -100,7 +100,7 @@ export class Keyboard {
                 }
             }
         } else {
-            if (onTheGrand) {
+            if (onTheGround) {
                 gameState.character.vy = 0;
             }
         }
@@ -112,7 +112,7 @@ export class Keyboard {
         //无时无刻不受重力影响
         gameState.character.vy += delta * gameState.world.gravity;
 
-        if (!onTheGrand && gameState.character.vx != 0) {
+        if (!onTheGround && gameState.character.vx != 0) {
             //角色在空中，并有初始速度，则继续沿抛物线前进
             //飘落的逻辑很诡异
             //moveDirection = gameState.character.direction;
@@ -125,7 +125,7 @@ export class Keyboard {
             gameState.character.mode = CharacterMode.DoubleJump;
         } else if (gameState.character.jumpType == 1) {
             gameState.character.mode = CharacterMode.Jump;
-        } else if (!onTheGrand && gameState.collision.y > 1) {
+        } else if (!onTheGround && gameState.collision.y > 1) {
             gameState.character.mode = CharacterMode.Fall;
         } else if (moving) {
             gameState.character.mode = CharacterMode.Run;

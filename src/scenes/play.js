@@ -39,6 +39,9 @@ export class PlayScene extends Scene {
 
         //计算二段跳的初始速度v = gt = sqrt(2gh);
         this.gameState.world.doubleJumpSpeed = -Math.sqrt(2 * this.gameState.world.gravity * World.DoubleJumpThreshold * World.Unit);
+
+        //计算基准地面Y坐标
+        this.gameState.world.baseGroundY = this.gameState.world.screenHeight - World.groundHeight * World.Unit;
     }
 
     create() {
@@ -51,11 +54,12 @@ export class PlayScene extends Scene {
         //设置场景的高度和宽度
         this.gameState.world.width = world.worldWidth;
         this.gameState.world.height = world.worldHeight;
-
+        this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
         this.createMap(world);
 
         //创建角色和碰撞题
         world.objects.forEach(o => {
+            o.y += this.gameState.world.startY;
             // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
             if (o.type == ObjectType.Character) {
                 this.createCharacter(o);
@@ -97,6 +101,7 @@ export class PlayScene extends Scene {
                 this.groundTiles.addFrame(t, d.x, d.y);
             });
         });
+        this.groundTiles.y = this.gameState.world.startY;
         this.sync(this.groundTiles);
         this.addChild(this.groundTiles);
     }
@@ -110,6 +115,7 @@ export class PlayScene extends Scene {
         this.background = new Background({
             width: this.state.width,
             height: this.state.height,
+            designHeight: this.state.designHeight,
         });
         this.background.addTo(this);
         super.sync(this.background);

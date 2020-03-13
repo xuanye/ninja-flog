@@ -6,10 +6,10 @@ import utils from '../utils';
  */
 export class PlayBoard extends Component {
     init() {
-        this.state = Object.assign({ width: 667, height: 375, needStart: false, needEnd: false, lastGrandType: 1 }, this.options);
+        this.state = Object.assign({ width: 667, height: 375, needStart: false, needEnd: false, lastGroundType: 1 }, this.options);
         this.groundPools = new GroundSpritesPool();
         //当前在试图内的瓦片
-        this.grandsSlices = [];
+        this.GroundsSlices = [];
         this.lookupPools = [
             this.createNormalGround,
             this.createNormalGround,
@@ -48,23 +48,23 @@ export class PlayBoard extends Component {
         let tileArr = [];
         let tmp = this.groundPools.getStartLandPart();
         tileArr.push(tmp);
-        this.grandsSlices.push(tmp);
+        this.GroundsSlices.push(tmp);
         return this.drawTiles(tileArr, startX);
     }
     createEndGround(startX) {
         let tileArr = [];
         let tmp = this.groundPools.getEndLandPart();
         tileArr.push(tmp);
-        this.grandsSlices.push(tmp);
+        this.GroundsSlices.push(tmp);
         return this.drawTiles(tileArr, startX);
     }
     createSpace({ startX }) {
         let distance = 0;
-        console.log('this.state.lastGrandType ', this.state.lastGrandType);
-        if (this.state.lastGrandType == 1) {
+        console.log('this.state.lastGroundType ', this.state.lastGroundType);
+        if (this.state.lastGroundType == 1) {
             distance += this.createEndGround(startX);
         }
-        this.state.lastGrandType = 3;
+        this.state.lastGroundType = 3;
         return distance + 30;
     }
     createNormalGround({ startX, partCount, withDecorate = false, withTrap = false }) {
@@ -73,11 +73,11 @@ export class PlayBoard extends Component {
         let tmp;
         let trapCount = 0;
 
-        if (this.state.lastGrandType != 1) {
+        if (this.state.lastGroundType != 1) {
             distance += this.createStartGround(startX + distance);
         }
 
-        this.state.lastGrandType = 1;
+        this.state.lastGroundType = 1;
         for (let i = 0; i < partCount; i++) {
             if (i > 0 && partCount > 4 && withDecorate) {
                 tmp = this.groundPools.getDecorateItem();
@@ -86,7 +86,7 @@ export class PlayBoard extends Component {
                     console.log('对象池空了');
                 }
                 tileArr.push(tmp);
-                this.grandsSlices.push(tmp);
+                this.GroundsSlices.push(tmp);
                 withDecorate = false;
                 console.log(tileArr);
             }
@@ -104,7 +104,7 @@ export class PlayBoard extends Component {
             }
 
             tileArr.push(tmp);
-            this.grandsSlices.push(tmp);
+            this.GroundsSlices.push(tmp);
         }
 
         distance += this.drawTiles(tileArr, startX + distance);
@@ -115,22 +115,22 @@ export class PlayBoard extends Component {
         let tileArr = [];
         let tmp;
 
-        if (this.state.lastGrandType == 1) {
+        if (this.state.lastGroundType == 1) {
             distance += this.createEndGround(startX);
         }
 
-        this.state.lastGrandType = 2;
+        this.state.lastGroundType = 2;
         if (withDecorate) {
             tmp = this.groundPools.getDecorateItem();
             tmp.offsetX = tmp.unit;
             tileArr.push(tmp);
-            this.grandsSlices.push(tmp);
+            this.GroundsSlices.push(tmp);
         }
 
         tmp = this.groundPools.getSuspendIsland();
         tileArr.push(tmp);
         console.log('createIsLandGround -> tileArr', tileArr);
-        this.grandsSlices.push(tmp);
+        this.GroundsSlices.push(tmp);
 
         distance += this.drawTiles(tileArr, startX + distance);
         return distance + 10;

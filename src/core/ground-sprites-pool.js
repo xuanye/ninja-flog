@@ -124,7 +124,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 0, 0, 16 * 5, 16 * 7)), {
                 unitX: 5,
                 unitY: 7,
-                isGrand: false,
+                isGround: false,
                 isTrap: false,
                 offsetY: 0,
                 isDecorate: true,
@@ -133,7 +133,7 @@ export class GroundSpritesPool {
             let item2 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 10, 16 * 2, 16 * 4, 16 * 5)), {
                 unitX: 4,
                 unitY: 5,
-                isGrand: false,
+                isGround: false,
                 isTrap: false,
                 offsetY: 0,
                 isDecorate: true,
@@ -142,7 +142,7 @@ export class GroundSpritesPool {
             let item3 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 4, 16 * 6, 16 * 4, 16)), {
                 unitX: 4,
                 unitY: 1,
-                isGrand: false,
+                isGround: false,
                 isTrap: false,
                 offsetY: 0,
                 isDecorate: true,
@@ -151,7 +151,7 @@ export class GroundSpritesPool {
             let item4 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 14, 16 * 6, 16 * 3, 16)), {
                 unitX: 3,
                 unitY: 1,
-                isGrand: false,
+                isGround: false,
                 isTrap: false,
                 offsetY: 0,
                 isDecorate: true,
@@ -165,7 +165,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 18, 16 * 5, 16 * 5, 16 * 4)), {
                 unitX: 5,
                 unitY: 4,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: -3 * 16,
                 minUnitX: 1,
@@ -173,7 +173,7 @@ export class GroundSpritesPool {
             let item2 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 18, 160, 16 * 5, 16 * 5)), {
                 unitX: 5,
                 unitY: 5,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: -2 * 16,
                 minUnitX: 1,
@@ -181,7 +181,7 @@ export class GroundSpritesPool {
             let item3 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 24, 160, 16 * 5, 16 * 5)), {
                 unitX: 5,
                 unitY: 5,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: -2 * 16,
                 minUnitX: 1,
@@ -194,7 +194,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(new Sprite(utils.su.frame(this.baseTexture, 16 * 16, 160, 16, 16)), {
                 unitX: 1,
                 unitY: 1,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: -3 * 16,
                 minUnitX: 3,
@@ -209,7 +209,7 @@ export class GroundSpritesPool {
                 let item1 = new TileItem(part, {
                     unitX: 1,
                     unitY: 5,
-                    isGrand: true,
+                    isGround: true,
                     isTrap: false,
                     offsetY: 0,
                     minUnitX: 4,
@@ -224,7 +224,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(part, {
                 unitX: 1,
                 unitY: 5,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: 0,
                 minUnitX: 1,
@@ -238,7 +238,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(part, {
                 unitX: 1,
                 unitY: 5,
-                isGrand: true,
+                isGround: true,
                 isTrap: false,
                 offsetY: 0,
                 minUnitX: 1,
@@ -252,7 +252,7 @@ export class GroundSpritesPool {
             let item1 = new TileItem(part, {
                 unitX: 1,
                 unitY: 5,
-                isGrand: true,
+                isGround: true,
                 isTrap: true,
                 offsetY: 0,
                 minUnitX: 3,
@@ -273,12 +273,12 @@ export class GroundSpritesPool {
 }
 
 class TileItem {
-    constructor(sprite, { unitX, unitY, isGrand = true, isTrap = false, offsetY = 0, isDecorate = false, minUnitX = 1 }) {
+    constructor(sprite, { unitX, unitY, isGround = true, isTrap = false, offsetY = 0, isDecorate = false, minUnitX = 1 }) {
         this.sprite = sprite;
         this.unit = 16; //单位尺寸
         this.unitX = unitX;
         this.unitY = unitY;
-        this.isGrand = isGrand; //是否为地面
+        this.isGround = isGround; //是否为地面
         this.isTrap = isTrap; //是否为陷阱
         this.offsetX = 0;
         this.offsetY = offsetY; //轴偏移量

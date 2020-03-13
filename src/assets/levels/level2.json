@@ -125,7 +125,7 @@
                         {
                          "name":"awardType",
                          "type":"string",
-                         "value":"banana"
+                         "value":"cherry"
                         }],
                  "rotation":0,
                  "type":"awardObject",
@@ -265,8 +265,8 @@
                  "type":"collisionObject",
                  "visible":true,
                  "width":6341,
-                 "x":378.333333333333,
-                 "y":322.333333333333
+                 "x":378.333,
+                 "y":322.333
                 }, 
                 {
                  "height":44.6667,
@@ -288,20 +288,20 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":11,
-                 "x":477,
-                 "y":270
+                 "x":407,
+                 "y":254
                 }, 
                 {
                  "ellipse":true,
-                 "height":19.6667,
+                 "height":13.6667,
                  "id":33,
                  "name":"",
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":17,
-                 "x":521,
-                 "y":268
+                 "width":11,
+                 "x":483,
+                 "y":281
                 }, 
                 {
                  "ellipse":true,
@@ -318,8 +318,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":16,
-                 "x":573,
-                 "y":257
+                 "x":516,
+                 "y":265
                 }, 
                 {
                  "ellipse":true,
@@ -330,8 +330,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":13,
-                 "x":621,
-                 "y":226
+                 "x":551,
+                 "y":245
                 }, 
                 {
                  "ellipse":true,
@@ -348,8 +348,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":13.3333,
-                 "x":681,
-                 "y":237.667
+                 "x":602,
+                 "y":210.667
                 }, 
                 {
                  "ellipse":true,
@@ -360,8 +360,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":12,
-                 "x":733,
-                 "y":253
+                 "x":630,
+                 "y":193
                 }, 
                 {
                  "ellipse":true,
@@ -372,8 +372,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":14,
-                 "x":885,
-                 "y":261.333
+                 "x":739,
+                 "y":233.333
                 }, 
                 {
                  "ellipse":true,
@@ -390,12 +390,12 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":8.66667,
-                 "x":1032,
-                 "y":241
+                 "x":834,
+                 "y":251
                 }, 
                 {
                  "ellipse":true,
-                 "height":21.3333,
+                 "height":13.3333,
                  "id":49,
                  "name":"",
                  "properties":[
@@ -407,9 +407,9 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":16.6667,
-                 "x":1127,
-                 "y":262
+                 "width":8.66669999999999,
+                 "x":906,
+                 "y":259
                 }, 
                 {
                  "ellipse":true,
@@ -443,15 +443,15 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":22.6667,
+                 "height":13.6667,
                  "id":52,
                  "name":"",
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":14,
+                 "width":11,
                  "x":1418,
-                 "y":191
+                 "y":200
                 }, 
                 {
                  "ellipse":true,
@@ -503,15 +503,15 @@
                 }, 
                 {
                  "ellipse":true,
-                 "height":20,
+                 "height":15,
                  "id":57,
                  "name":"",
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":20.6667,
+                 "width":12.6667,
                  "x":1155,
-                 "y":200
+                 "y":205
                 }, 
                 {
                  "ellipse":true,
@@ -636,8 +636,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":1576,
-                 "y":164
+                 "x":1584,
+                 "y":214
                 }, 
                 {
                  "ellipse":true,
@@ -919,7 +919,7 @@
                  "visible":true,
                  "width":6,
                  "x":2356,
-                 "y":242.333333333333
+                 "y":242.333
                 }, 
                 {
                  "ellipse":true,
@@ -1044,8 +1044,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":3043.33333333333,
-                 "y":279.666666666667
+                 "x":3043.33,
+                 "y":279.667
                 }, 
                 {
                  "ellipse":true,
@@ -1182,8 +1182,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":13,
-                 "x":659,
-                 "y":284.333
+                 "x":577,
+                 "y":226.333
                 }, 
                 {
                  "ellipse":true,
@@ -1200,8 +1200,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":9,
-                 "x":560,
-                 "y":291
+                 "x":454,
+                 "y":281
                 }, 
                 {
                  "ellipse":true,
@@ -1236,12 +1236,12 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":10,
-                 "x":411,
-                 "y":261
+                 "x":432,
+                 "y":273
                 }, 
                 {
                  "ellipse":true,
-                 "height":18,
+                 "height":12,
                  "id":189,
                  "name":"",
                  "properties":[
@@ -1253,13 +1253,13 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":18,
-                 "x":793,
-                 "y":252
+                 "width":13,
+                 "x":658,
+                 "y":200
                 }, 
                 {
                  "ellipse":true,
-                 "height":18,
+                 "height":14,
                  "id":190,
                  "name":"",
                  "properties":[
@@ -1271,13 +1271,13 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":18,
-                 "x":826,
-                 "y":234
+                 "width":14,
+                 "x":683,
+                 "y":208
                 }, 
                 {
                  "ellipse":true,
-                 "height":18,
+                 "height":11,
                  "id":191,
                  "name":"",
                  "properties":[
@@ -1289,9 +1289,9 @@
                  "rotation":0,
                  "type":"awardObject",
                  "visible":true,
-                 "width":17.3333,
-                 "x":855,
-                 "y":285
+                 "width":13.3333,
+                 "x":711,
+                 "y":222
                 }, 
                 {
                  "ellipse":true,
@@ -1308,8 +1308,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":17.3333,
-                 "x":935,
-                 "y":280
+                 "x":763,
+                 "y":245
                 }, 
                 {
                  "ellipse":true,
@@ -1326,12 +1326,12 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":18,
-                 "x":993,
-                 "y":277
+                 "x":796,
+                 "y":256
                 }, 
                 {
                  "ellipse":true,
-                 "height":18.3333,
+                 "height":9.33330000000001,
                  "id":194,
                  "name":"",
                  "properties":[
@@ -1344,8 +1344,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":11.6667,
-                 "x":1085,
-                 "y":247
+                 "x":868,
+                 "y":265
                 }, 
                 {
                  "ellipse":true,
@@ -1380,8 +1380,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":3107.66666666667,
-                 "y":291.333333333333
+                 "x":3107.67,
+                 "y":291.333
                 }, 
                 {
                  "ellipse":true,
@@ -1596,8 +1596,8 @@
                  "type":"awardObject",
                  "visible":true,
                  "width":6,
-                 "x":2229.66666666667,
-                 "y":204.333333333333
+                 "x":2229.67,
+                 "y":204.333
                 }, 
                 {
                  "height":30,
@@ -1623,8 +1623,8 @@
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":175.999966666667,
-                 "x":141.333666666667,
+                 "width":176,
+                 "x":141.334,
                  "y":294
                 }, 
                 {
@@ -1635,13 +1635,13 @@
                         {
                          "name":"enemyType",
                          "type":"string",
-                         "value":"AngryPig"
+                         "value":"Chicken"
                         }],
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":218.666633333333,
-                 "x":413.33335,
+                 "width":218.667,
+                 "x":413.333,
                  "y":294
                 }, 
                 {
@@ -1657,8 +1657,8 @@
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":233.3333,
-                 "x":681.33335,
+                 "width":233.333,
+                 "x":681.333,
                  "y":294
                 }, 
                 {
@@ -1669,14 +1669,14 @@
                         {
                          "name":"enemyType",
                          "type":"string",
-                         "value":"AngryPig"
+                         "value":"BlueBird"
                         }],
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":274.666633333333,
-                 "x":1562.66668333333,
-                 "y":80.0000166666666
+                 "width":274.667,
+                 "x":1274.67,
+                 "y":182
                 }, 
                 {
                  "height":24,
@@ -1686,13 +1686,13 @@
                         {
                          "name":"enemyType",
                          "type":"string",
-                         "value":"AngryPig"
+                         "value":"Chicken"
                         }],
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":1405.33316666667,
+                 "x":1405.33,
                  "y":294
                 }, 
                 {
@@ -1703,14 +1703,14 @@
                         {
                          "name":"enemyType",
                          "type":"string",
-                         "value":"AngryPig"
+                         "value":"BlueBird"
                         }],
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":915.999833333333,
-                 "y":80.0000166666667
+                 "x":897,
+                 "y":198
                 }, 
                 {
                  "height":24,
@@ -1726,7 +1726,7 @@
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":1753.33316666667,
+                 "x":1753.33,
                  "y":294
                 }, 
                 {
@@ -1737,14 +1737,14 @@
                         {
                          "name":"enemyType",
                          "type":"string",
-                         "value":"AngryPig"
+                         "value":"BlueBird"
                         }],
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":2335.99983333333,
-                 "y":90.6666833333333
+                 "x":2360,
+                 "y":98.6667
                 }, 
                 {
                  "height":24,
@@ -1760,8 +1760,8 @@
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":2303.99983333333,
-                 "y":294
+                 "x":2304,
+                 "y":293
                 }, 
                 {
                  "height":24,
@@ -1776,9 +1776,9 @@
                  "rotation":0,
                  "type":"enemyObject",
                  "visible":true,
-                 "width":253.333333333333,
-                 "x":1054.66666666667,
-                 "y":291.33335
+                 "width":253.333,
+                 "x":1054.67,
+                 "y":294
                 }, 
                 {
                  "height":24,
@@ -1794,8 +1794,8 @@
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":2761.33316666667,
-                 "y":292
+                 "x":2761.33,
+                 "y":293
                 }, 
                 {
                  "height":24,
@@ -1811,8 +1811,329 @@
                  "type":"enemyObject",
                  "visible":true,
                  "width":274.667,
-                 "x":3085.33316666667,
-                 "y":290.666666666667
+                 "x":3085.33,
+                 "y":294
+                }, 
+                {
+                 "height":21.3333,
+                 "id":226,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"BlueBird"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":526.6665,
+                 "y":184.33335
+                }, 
+                {
+                 "height":21.3333,
+                 "id":227,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"BlueBird"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":1712.6665,
+                 "y":183.33335
+                }, 
+                {
+                 "height":21.3333,
+                 "id":228,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"enemyType",
+                         "type":"string",
+                         "value":"BlueBird"
+                        }],
+                 "rotation":0,
+                 "type":"enemyObject",
+                 "visible":true,
+                 "width":274.667,
+                 "x":2164.6665,
+                 "y":199.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":229,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":977.16665,
+                 "y":271.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":230,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":931.16665,
+                 "y":255.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":231,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":958.16665,
+                 "y":253.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":232,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":999.16665,
+                 "y":255.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":233,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1025.16665,
+                 "y":255.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":234,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1052.16665,
+                 "y":246.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":235,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1087.16665,
+                 "y":243.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":236,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1115.16665,
+                 "y":223.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":237,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1156.16665,
+                 "y":226.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":238,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1187.16665,
+                 "y":213.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":239,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1221.16665,
+                 "y":209.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":240,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1184.16665,
+                 "y":199.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":241,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1276.16665,
+                 "y":246.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":242,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1249.16665,
+                 "y":225.33335
+                }, 
+                {
+                 "ellipse":true,
+                 "height":9.3333,
+                 "id":243,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"awardType",
+                         "type":"string",
+                         "value":"cherry"
+                        }],
+                 "rotation":0,
+                 "type":"awardObject",
+                 "visible":true,
+                 "width":11.6667,
+                 "x":1317.16665,
+                 "y":215.33335
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1821,10 +2142,10 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":226,
+ "nextobjectid":244,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.02.26",
+ "tiledversion":"1.3.3",
  "tileheight":16,
  "tilesets":[
         {
