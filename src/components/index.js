@@ -3,4 +3,6 @@ import { PlayBoard } from './playboard';
 import { Keyboard } from './keyborad';
 import { CollisionManager } from './collisionManager';
 import { TiledMap } from './tiledmap';
-export { Background, PlayBoard, Keyboard, CollisionManager, TiledMap };
+import { ScoreBoard } from './score-board';
+export * from './touchboard';
+export { Background, PlayBoard, Keyboard, CollisionManager, TiledMap, ScoreBoard };

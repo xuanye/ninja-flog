@@ -7,6 +7,8 @@ export const Assets = {
 
         { name: 'level1', url: '/assets/levels/level1.json' },
         { name: 'level2', url: '/assets/levels/level2.json' },
+        { name: 'level3', url: '/assets/levels/level3.json' },
+        { name: 'tileset2', url: '/assets/levels/tileset2.png' },
         { name: 'tileset', url: '/assets/levels/tileset.png' },
         { name: 'trees', url: '/assets/levels/trees.png' },
 
@@ -24,6 +26,9 @@ export const Assets = {
         { name: 'angry-pig', url: '/assets/enemies/angry-pig.json' },
         { name: 'chicken', url: '/assets/enemies/chicken.json' },
         { name: 'blue-bird', url: '/assets/enemies/blue-bird.json' },
+
+        { name: 'myf', url: '/assets/text/myf.fnt' },
+        { name: 'myfw', url: '/assets/text/myfw.fnt' },
     ],
     audios: [{ name: 'bg_audio', url: '/assets/audio/bg.mp3' }],
 };

@@ -95,6 +95,7 @@ export const CollisionType = {
 export const Levels = {
     Level1: 'level1',
     Level2: 'level2',
+    Level3: 'level3',
 };
 //奖励的名称
 export const AwardNames = {

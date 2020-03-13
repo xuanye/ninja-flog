@@ -1,6 +1,6 @@
-import { Rectangle, Texture } from 'pixi.js';
+import { Rectangle, Texture, utils } from 'pixi.js';
 import { Scene } from '../core/pitaya';
-import { Background, Keyboard, CollisionManager, TiledMap } from '../components';
+import { Background, Keyboard, CollisionManager, TiledMap, ScoreBoard, TouchBoard } from '../components';
 import Tiled from '../core/tiled';
 import { NinjaFlog } from '../character';
 
@@ -16,8 +16,13 @@ export class PlayScene extends Scene {
         this.gameState.world.screenWidth = this.state.width;
         this.gameState.world.screenHeight = this.state.height;
 
-        this.keyboard = new Keyboard();
-        this.sync(this.keyboard); //第一个同步就是键盘操作
+        if (utils.isMobile.any) {
+            this.touchBoard = new TouchBoard(this);
+            this.sync(this.touchBoard); //第一个同步就是触碰操作
+        } else {
+            this.keyboard = new Keyboard();
+            this.sync(this.keyboard); //第一个同步就是键盘操作
+        }
 
         this.csm = new CollisionManager();
         this.sync(this.csm); //第二个计算运动碰撞检测
@@ -49,7 +54,7 @@ export class PlayScene extends Scene {
 
         //加载和解析地图信息
         let tiled = new Tiled();
-        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level2]);
+        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level3]);
 
         //设置场景的高度和宽度
         this.gameState.world.width = world.worldWidth;
@@ -73,6 +78,13 @@ export class PlayScene extends Scene {
             }
         });
 
+        this.score = new ScoreBoard({
+            width: this.state.width,
+            height: this.state.height,
+        });
+        this.score.x = this.state.width - 50;
+        this.score.y = 10;
+        this.addChild(this.score);
         //console.log(this._game.renderer.plugins.tilemap);
     }
     createCharacter(character) {
@@ -90,7 +102,8 @@ export class PlayScene extends Scene {
         world.tilesets.forEach(tileset => {
             textures.push(Texture.from(tileset.name));
         });
-        textures.push(Texture.from('award_apple'));
+
+        //textures.push(Texture.from('award_apple'));
         this.groundTiles = new TiledMap(0, textures);
         let rect = new Rectangle(0, 0, world.tileWidth, world.tileHeight);
         world.groups.forEach(group => {
@@ -98,6 +111,7 @@ export class PlayScene extends Scene {
                 rect.x = d.tilesetX;
                 rect.y = d.tilesetY;
                 let t = new Texture(textures[d.tileset.index], rect);
+                //d.tileset.index > 0 && console.log('treee');
                 this.groundTiles.addFrame(t, d.x, d.y);
             });
         });

@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "webpack --mode production --config webpack.config.prod.js",
-    "clean": "rimraf -rf ./build && mkdir ./build",
+    "clean": "rimraf -rf ./dist && mkdir ./dist",
     "format": "prettier --write \"src/**/*.js\"",
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "stat": "cross-env NODE_ENV=production npm_config_report=true npm run build"
@@ -26,7 +26,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@pixi/filter-drop-shadow": "^3.1.0",
     "animejs": "^3.1.0",
     "javascript-state-machine": "^3.1.0",
     "pixi-sound": "^3.0.4",
@@ -34,6 +33,7 @@
     "pixi.js": "^5.2.1",
     "pubsub-js": "^1.8.0",
     "sat": "^0.8.0",
-    "stats.js": "^0.17.0"
+    "stats.js": "^0.17.0",
+    "vconsole": "^3.3.4"
   }
 }
