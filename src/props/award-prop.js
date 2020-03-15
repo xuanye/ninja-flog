@@ -1,20 +1,18 @@
 import Sat from 'Sat';
 import PubSub from 'pubsub-js';
-import { EventNames, AwardNames } from '../constants';
+import { EventNames, AwardNames, AwardSize } from '../constants';
 export class AwardProps {
     constructor(state, spritePool) {
         this.state = state;
         //console.log('AwardProps -> constructor -> state', state);
-        this.state.awardType = this.state.awardType || AwardNames.Apple;
+        this.state.awardType = this.state.awardType || AwardNames.MonedaD;
         this.sprite = null;
         this.pool = spritePool;
-        this.v = new Sat.Circle(new Sat.Vector(state.x + state.width / 2, state.y + state.width / 2), state.width / 2);
+        this.v = new Sat.Circle(new Sat.Vector(state.x + AwardSize.Width / 2, state.y + AwardSize.Height / 2), AwardSize.Width / 2);
         this.collisionResult = new Sat.Response();
         this.vpx = state.x + state.width / 2;
     }
-    subscribe(...args) {
-        PubSub.subscribe(...args);
-    }
+
     publish(...args) {
         PubSub.publish(...args);
     }
@@ -42,13 +40,23 @@ export class AwardProps {
             this.state.collected = true;
         }
     }
+    reset() {
+        this.state.collecting = false;
+        this.state.collected = false;
+        this.state.collision = false;
+        if (this.sprite != null && this.sprite.parent) {
+            this.sprite.parent.removeChild(this.sprite);
+            this.pool.return(this.sprite, this.state.awardType);
+        }
+        this.sprite = null;
+    }
     clear(parent) {
         if (this.sprite != null) {
             let x = this.sprite.x;
             let y = this.sprite.y;
             parent.removeChild(this.sprite);
             this.pool.return(this.sprite, this.state.awardType);
-            //this.sprite = null;
+            this.sprite = null;
             /**/
             this.state.collecting = true;
             //播放一个动画
@@ -90,6 +98,7 @@ export class AwardProps {
                 //console.log('创建apple奖励');
                 this.sprite = this.pool.get(this.state.awardType);
                 if (this.sprite == null) {
+                    console.warn('没有空余的了？');
                     return false;
                 }
                 this.sprite.play();

@@ -3,7 +3,9 @@
         "Tiledmap",
         "charactor",
         "charactors",
+        "d",
         "keyborad",
+        "moneda",
         "pitaya",
         "playboard",
         "pubsub",
@@ -11,6 +13,8 @@
         "tilemap",
         "tileset",
         "tilesets",
+        "touchboard",
         "xuanye"
-    ]
+    ],
+    "commentTranslate.targetLanguage": "zh-CN"
 }

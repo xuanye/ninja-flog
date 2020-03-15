@@ -25,6 +25,10 @@ export default class Scene extends Container {
     }
     init() {
         this.state = Object.assign({}, this._game.options);
+        this.state.width = this.state.designWidth;
+        this.state.height = this.state.designHeight;
+
+        console.log('Scene -> init -> this._game.options', this._game.view.width, this._game.view.height);
     }
     preload() {}
     resume() {

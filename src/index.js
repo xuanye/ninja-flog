@@ -3,11 +3,10 @@ import { utils } from 'pixi.js';
 import App from './app';
 //import VConsole from 'vconsole';
 
-let designWidth = 667;
-let designHeight = 375;
+let designWidth = 1334 / 2;
+let designHeight = 750 / 2;
 
 let screenWidth = utils.isMobile.any ? window.innerWidth : designWidth;
-console.log('utils.isMobile', utils.isMobile);
 let screenHeight = utils.isMobile.any ? window.innerHeight : designHeight;
 
 let app = new App({
@@ -19,6 +18,3 @@ let app = new App({
     designHeight,
     antialias: true,
 });
-
-//let vconsole = new VConsole();
-//app.__resize();

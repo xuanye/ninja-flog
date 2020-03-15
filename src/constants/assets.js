@@ -6,29 +6,18 @@ export const Assets = {
         { name: 'clouds_front', url: '/assets/background/clouds_front.png' },
 
         { name: 'level1', url: '/assets/levels/level1.json' },
-        { name: 'level2', url: '/assets/levels/level2.json' },
-        { name: 'level3', url: '/assets/levels/level3.json' },
-        { name: 'tileset2', url: '/assets/levels/tileset2.png' },
         { name: 'tileset', url: '/assets/levels/tileset.png' },
-        { name: 'trees', url: '/assets/levels/trees.png' },
 
-        { name: 'award_apple', url: '/assets/fruits/apple.png' },
-        { name: 'award_banana', url: '/assets/fruits/bananas.png' },
-        { name: 'award_cherry', url: '/assets/fruits/cherries.png' },
-        { name: 'award_kiwi', url: '/assets/fruits/kiwi.png' },
-        { name: 'award_melon', url: '/assets/fruits/melon.png' },
-        { name: 'award_orange', url: '/assets/fruits/orange.png' },
-        { name: 'award_pineapple', url: '/assets/fruits/pineapple.png' },
-        { name: 'award_strawberry', url: '/assets/fruits/strawberry.png' },
-        { name: 'award_collected', url: '/assets/fruits/collected.png' },
+        { name: 'award_collected', url: '/assets/awards/collected.png' },
+        { name: 'award_moneda_d', url: '/assets/awards/moneda_d.png' },
 
         { name: 'ninja-frog', url: '/assets/characters/ninja-frog.json' },
         { name: 'angry-pig', url: '/assets/enemies/angry-pig.json' },
         { name: 'chicken', url: '/assets/enemies/chicken.json' },
         { name: 'blue-bird', url: '/assets/enemies/blue-bird.json' },
 
-        { name: 'myf', url: '/assets/text/myf.fnt' },
-        { name: 'myfw', url: '/assets/text/myfw.fnt' },
+        { name: 'gui', url: '/assets/gui/gui.json' },
+        { name: 'Carter_One', url: '/assets/text/Carter_One.fnt' },
     ],
     audios: [{ name: 'bg_audio', url: '/assets/audio/bg.mp3' }],
 };

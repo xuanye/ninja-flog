@@ -5,4 +5,5 @@ import { CollisionManager } from './collisionManager';
 import { TiledMap } from './tiledmap';
 import { ScoreBoard } from './score-board';
 export * from './touchboard';
+export * from './result-board';
 export { Background, PlayBoard, Keyboard, CollisionManager, TiledMap, ScoreBoard };

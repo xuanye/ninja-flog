@@ -800,24 +800,12 @@
     "@pixi/core" "5.2.1"
     "@pixi/math" "5.2.1"
 
-"@pixi/filter-drop-shadow@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npm.taobao.org/@pixi/filter-drop-shadow/download/@pixi/filter-drop-shadow-3.1.0.tgz#e29f6b9192fafa3c765f504690f9a0eb390f14de"
-  integrity sha1-4p9rkZL6+jx2X1BGkPmg6zkPFN4=
-  dependencies:
-    "@pixi/filter-kawase-blur" "^3.1.0"
-
 "@pixi/filter-fxaa@5.2.1":
   version "5.2.1"
   resolved "https://registry.npm.taobao.org/@pixi/filter-fxaa/download/@pixi/filter-fxaa-5.2.1.tgz#4e245296afe014c0b75ab8afd6fd96d7fdf59c99"
   integrity sha1-TiRSlq/gFMC3Wriv1v2W1/31nJk=
   dependencies:
     "@pixi/core" "5.2.1"
-
-"@pixi/filter-kawase-blur@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npm.taobao.org/@pixi/filter-kawase-blur/download/@pixi/filter-kawase-blur-3.1.0.tgz#3e405ff00b0f981d9774558b027dbe92f6057671"
-  integrity sha1-PkBf8AsPmB2XdFWLAn2+kvYFdnE=
 
 "@pixi/filter-noise@5.2.1":
   version "5.2.1"

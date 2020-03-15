@@ -1,5 +1,4 @@
 import { AwardProps } from './award-prop';
-
 import { AwardSpritePool } from './award-sprite-pool';
 export class AwardManager {
     constructor(container) {
@@ -18,6 +17,15 @@ export class AwardManager {
     }
     resume() {
         this.paused = false;
+    }
+    reset() {
+        if (this.awards) {
+            this.awards.forEach(a => {
+                if (a && a.reset && typeof a.reset == 'function') {
+                    a.reset.call(a);
+                }
+            });
+        }
     }
     update(delta, gameState) {
         if (this.paused) {

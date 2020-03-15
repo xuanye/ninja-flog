@@ -81,6 +81,7 @@ export const GameInitState = {
         jumpType: JumpType.Nope, //0 =没跳 1 =一级跳  2 =二级跳
         mode: CharacterMode.Idle,
         health: 1,
+        isDead: false,
         invincible: false, //true时不和怪物碰撞
     },
 };
@@ -99,15 +100,12 @@ export const Levels = {
 };
 //奖励的名称
 export const AwardNames = {
-    Apple: 'apple',
-    Banana: 'banana',
-    Cherry: 'cherry',
-    Kiwi: 'kiwi',
-    Melon: 'melon',
-    Orange: 'orange',
-    Pineapple: 'pineapple',
-    Strawberry: 'strawberry',
-    Collected: 'collected',
+    Collected: 'Collected',
+    MonedaD: 'MonedaD',
+};
+export const AwardSize = {
+    Width: 16,
+    Height: 16,
 };
 
 export const EnemyInfos = {

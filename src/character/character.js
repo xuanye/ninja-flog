@@ -1,7 +1,8 @@
 import { AnimatedSprite } from 'pixi.js';
 import utils from '../utils';
-import { CharacterMode } from '../constants';
-import anime from 'animejs';
+import { CharacterMode, EventNames } from '../constants';
+import PubSub from 'pubsub-js';
+
 export class Character extends AnimatedSprite {
     constructor({ baseTexture, modeFrames, frameWidth, frameHeight, initState }) {
         let frames = utils.su.filmstrip(baseTexture, frameWidth, frameHeight);
@@ -23,7 +24,12 @@ export class Character extends AnimatedSprite {
         utils.su.addStatePlayer(this);
         this.playState(initState.mode);
     }
-
+    subscribe(...args) {
+        PubSub.subscribe(...args);
+    }
+    publish(...args) {
+        PubSub.publish(...args);
+    }
     playState(state) {
         let name = this.modeNames[state];
 
@@ -34,10 +40,9 @@ export class Character extends AnimatedSprite {
     playDeadState(gameState) {
         this.playState(CharacterMode.Hit);
         setTimeout(() => {
-            this.parent && this.parent.removeChild(this);
+            this.visible = false;
         }, 1000);
-
-        console.log('it is dead');
+        this.publish(EventNames.HeroDead, gameState);
     }
     update(_, gameState) {
         let { character, collision, world } = gameState;
@@ -121,6 +126,10 @@ export class Character extends AnimatedSprite {
         if (this.mode != character.mode) {
             this.mode = character.mode;
             this.playState(this.mode);
+        }
+
+        if (this.y > world.screenHeight) {
+            character.health = 0;
         }
 
         character.x = this.x;

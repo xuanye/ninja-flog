@@ -1,6 +1,6 @@
 import { AnimatedSprite } from 'pixi.js';
 import utils from '../utils';
-import { TextureNames, AwardNames } from '../constants';
+import { TextureNames, AwardNames, AwardSize } from '../constants';
 
 export class AwardSpritePool {
     constructor() {
@@ -11,8 +11,8 @@ export class AwardSpritePool {
 
     init() {
         Object.keys(AwardNames).forEach(name => {
-            this.pools[name.toLowerCase()] = [];
-            this.prepareSprite(name.toLowerCase(), 5);
+            this.pools[name] = [];
+            this.prepareSprite(name, 20);
         });
         //console.log(this.pools);
     }
@@ -25,15 +25,17 @@ export class AwardSpritePool {
         if (typeof this.pools[name] == undefined) {
             throw new Error('奖励类型不存在', name);
         } else {
-            return this.createSprite(name.replace(/^\S/, s => s.toUpperCase()));
+            return this.createSprite(name);
         }
     }
     createSprite(name) {
-        let frames = utils.su.filmstrip(TextureNames.Award[name], 32, 32);
+        //console.log('AwardSpritePool -> createSprite -> TextureNames.Award[name]', name, TextureNames.Award[name]);
+        let frames = utils.su.filmstrip(TextureNames.Award[name], AwardSize.Width, AwardSize.Height);
+
         //创建动画精灵
         let pixie = new AnimatedSprite(frames);
         //设置动画精灵的速度
-        pixie.animationSpeed = 0.3;
+        pixie.animationSpeed = 0.1;
         return pixie;
     }
     get(name) {

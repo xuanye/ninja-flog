@@ -2,6 +2,7 @@ import { Game } from './core/pitaya';
 import { Assets, EventNames } from './constants';
 import scenes from './scenes';
 import config from './config';
+import { View } from './core/pitaya/view';
 
 let Stats = null;
 if (process.env.NODE_ENV != 'production') {
@@ -13,8 +14,10 @@ if (process.env.NODE_ENV != 'production') {
 export default class App extends Game {
     constructor(options) {
         super(options);
-        this.options = Object.assign({}, options);
+
         document.body.appendChild(this.view);
+        this.options = Object.assign({}, options);
+        this.detectOrient();
 
         if (Stats) {
             this.stats = new Stats();
@@ -67,6 +70,17 @@ export default class App extends Game {
         if (this.stats) {
             this.stats.end();
         }
+    }
+
+    /**
+     * 横竖屏处理
+     */
+    detectOrient() {
+        View.setViewMode(this, this.options.designWidth, this.options.designHeight, View.FIXED_HEIGHT, () => {
+            console.log('resize');
+            this.options.width = View.canvasWidth;
+            this.options.height = View.canvasHeight;
+        });
     }
 
     //------------------------

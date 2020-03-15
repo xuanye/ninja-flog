@@ -36,12 +36,13 @@ export class Enemy {
         let isHit = Sat.testPolygonPolygon(gameState.characterBox, this.v, this.collisionResult);
         if (isHit) {
             let overlap = this.collisionResult.overlapV;
+            /* //不设置从上部碰撞就可以踩死怪物
             if (overlap.x == 0 && overlap.x == 0 && overlap.y > 0) {
                 //console.log('Enemy -> checkCollision -> overlap', overlap);
                 gameState.character.vy = gameState.world.gravity; //碰撞后重置加速度
                 this.publish(EventNames.HitEnemy, this.state, this.gameState);
                 this.state.collision = true;
-            } else {
+            } else*/ {
                 gameState.character.health -= 1;
                 //console.log('Enemy -> checkCollision ->  gameState.character.health', gameState.character.health);
                 gameState.character.invincible = true;

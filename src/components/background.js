@@ -10,13 +10,13 @@ export class Background {
         let bgBackTexture = Texture.from('bg_back');
         this.bgBack = new TilingSprite(bgBackTexture, bgBackTexture.baseTexture.width, bgBackTexture.baseTexture.height);
         this.bgBack.width = this.state.width;
-        this.bgBack.scale.y = scaleY;
+        //this.bgBack.scale.y = scaleY;
         this.bgBack.y = this.state.height - this.bgBack.height;
 
         let bgFrontTexture = Texture.from('bg_front');
         this.bgFront = new TilingSprite(bgFrontTexture, bgFrontTexture.baseTexture.width, bgFrontTexture.baseTexture.height);
         this.bgFront.width = this.state.width;
-        this.bgFront.scale.y = scaleY;
+        //this.bgFront.scale.y = scaleY;
         this.bgFront.y = this.state.height - this.bgFront.height;
 
         let cloudsBackTexture = Texture.from('clouds_back');
