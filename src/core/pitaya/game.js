@@ -77,6 +77,9 @@ export default class Game extends Application {
      */
     update(delta) {}
 
+    onResize(options) {
+        this.ssm.onResize(options);
+    }
     //---------------------
     // 发布/订阅模式的简单封装
     //---------------------

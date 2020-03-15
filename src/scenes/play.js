@@ -187,4 +187,15 @@ export class PlayScene extends Scene {
     update(delta) {
         super.update(delta, this.gameState);
     }
+    /**
+     * 自动调用的方法
+     */
+    onResize(options) {
+        let width = Math.max(options.width, options.height);
+        let height = Math.min(options.width, options.height);
+        this.background.onResize(options);
+        this.score.x = width - 100;
+        this.resultBoard.x = width / 2 - this.resultBoard.width / 2;
+        this.resultBoard.y = height / 2 - this.resultBoard.height / 2;
+    }
 }

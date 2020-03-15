@@ -82,10 +82,11 @@ export default class App extends Game {
             this.options.height = View.canvasHeight;
             this.options.screenWidth = View.winWidth;
             this.options.screenHeight = View.winHeight;
-            this.onResize(this.options);
+            this.options.realWidth = Math.max(this.options.width, this.options.height);
+            this.options.realHeight = Math.min(this.options.width, this.options.height);
+            super.onResize(this.options);
         });
     }
-    onResize() {}
     //------------------------
     // 状态机的事件
     //-----------------------

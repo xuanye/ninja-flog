@@ -27,6 +27,15 @@ export default class SceneManager {
         }
         this._scenes[name] = scene;
     }
+    onResize(options) {
+        if (this._active) {
+            if (this._active.scene) {
+                if (this._active.scene.onResize && typeof this._active.scene.onResize == 'function') {
+                    this._active.scene.onResize.call(this._active.scene, options);
+                }
+            }
+        }
+    }
     /**
      * 开始场景
      * @param {String} name 场景的名称
