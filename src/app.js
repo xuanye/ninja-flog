@@ -80,9 +80,12 @@ export default class App extends Game {
             console.log('resize');
             this.options.width = View.canvasWidth;
             this.options.height = View.canvasHeight;
+            this.options.screenWidth = View.winWidth;
+            this.options.screenHeight = View.winHeight;
+            this.onResize(this.options);
         });
     }
-
+    onResize() {}
     //------------------------
     // 状态机的事件
     //-----------------------
