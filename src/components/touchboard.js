@@ -14,6 +14,9 @@ export class TouchBoard {
 
         this.startPoint = {};
         this.touchCount = 0;
+        this.isPortrait = stage.state.screenWidth <= stage.state.screenHeight;
+        console.log('TouchBoard -> constructor -> stage.state', stage.state);
+        console.log('TouchBoard -> constructor ->  this.isPortrait', this.isPortrait);
         this.stage = stage;
         this.keyCodes = Object.keys(this.touchBoardState);
     }
@@ -39,6 +42,18 @@ export class TouchBoard {
             this.onTouchEnd = null;
         }
     }
+    onResize({ width, height, screenWidth, screenHeight, realWidth, realHeight }) {
+        /*
+            this.options.width = View.canvasWidth;
+            this.options.height = View.canvasHeight;
+            this.options.screenWidth = View.winWidth;
+            this.options.screenHeight = View.winHeight;
+            this.options.realWidth = Math.max(this.options.width, this.options.height);
+            this.options.realHeight = Math.min(this.options.width, this.options.height); 
+        */
+        this.isPortrait = width <= height; //是否竖屏
+        console.log('TouchBoard -> onResize -> this.isPortrait', this.isPortrait);
+    }
     /**
      * 场景恢复时，重新注册事件
      */
@@ -51,7 +66,10 @@ export class TouchBoard {
             // e.stopPropagation();
             let id = '_' + e.data.pointerId;
             // console.log('start', id);
-            this.startPoint[id] = { x: e.data.global.x, y: e.data.global.y };
+            this.startPoint[id] = {
+                x: this.isPortrait ? e.data.global.y : e.data.global.x,
+                y: this.isPortrait ? e.data.global.x : e.data.global.y,
+            };
             this.touchCount++;
         };
         this.onTouchMove = e => {
@@ -62,7 +80,10 @@ export class TouchBoard {
             if (!lastPoint) {
                 return;
             }
-            let movePoint = e.data.global;
+            let movePoint = {
+                x: this.isPortrait ? e.data.global.y : e.data.global.x,
+                y: this.isPortrait ? e.data.global.x : e.data.global.y,
+            };
 
             if (movePoint.x - lastPoint.x > 20) {
                 this.touchBoardState.ArrowRight = true;
@@ -89,10 +110,21 @@ export class TouchBoard {
                 this.touchBoardState.ArrowRight = false;
                 this.touchCount = 0;
             }
-            let movePoint = e.data.global;
-            if (lastPoint.y - movePoint.y > 20) {
-                //this.touchBoardState.JumpTime = +new Date();
-                this.touchBoardState.Jump = true;
+            let movePoint = {
+                x: this.isPortrait ? e.data.global.y : e.data.global.x,
+                y: this.isPortrait ? e.data.global.x : e.data.global.y,
+            };
+
+            if (this.isPortrait) {
+                if (movePoint.y - lastPoint.y > 20) {
+                    //this.touchBoardState.JumpTime = +new Date();
+                    this.touchBoardState.Jump = true;
+                }
+            } else {
+                if (lastPoint.y - movePoint.y > 20) {
+                    //this.touchBoardState.JumpTime = +new Date();
+                    this.touchBoardState.Jump = true;
+                }
             }
         };
         this.stage.on('touchstart', this.onTouchStart);
@@ -162,18 +194,7 @@ export class TouchBoard {
         }
         //console.log('Keyboard -> update ->  gameState.character.vy', gameState.character.vy);
         gameState.character.vx = moveDirection * gameState.world.moveSpeed;
-
-        //设置角色状态
-        if (gameState.character.jumpType == 2) {
-            gameState.character.mode = CharacterMode.DoubleJump;
-        } else if (gameState.character.jumpType == 1) {
-            gameState.character.mode = CharacterMode.Jump;
-        } else if (!onTheGround && gameState.collision.y > 1) {
-            gameState.character.mode = CharacterMode.Fall;
-        } else if (moving) {
-            gameState.character.mode = CharacterMode.Run;
-        } else {
-            gameState.character.mode = CharacterMode.Idle;
-        }
+        gameState.character.onTheGround = onTheGround;
+        gameState.character.moving = moving;
     }
 }

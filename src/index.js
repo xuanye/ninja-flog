@@ -1,7 +1,7 @@
 //import { extend } from './extensions/graphics';
 import { utils } from 'pixi.js';
 import App from './app';
-//import VConsole from 'vconsole';
+import VConsole from 'vconsole';
 
 let designWidth = 1334 / 2;
 let designHeight = 750 / 2;
@@ -18,3 +18,5 @@ let app = new App({
     designHeight,
     antialias: true,
 });
+
+//new VConsole();

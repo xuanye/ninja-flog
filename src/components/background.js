@@ -5,7 +5,7 @@ export class Background {
     }
     addTo(parent) {
         let scaleY = this.state.height / this.state.designHeight;
-        console.log('Background -> addTo -> this.state', this.state);
+        //console.log('Background -> addTo -> this.state', this.state);
 
         let bgBackTexture = Texture.from('bg_back');
         this.bgBack = new TilingSprite(bgBackTexture, bgBackTexture.baseTexture.width, bgBackTexture.baseTexture.height);

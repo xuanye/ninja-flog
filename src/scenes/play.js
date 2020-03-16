@@ -13,10 +13,11 @@ export class PlayScene extends Scene {
     init() {
         super.init(); //调用父方法用于初始化场景状态
         this.gameState = GameInitState;
-        this.gameState.world.screenWidth = this.state.width;
-        this.gameState.world.screenHeight = this.state.height;
+        this.gameState.world.screenWidth = this.state.screenWidth;
+        this.gameState.world.screenHeight = this.state.screenHeight;
 
-        if (utils.isMobile.any) {
+        //操作和控制管理
+        if (utils.isMobile.any && process.env.NODE_ENV == 'production') {
             //&& process.env.NODE_ENV == 'production'
             this.touchBoard = new TouchBoard(this);
             this.sync(this.touchBoard); //第一个同步就是触碰操作
@@ -25,12 +26,15 @@ export class PlayScene extends Scene {
             this.sync(this.keyboard); //第一个同步就是键盘操作
         }
 
+        //碰撞物体管理
         this.csm = new CollisionManager();
         this.sync(this.csm); //第二个计算运动碰撞检测
 
+        //奖励道具管理器
         this.am = new AwardManager(this);
         this.sync(this.am); //同步道具
 
+        //敌人管理器
         this.em = new EnemyManager(this);
         this.sync(this.em);
 
@@ -58,7 +62,7 @@ export class PlayScene extends Scene {
 
         //加载和解析地图信息
         let tiled = new Tiled();
-        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level1]);
+        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level2]);
 
         //设置场景的高度和宽度
         this.gameState.world.width = world.worldWidth;
@@ -83,20 +87,22 @@ export class PlayScene extends Scene {
         });
 
         this.score = new ScoreBoard({
-            width: this.state.width,
-            height: this.state.height,
+            width: this.state.screenWidth,
+            height: this.state.screenHeight,
         });
-        this.score.x = this.state.width - 100;
+        this.score.x = this.state.screenWidth - 100;
         this.score.y = 10;
         this.addChild(this.score);
         //console.log(this._game.renderer.plugins.tilemap);
         this.resultBoard = new ResultBoard({
-            width: this.state.width,
-            height: this.state.height,
+            width: this.state.screenWidth,
+            height: this.state.screenHeight,
             gameState: this.gameState,
         });
-        this.resultBoard.x = this.state.width / 2 - this.resultBoard.width / 2;
-        this.resultBoard.y = this.state.height / 2 - this.resultBoard.height / 2;
+
+        console.log('PlayScene -> create ->  this.state', this.state);
+        this.resultBoard.x = this.state.screenWidth / 2 - this.resultBoard.width / 2;
+        this.resultBoard.y = this.state.screenHeight / 2 - this.resultBoard.height / 2;
         this.addChild(this.resultBoard);
     }
     createCharacter(character) {
@@ -197,5 +203,9 @@ export class PlayScene extends Scene {
         this.score.x = width - 100;
         this.resultBoard.x = width / 2 - this.resultBoard.width / 2;
         this.resultBoard.y = height / 2 - this.resultBoard.height / 2;
+
+        if (this.touchBoard) {
+            this.touchBoard.onResize(options);
+        }
     }
 }

@@ -6,6 +6,7 @@ export const Assets = {
         { name: 'clouds_front', url: '/assets/background/clouds_front.png' },
 
         { name: 'level1', url: '/assets/levels/level1.json' },
+        { name: 'level2', url: '/assets/levels/level2.json' },
         { name: 'tileset', url: '/assets/levels/tileset.png' },
 
         { name: 'award_collected', url: '/assets/awards/collected.png' },

@@ -119,18 +119,7 @@ export class Keyboard {
         }
         //console.log('Keyboard -> update ->  gameState.character.vy', gameState.character.vy);
         gameState.character.vx = moveDirection * gameState.world.moveSpeed;
-
-        //设置角色状态
-        if (gameState.character.jumpType == 2) {
-            gameState.character.mode = CharacterMode.DoubleJump;
-        } else if (gameState.character.jumpType == 1) {
-            gameState.character.mode = CharacterMode.Jump;
-        } else if (!onTheGround && gameState.collision.y > 1) {
-            gameState.character.mode = CharacterMode.Fall;
-        } else if (moving) {
-            gameState.character.mode = CharacterMode.Run;
-        } else {
-            gameState.character.mode = CharacterMode.Idle;
-        }
+        gameState.character.onTheGround = onTheGround;
+        gameState.character.moving = moving;
     }
 }

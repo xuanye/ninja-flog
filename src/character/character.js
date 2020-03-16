@@ -123,6 +123,19 @@ export class Character extends AnimatedSprite {
             this.scale.x = character.direction ? 1 * character.direction : 1;
         }
 
+        //设置角色状态
+        if (character.jumpType == 2) {
+            character.mode = CharacterMode.DoubleJump;
+        } else if (character.jumpType == 1) {
+            character.mode = CharacterMode.Jump;
+        } else if (!character.onTheGround && collision.y > 1) {
+            character.mode = CharacterMode.Fall;
+        } else if (character.moving) {
+            character.mode = CharacterMode.Run;
+        } else {
+            character.mode = CharacterMode.Idle;
+        }
+
         if (this.mode != character.mode) {
             this.mode = character.mode;
             this.playState(this.mode);
