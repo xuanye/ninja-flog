@@ -100,4 +100,19 @@ export class ChooseScene extends Scene {
     update(delta) {
         super.update(delta, this.gameState);
     }
+    /**
+     * 自动调用的方法
+     */
+    onResize(options) {
+        this.state.realWidth = options.realWidth;
+        this.state.realHeight = options.realHeight;
+
+        this.background.onResize(options);
+
+        this.gameState.world.screenWidth = this.state.realWidth;
+        this.gameState.world.screenHeight = this.state.realHeight;
+
+        //这里实际上如果手机屏幕发生大小变化，背景和地图会有错位，要每个元素修正？
+        this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
+    }
 }
