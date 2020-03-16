@@ -2,19 +2,19 @@ import { Rectangle, Texture, utils } from 'pixi.js';
 import { Scene } from '../core/pitaya';
 import { Background, Keyboard, CollisionManager, TiledMap, ScoreBoard, TouchBoard, ResultBoard } from '../components';
 import Tiled from '../core/tiled';
-import { NinjaFlog } from '../character';
-
 import { AwardManager } from '../props';
 
 import { ObjectType, GameInitState, World, Levels, EventNames, CharacterDirections, CharacterMode } from '../constants';
 import { EnemyManager } from '../enemy/enemy-manager';
 
+import Character from '../character';
 export class PlayScene extends Scene {
     init() {
         super.init(); //调用父方法用于初始化场景状态
         this.gameState = GameInitState;
-        this.gameState.world.screenWidth = this.state.screenWidth;
-        this.gameState.world.screenHeight = this.state.screenHeight;
+
+        this.gameState.world.screenWidth = this.state.realWidth;
+        this.gameState.world.screenHeight = this.state.realHeight;
 
         //操作和控制管理
         if (utils.isMobile.any && process.env.NODE_ENV == 'production') {
@@ -62,17 +62,20 @@ export class PlayScene extends Scene {
 
         //加载和解析地图信息
         let tiled = new Tiled();
-        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level2]);
+        let world = tiled.loadTiledMap(this._game.loader.resources[Levels.Level1]);
 
         //设置场景的高度和宽度
         this.gameState.world.width = world.worldWidth;
         this.gameState.world.height = world.worldHeight;
+
         this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
+
         this.createMap(world);
 
         //创建角色和碰撞题
         world.objects.forEach(o => {
             o.y += this.gameState.world.startY;
+
             // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
             if (o.type == ObjectType.Character) {
                 this.createCharacter(o);
@@ -87,22 +90,23 @@ export class PlayScene extends Scene {
         });
 
         this.score = new ScoreBoard({
-            width: this.state.screenWidth,
-            height: this.state.screenHeight,
+            width: this.state.realWidth,
+            height: this.state.realHeight,
         });
-        this.score.x = this.state.screenWidth - 100;
+        this.score.x = this.state.realWidth - this.score.width - 20;
+
         this.score.y = 10;
         this.addChild(this.score);
         //console.log(this._game.renderer.plugins.tilemap);
         this.resultBoard = new ResultBoard({
-            width: this.state.screenWidth,
-            height: this.state.screenHeight,
+            width: this.state.realWidth,
+            height: this.state.realHeight,
             gameState: this.gameState,
         });
 
-        console.log('PlayScene -> create ->  this.state', this.state);
-        this.resultBoard.x = this.state.screenWidth / 2 - this.resultBoard.width / 2;
-        this.resultBoard.y = this.state.screenHeight / 2 - this.resultBoard.height / 2;
+        //console.log('PlayScene -> create ->  this.state', this.state);
+        this.resultBoard.x = this.state.realWidth / 2 - this.resultBoard.width / 2;
+        this.resultBoard.y = this.state.realHeight / 2 - this.resultBoard.height / 2;
         this.addChild(this.resultBoard);
     }
     createCharacter(character) {
@@ -113,7 +117,7 @@ export class PlayScene extends Scene {
         this.gameState.character.startY = character.y;
 
         //角色的位置
-        this.character = new NinjaFlog(this.gameState);
+        this.character = Character.create(this.gameState.character.characterType, this.gameState);
         this.gameState.character.sprite = this.character;
         super.sync(this.character);
         this.addChild(this.character);
@@ -147,17 +151,19 @@ export class PlayScene extends Scene {
     }
     createBackground() {
         this.background = new Background({
-            width: Math.max(this.state.screenWidth, this.state.screenHeight),
-            height: Math.min(this.state.screenWidth, this.state.screenHeight),
+            width: this.state.realWidth,
+            height: this.state.realHeight,
             designWidth: this.state.designWidth,
             designHeight: this.state.designHeight,
         });
         this.background.addTo(this);
         super.sync(this.background);
     }
-    onRestart() {
-        this.pause();
-        //console.log('on restart');
+    resume() {
+        super.resume();
+        this.reset();
+    }
+    reset() {
         this.gameState.world.pivotOffsetX = 0;
         this.gameState.world.pivotX = 0;
         this.gameState.collision.x = 0;
@@ -174,12 +180,25 @@ export class PlayScene extends Scene {
         this.gameState.character.health = 1;
         this.gameState.character.invincible = false;
         this.groundTiles.pivot.x = 0;
+
+        if (this.character != null) {
+            super.cancelSync(this.character);
+            this.removeChild(this.character);
+        }
+
+        this.character = Character.create(this.gameState.character.characterType, this.gameState);
+        this.gameState.character.sprite = this.character;
+        super.sync(this.character);
+        this.addChild(this.character);
+
         this.character.x = this.gameState.character.x;
         this.character.y = this.gameState.character.y;
         this.character.visible = true;
         this.character.playState(CharacterMode.Idle);
         this.am.reset();
-        this.resume();
+    }
+    onRestart() {
+        this.reset();
     }
     /**
      * 当英雄死亡的时候
@@ -197,12 +216,20 @@ export class PlayScene extends Scene {
      * 自动调用的方法
      */
     onResize(options) {
-        let width = Math.max(options.width, options.height);
-        let height = Math.min(options.width, options.height);
+        this.state.realWidth = options.realWidth;
+        this.state.realHeight = options.realHeight;
+
         this.background.onResize(options);
-        this.score.x = width - 100;
-        this.resultBoard.x = width / 2 - this.resultBoard.width / 2;
-        this.resultBoard.y = height / 2 - this.resultBoard.height / 2;
+        this.score.x = this.state.realWidth - 100;
+        this.resultBoard.x = this.state.realWidth / 2 - this.resultBoard.width / 2;
+        this.resultBoard.y = this.state.realHeight / 2 - this.resultBoard.height / 2;
+
+        this.gameState.world.screenWidth = this.state.realWidth;
+        this.gameState.world.screenHeight = this.state.realHeight;
+
+        //这里实际上如果手机屏幕发生大小变化，背景和地图会有错位，要每个元素修正？
+        this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
+        //this.groundTiles.y = this.gameState.world.startY;
 
         if (this.touchBoard) {
             this.touchBoard.onResize(options);

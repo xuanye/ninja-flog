@@ -28,6 +28,14 @@ export default class Scene extends Container {
         this.state.width = this.state.designWidth;
         this.state.height = this.state.designHeight;
 
+        if (this.state.designWidth > this.state.designHeight) {
+            this.state.realWidth = Math.max(this.state.screenWidth, this.state.screenHeight);
+            this.state.realHeight = Math.min(this.state.screenWidth, this.state.screenHeight);
+        } else {
+            this.state.realWidth = Math.min(this.state.screenWidth, this.state.screenHeight);
+            this.state.realHeight = Math.max(this.state.screenWidth, this.state.screenHeight);
+        }
+        console.log(this.state);
         //console.log('Scene -> init -> this._game.options', this._game.view.width, this._game.view.height);
     }
     preload() {}
@@ -60,6 +68,12 @@ export default class Scene extends Container {
     sync(item) {
         if (item && item.update && typeof item.update == 'function') {
             this.syncItems.push(item);
+        }
+    }
+    cancelSync(item) {
+        var index = this.syncItems.indexOf(item);
+        if (index > -1) {
+            this.syncItems.splice(index, 1);
         }
     }
     update(delta, ...args) {

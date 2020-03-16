@@ -60,10 +60,9 @@ export class ResultBoard extends Component {
         anime({
             targets: this,
             alpha: 0,
-            duration: 500,
+            duration: 200,
             complete: () => {
                 this.visible = false;
-                console.log(11);
                 callback && callback.call(this);
             },
         });

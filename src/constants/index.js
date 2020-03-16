@@ -74,6 +74,7 @@ export const GameInitState = {
         y: 0,
         vx: 0,
         vy: 0,
+        characterType: 'pink-man',
         direction: CharacterDirections.Right,
         jumpTime: 0,
         jump: 0, //当前跳跃的高度
@@ -96,6 +97,7 @@ export const CollisionType = {
 export const Levels = {
     Level1: 'level1',
     Level2: 'level2',
+    Choose: 'choose',
 };
 //奖励的名称
 export const AwardNames = {

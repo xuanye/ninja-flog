@@ -5,4 +5,5 @@ export const EventNames = {
     HeroDead: 3, //英雄死了
     Menu: 4, //回到菜单
     Restart: 5, //重新开始当前局
+    ChooseCharacter: 6, //选中角色
 };

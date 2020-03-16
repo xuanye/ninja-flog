@@ -43,6 +43,14 @@ export default class App extends Game {
         //注册场景
         this.addScenes(scenes);
         // 事件订阅
+        //选中角色后，去游戏场景
+        this.subscribe(EventNames.ChooseCharacter, () => {
+            this.fsm.play();
+        });
+
+        this.subscribe(EventNames.Menu, () => {
+            this.fsm.menu();
+        });
     }
 
     preload() {
@@ -59,7 +67,7 @@ export default class App extends Game {
     create() {
         //this.stage.addChild(Sprite.from('cloud_top'));
         //默认开启初始状态
-        this.fsm.play();
+        this.fsm.choose();
     }
     update(delta) {
         if (this.stats) {
@@ -82,8 +90,15 @@ export default class App extends Game {
             this.options.height = View.canvasHeight;
             this.options.screenWidth = View.winWidth;
             this.options.screenHeight = View.winHeight;
-            this.options.realWidth = Math.max(this.options.width, this.options.height);
-            this.options.realHeight = Math.min(this.options.width, this.options.height);
+
+            if (this.options.designWidth > this.options.designHeight) {
+                this.options.realWidth = Math.max(this.options.width, this.options.height);
+                this.options.realHeight = Math.min(this.options.width, this.options.height);
+            } else {
+                this.options.realWidth = Math.min(this.options.width, this.options.height);
+                this.options.realHeight = Math.max(this.options.width, this.options.height);
+            }
+
             super.onResize(this.options);
         });
     }

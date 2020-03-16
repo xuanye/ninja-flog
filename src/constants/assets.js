@@ -7,12 +7,18 @@ export const Assets = {
 
         { name: 'level1', url: '/assets/levels/level1.json' },
         { name: 'level2', url: '/assets/levels/level2.json' },
+        { name: 'choose', url: '/assets/levels/choose.json' },
+
         { name: 'tileset', url: '/assets/levels/tileset.png' },
 
         { name: 'award_collected', url: '/assets/awards/collected.png' },
         { name: 'award_moneda_d', url: '/assets/awards/moneda_d.png' },
 
         { name: 'ninja-frog', url: '/assets/characters/ninja-frog.json' },
+        { name: 'mask-dude', url: '/assets/characters/mask-dude.json' },
+        { name: 'pink-man', url: '/assets/characters/pink-man.json' },
+        { name: 'virtual-guy', url: '/assets/characters/virtual-guy.json' },
+
         { name: 'angry-pig', url: '/assets/enemies/angry-pig.json' },
         { name: 'chicken', url: '/assets/enemies/chicken.json' },
         { name: 'blue-bird', url: '/assets/enemies/blue-bird.json' },
