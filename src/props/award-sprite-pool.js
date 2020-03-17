@@ -45,6 +45,7 @@ export class AwardSpritePool {
         //console.log('借用');
         let sprite = this.pools[name].shift();
         if (!sprite) {
+            console.log('金币不够');
             return this.createProxy(name);
         }
         return sprite;
@@ -54,7 +55,7 @@ export class AwardSpritePool {
         if (typeof this.pools[name] == undefined) {
             throw new Error('奖励类型不存在');
         }
-        //console.log(name, this.pools[name]);
+        //console.log('金币归还', name);
         this.pools[name].push(sprite);
     }
 }

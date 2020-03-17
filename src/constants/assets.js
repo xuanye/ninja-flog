@@ -25,6 +25,7 @@ export const Assets = {
 
         { name: 'gui', url: '/assets/gui/gui.json' },
         { name: 'Carter_One', url: '/assets/text/Carter_One.fnt' },
+        { name: 'controller', url: '/assets/common/controller.png' },
     ],
     audios: [{ name: 'bg_audio', url: '/assets/audio/bg.mp3' }],
 };

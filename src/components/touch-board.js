@@ -1,5 +1,5 @@
-import { CharacterDirections, CharacterMode, World } from '../constants';
-import { utils } from 'pixi.js';
+import { CharacterDirections } from '../constants';
+
 /**
  * 用于手机端控制角色行动的处理
  */
