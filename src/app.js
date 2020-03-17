@@ -3,7 +3,7 @@ import { Assets, EventNames } from './constants';
 import scenes from './scenes';
 import config from './config';
 import { View } from './core/pitaya/view';
-
+import { utils } from 'pixi.js';
 let Stats = null;
 if (process.env.NODE_ENV != 'production') {
     Stats = require('stats.js');
@@ -17,7 +17,12 @@ export default class App extends Game {
 
         document.body.appendChild(this.view);
         this.options = Object.assign({}, options);
-        this.detectOrient();
+        if (utils.isMobile.any) {
+            this.detectOrient();
+        } else {
+            this.view.setAttribute('width', options.width);
+            this.view.setAttribute('height', options.height);
+        }
 
         if (Stats) {
             this.stats = new Stats();
