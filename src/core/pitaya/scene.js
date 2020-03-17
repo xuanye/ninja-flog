@@ -35,7 +35,7 @@ export default class Scene extends Container {
             this.state.realWidth = Math.min(this.state.screenWidth, this.state.screenHeight);
             this.state.realHeight = Math.max(this.state.screenWidth, this.state.screenHeight);
         }
-        console.log(this.state);
+        //console.log(this.state);
         //console.log('Scene -> init -> this._game.options', this._game.view.width, this._game.view.height);
     }
     preload() {}

@@ -6,4 +6,5 @@ import { TiledMap } from './tiledmap';
 import { ScoreBoard } from './score-board';
 export * from './touch-board';
 export * from './result-board';
+export * from './controller-board';
 export { Background, PlayBoard, Keyboard, CollisionManager, TiledMap, ScoreBoard };

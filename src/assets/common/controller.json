@@ -1,25 +1,66 @@
 {
-"frames": {
-	"controller_left.png": {
-		"frame": {"x":0, "y":81, "w":80, "h":80},
-		"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
-		"sourceSize": {"w":80,"h":80}
+	"frames": {
+		"controller_left.png": {
+			"frame": {
+				"x": 0,
+				"y": 81,
+				"w": 80,
+				"h": 80
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"controller_right.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"controller_up.png": {
+			"frame": {
+				"x": 81,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		}
 	},
-	"controller_right.png": {
-		"frame": {"x":0, "y":0, "w":80, "h":80},
-		"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
-		"sourceSize": {"w":80,"h":80}
-	},
-	"controller_top.png": {
-		"frame": {"x":81, "y":0, "w":80, "h":80},
-		"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
-		"sourceSize": {"w":80,"h":80}
+	"meta": {
+		"image": "controller.png",
+		"size": {
+			"w": 162,
+			"h": 162
+		},
+		"scale": "1"
 	}
-
-},
-"meta": {
-	"image": "controller.png",
-	"size": {"w": 162, "h": 162},
-	"scale": "1"
-}
 }

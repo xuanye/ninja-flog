@@ -6,4 +6,9 @@ export const TextureNames = {
     Enemy: {
         AngryPig: 'angry-pig_image',
     },
+    Controller: {
+        Left: 'controller_left.png',
+        Right: 'controller_right.png',
+        Up: 'controller_up.png',
+    },
 };

@@ -1,13 +1,13 @@
-import { CharacterDirections } from '../constants';
+import { CharacterDirections, TextureNames } from '../constants';
 import { Component } from '../core/pitaya';
-import { Sprite } from 'pixi.js';
+import { Sprite, Texture } from 'pixi.js';
 
 /**
  * 用于手机端控制角色行动的处理
  */
 export class ControllerBoard extends Component {
-    constructor() {
-        super({});
+    constructor(options) {
+        super(options);
         this.boardState = {
             Jump: false,
             ArrowRight: false,
@@ -16,17 +16,61 @@ export class ControllerBoard extends Component {
         };
         this.keyCodes = Object.keys(this.boardState);
     }
-    create() {}
-    /**
-     * 场景挂起时取消事件注册
-     */
-    pause() {}
+    create() {
+        //console.log('ControllerBoard -> create -> TextureNames.Controller.left', TextureNames.Controller.Left);
+        this.leftBtn = Sprite.from(TextureNames.Controller.Left);
+        this.leftBtn.scale.set(0.5, 0.5);
+        this.leftBtn.x = 50;
+        this.leftBtn.y = this.state.height - this.leftBtn.height - 20;
+        this.rightBtn = Sprite.from(TextureNames.Controller.Right);
+        this.rightBtn.scale.set(0.5, 0.5);
+        this.rightBtn.x = this.leftBtn.x + this.leftBtn.width + 20;
+        this.rightBtn.y = this.leftBtn.y;
+        this.upBtn = Sprite.from(TextureNames.Controller.Up);
+        this.upBtn.scale.set(0.5, 0.5);
+        this.upBtn.y = this.leftBtn.y - 30;
+        this.upBtn.x = this.state.width - this.upBtn.width - 50;
 
-    /**
-     * 场景恢复时，重新注册事件
-     */
-    resume() {}
-    onResize({ width, height, screenWidth, screenHeight, realWidth, realHeight }) {}
+        this.leftBtn.alpha = 0.6;
+        this.rightBtn.alpha = 0.6;
+        this.upBtn.alpha = 0.6;
+        this.leftBtn.interactive = true;
+        this.leftBtn.buttonMode = true;
+        this.rightBtn.interactive = true;
+        this.rightBtn.buttonMode = true;
+        this.upBtn.interactive = true;
+        this.upBtn.buttonMode = true;
+
+        this.leftBtn.on('pointerdown', this.keyDown.bind(this, 'ArrowLeft'));
+        this.leftBtn.on('pointerup', this.keyUp.bind(this, 'ArrowLeft'));
+        this.leftBtn.on('pointerout', this.keyUp.bind(this, 'ArrowLeft'));
+        this.leftBtn.on('pointerupoutside', this.keyUp.bind(this, 'ArrowLeft'));
+
+        this.rightBtn.on('pointerdown', this.keyDown.bind(this, 'ArrowRight'));
+        this.rightBtn.on('pointerup', this.keyUp.bind(this, 'ArrowRight'));
+        this.rightBtn.on('pointerout', this.keyUp.bind(this, 'ArrowRight'));
+        this.rightBtn.on('pointerupoutside', this.keyUp.bind(this, 'ArrowRight'));
+
+        this.upBtn.on('pointertap', this.keyDown.bind(this, 'Jump'));
+
+        this.addChild(this.leftBtn, this.rightBtn, this.upBtn);
+    }
+    keyDown(key) {
+        console.log('ControllerBoard -> keyDown -> key', key);
+        this.boardState[key] = true;
+    }
+    keyUp(key) {
+        console.log('ControllerBoard -> keyUp -> key', key);
+        this.boardState[key] = false;
+    }
+    onResize({ width, height, screenWidth, screenHeight, realWidth, realHeight }) {
+        this.leftBtn.x = 50;
+        this.leftBtn.y = realHeight - this.leftBtn.height - 20;
+        this.rightBtn.x = this.leftBtn.x + this.leftBtn.width + 20;
+        this.rightBtn.y = this.leftBtn.y;
+        this.upBtn.y = this.leftBtn.y - 30;
+        this.upBtn.x = realWidth - this.upBtn.width - 50;
+    }
 
     update(delta, gameState) {
         //角色死亡了
@@ -67,7 +111,7 @@ export class ControllerBoard extends Component {
                     gameState.character.vy = gameState.world.doubleJumpSpeed;
                 }
             }
-            this.touchBoardState.Jump = false;
+            this.boardState.Jump = false;
         } else {
             if (onTheGround) {
                 gameState.character.vy = 0;

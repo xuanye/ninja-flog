@@ -1,6 +1,6 @@
 import { Rectangle, Texture, utils } from 'pixi.js';
 import { Scene } from '../core/pitaya';
-import { Background, Keyboard, CollisionManager, TiledMap, ScoreBoard, TouchBoard, ResultBoard } from '../components';
+import { Background, Keyboard, CollisionManager, TiledMap, ScoreBoard, TouchBoard, ControllerBoard, ResultBoard } from '../components';
 import Tiled from '../core/tiled';
 import { AwardManager } from '../props';
 
@@ -8,6 +8,7 @@ import { ObjectType, GameInitState, World, Levels, EventNames, CharacterDirectio
 import { EnemyManager } from '../enemy/enemy-manager';
 
 import Character from '../character';
+
 export class PlayScene extends Scene {
     init() {
         super.init(); //调用父方法用于初始化场景状态
@@ -19,8 +20,13 @@ export class PlayScene extends Scene {
         //操作和控制管理
         if (utils.isMobile.any && process.env.NODE_ENV == 'production') {
             //&& process.env.NODE_ENV == 'production'
-            this.touchBoard = new TouchBoard(this);
-            this.sync(this.touchBoard); //第一个同步就是触碰操作
+            this.controller = new ControllerBoard({
+                width: this.state.realWidth,
+                height: this.state.realHeight,
+            });
+            this.sync(this.controller);
+            //this.touchBoard = new TouchBoard(this);
+            //this.sync(this.touchBoard); //第一个同步就是触碰操作
         } else {
             this.keyboard = new Keyboard();
             this.sync(this.keyboard); //第一个同步就是键盘操作
@@ -108,6 +114,10 @@ export class PlayScene extends Scene {
         this.resultBoard.x = this.state.realWidth / 2 - this.resultBoard.width / 2;
         this.resultBoard.y = this.state.realHeight / 2 - this.resultBoard.height / 2;
         this.addChild(this.resultBoard);
+
+        if (this.controller) {
+            this.addChild(this.controller);
+        }
     }
     createCharacter(character) {
         ///console.log('PlayScene -> createCharacter -> character', character);
