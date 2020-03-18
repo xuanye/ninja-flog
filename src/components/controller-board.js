@@ -1,6 +1,6 @@
 import { CharacterDirections, TextureNames } from '../constants';
 import { Component } from '../core/pitaya';
-import { Sprite, Texture } from 'pixi.js';
+import { Sprite } from 'pixi.js';
 
 /**
  * 用于手机端控制角色行动的处理
@@ -19,15 +19,15 @@ export class ControllerBoard extends Component {
     create() {
         //console.log('ControllerBoard -> create -> TextureNames.Controller.left', TextureNames.Controller.Left);
         this.leftBtn = Sprite.from(TextureNames.Controller.Left);
-        this.leftBtn.scale.set(0.5, 0.5);
+        //this.leftBtn.scale.set(0.5, 0.5);
         this.leftBtn.x = 50;
         this.leftBtn.y = this.state.height - this.leftBtn.height - 20;
         this.rightBtn = Sprite.from(TextureNames.Controller.Right);
-        this.rightBtn.scale.set(0.5, 0.5);
+        //this.rightBtn.scale.set(0.5, 0.5);
         this.rightBtn.x = this.leftBtn.x + this.leftBtn.width + 20;
         this.rightBtn.y = this.leftBtn.y;
         this.upBtn = Sprite.from(TextureNames.Controller.Up);
-        this.upBtn.scale.set(0.5, 0.5);
+        //this.upBtn.scale.set(0.5, 0.5);
         this.upBtn.y = this.leftBtn.y - 30;
         this.upBtn.x = this.state.width - this.upBtn.width - 50;
 

@@ -67,11 +67,10 @@ export default class SceneManager {
 
             if (instance.resume && typeof instance.resume == 'function') {
                 instance.resume.apply(instance, args);
-                instance.__isResumed = true;
             }
 
             const update = delta => {
-                if (!instance.__isResumed) return;
+                if (instance.isPaused()) return;
                 instance.update(delta);
             };
             this._game.ticker.add(update);

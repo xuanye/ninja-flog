@@ -12,6 +12,7 @@ export default class Scene extends Container {
         this.syncItems = [];
         this.init();
         this.preload();
+        this.paused = false;
     }
 
     //---------------------
@@ -42,6 +43,7 @@ export default class Scene extends Container {
     resume() {
         //显示的方法
         this.visible = true;
+        this.paused = false;
         if (this.syncItems) {
             this.syncItems.forEach(item => {
                 if (item && item.resume && typeof item.resume == 'function') {
@@ -52,6 +54,7 @@ export default class Scene extends Container {
     }
     pause() {
         this.visible = false;
+        this.paused = true;
         if (this.syncItems) {
             this.syncItems.forEach(item => {
                 if (item && item.pause && typeof item.pause == 'function') {
@@ -59,6 +62,9 @@ export default class Scene extends Container {
                 }
             });
         }
+    }
+    isPaused() {
+        return this.paused;
     }
     create() {}
     /**

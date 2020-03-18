@@ -8,6 +8,7 @@ module.exports = {
     devServer: {
         contentBase: 'dist',
         host: '0.0.0.0',
+        hot: true,
         port: 3000,
     },
     devtool: 'inline-source-map',
@@ -27,7 +28,7 @@ module.exports = {
             },
         ]),
         new HTMLWebpackPlugin({
-            template: './index.html',
+            template: './public/index.html',
             filename: 'index.html',
         }),
     ],
