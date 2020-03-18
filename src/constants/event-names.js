@@ -6,4 +6,5 @@ export const EventNames = {
     Menu: 4, //回到菜单
     Restart: 5, //重新开始当前局
     ChooseCharacter: 6, //选中角色
+    LoadCompleted: 7, //资源加载完成
 };

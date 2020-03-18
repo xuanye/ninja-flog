@@ -16,6 +16,7 @@ let app = new App({
     screenHeight,
     designWidth,
     designHeight,
+    backgroundColor: 0x3f7cb6,
     antialias: true,
 });
 

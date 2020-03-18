@@ -12,11 +12,6 @@ export default class Game extends Application {
         this.init();
         this.preload();
 
-        //下载资源进度
-        this.loader.onProgress.add(this.progress.bind(this));
-        //下载资源完成
-        this.loader.load(this.create.bind(this));
-
         //游戏主循环
         this.ticker.add(this.update.bind(this));
     }
@@ -75,7 +70,10 @@ export default class Game extends Application {
     /**
      * 主事件循环中
      */
-    update(delta) {}
+    update(delta) {
+        //调用场景的刷新
+        this.ssm.update(delta);
+    }
 
     onResize(options) {
         this.ssm.onResize(options);

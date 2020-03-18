@@ -36,6 +36,11 @@ export default class SceneManager {
             }
         }
     }
+    update(delta) {
+        if (this._active.scene && !this._active.scene.isPaused() && this._active.scene.update) {
+            this._active.scene.update(delta);
+        }
+    }
     /**
      * 开始场景
      * @param {String} name 场景的名称
@@ -43,8 +48,6 @@ export default class SceneManager {
      */
     start(name, args) {
         setTimeout(() => {
-            if (this._active.update) this._game.ticker.remove(this._active.update);
-
             if (this._active.scene && this._active.scene.parent) {
                 if (this._active.scene.pause && typeof this._active.scene.pause == 'function') {
                     this._active.scene.pause();
@@ -69,15 +72,10 @@ export default class SceneManager {
                 instance.resume.apply(instance, args);
             }
 
-            const update = delta => {
-                if (instance.isPaused()) return;
-                instance.update(delta);
-            };
-            this._game.ticker.add(update);
+            //this._game.ticker.add(update);
 
             this._active.name = name;
             this._active.scene = instance;
-            this._active.update = update;
         });
     }
 }

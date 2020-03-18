@@ -48,6 +48,9 @@ export default class App extends Game {
         //注册场景
         this.addScenes(scenes);
         // 事件订阅
+        this.subscribe(EventNames.LoadCompleted, () => {
+            this.fsm.choose();
+        });
         //选中角色后，去游戏场景
         this.subscribe(EventNames.ChooseCharacter, () => {
             this.fsm.play();
@@ -59,26 +62,15 @@ export default class App extends Game {
     }
 
     preload() {
-        this.loader.add(Assets.textures, {
-            // 跨域
+        //这里只加载Loading场景需要的资源
+        this.loader.add(Assets.loading, {
             crossOrigin: true,
         });
-
-        this.loader.add(Assets.audios, {
-            // 跨域
-            crossOrigin: true,
+        this.loader.load(() => {
+            this.fsm.loading();
         });
     }
 
-    progress(loader, resources) {
-        //console.log('Loading...', resources);
-    }
-
-    create() {
-        //this.stage.addChild(Sprite.from('cloud_top'));
-        //默认开启初始状态
-        this.fsm.choose();
-    }
     update(delta) {
         if (this.stats) {
             this.stats.begin();
