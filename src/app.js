@@ -63,6 +63,11 @@ export default class App extends Game {
             // 跨域
             crossOrigin: true,
         });
+
+        this.loader.add(Assets.audios, {
+            // 跨域
+            crossOrigin: true,
+        });
     }
 
     progress(loader, resources) {

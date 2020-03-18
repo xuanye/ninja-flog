@@ -12,7 +12,7 @@ export default class Game extends Application {
         this.init();
         this.preload();
 
-        // 下载资源进度
+        //下载资源进度
         this.loader.onProgress.add(this.progress.bind(this));
         //下载资源完成
         this.loader.load(this.create.bind(this));
