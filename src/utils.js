@@ -22,6 +22,11 @@ export default {
     randomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
+    isWechat() {
+        //判断是否是微信
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.match(/MicroMessenger/i) == 'micromessenger';
+    },
 };
 
 function s4() {

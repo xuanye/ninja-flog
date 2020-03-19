@@ -9,7 +9,7 @@ module.exports = {
     mode: 'production',
     entry: path.resolve(__dirname, './src/index.js'), // 入口文件
     output: {
-        filename: '[name].[hash:8].js', // 打包后的文件名称
+        filename: 'js/[name].[hash:8].js', // 打包后的文件名称
         path: path.resolve(__dirname, './dist'), // 打包后的目录
         publicPath: './',
     },

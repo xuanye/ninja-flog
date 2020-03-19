@@ -1,22 +1,21 @@
 import { BitmapText, AnimatedSprite } from 'pixi.js';
 import { Scene } from '../core/pitaya';
 import { Assets, EventNames } from '../constants';
-
+import myUtils from '../utils';
 export class LoadScene extends Scene {
     init() {
         super.init();
         this.loader = this._game.loader;
     }
     preload() {
+        this.doLoad();
+    }
+    doLoad() {
         this.loader.add(Assets.textures, {
             // 跨域
             crossOrigin: true,
         });
 
-        this.loader.add(Assets.audios, {
-            // 跨域
-            crossOrigin: true,
-        });
         //下载资源进度
         this.loader.onProgress.add(this.progress.bind(this));
         //下载资源完成
@@ -31,7 +30,7 @@ export class LoadScene extends Scene {
         this.publish(EventNames.LoadCompleted);
     }
     create() {
-        console.log(this.state);
+        //console.log(this.state);
         let frameIds = [];
 
         for (let i = 26; i <= 37; i++) {

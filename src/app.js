@@ -4,6 +4,9 @@ import scenes from './scenes';
 import config from './config';
 import { View } from './core/pitaya/view';
 import { utils } from 'pixi.js';
+
+import { Howl, Howler } from 'howler';
+
 let Stats = null;
 if (process.env.NODE_ENV != 'production') {
     Stats = require('stats.js');
@@ -29,6 +32,15 @@ export default class App extends Game {
             this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
             document.body.appendChild(this.stats.dom);
         }
+
+        /**/
+        this.sound = new Howl({
+            src: [Assets.audios[0].url],
+            preload: true,
+            autoplay: true,
+            loop: true,
+            volume: 0.5,
+        });
     }
 
     /**
@@ -62,7 +74,9 @@ export default class App extends Game {
     }
 
     preload() {
-        //这里只加载Loading场景需要的资源
+        this.doLoad();
+    }
+    doLoad() {
         this.loader.add(Assets.loading, {
             crossOrigin: true,
         });

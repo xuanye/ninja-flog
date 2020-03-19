@@ -1,6 +1,6 @@
 export const Assets = {
     loading: [
-        { name: 'virtual-guy', url: '/assets/characters/virtual-guy.json' },
+        { name: 'virtual-guy', url: './assets/characters/virtual-guy.json' },
         { name: 'Carter_One', url: './assets/text/Carter_One.fnt' },
     ],
     textures: [
