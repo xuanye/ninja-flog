@@ -42,31 +42,34 @@ export class SceneManager {
    * @param {String} name 场景的名称
    * @param {*} args 场景init的参数
    */
-  start(name: string, ...args: any[]) {
+  start(name: string, args?: unknown) {
     setTimeout(() => {
       if (this.activeScene?.pause) {
         this.activeScene.pause();
       }
 
       const ActiveScene = this.scenes[name];
+      console.log('🚀 ~ SceneManager ~ setTimeout ~ ActiveScene:', ActiveScene);
 
       if (!ActiveScene) throw new Error(`${name} scene is not exist`);
 
       let instance = this.sceneInstances[name];
+
       if (!instance) {
         instance = new ActiveScene(this.app);
+
         console.log('🚀 ~ SceneManager ~ setTimeout ~ instance:', instance);
 
         this.sceneInstances[name] = instance;
         if (instance.create) {
-          instance.create.apply(instance);
+          instance.create();
         }
         this.app.stage.addChildAt(instance, 0);
       }
 
       if (instance.resume) {
-        instance.resume(...args);
+        instance.resume(args);
       }
-    });
+    }, 50);
   }
 }

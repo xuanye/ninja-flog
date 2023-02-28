@@ -12,9 +12,6 @@ export class LoadScene extends Scene {
   loadingText?: BitmapText;
   loadChar?: AnimatedSprite;
 
-  init() {
-    super.init();
-  }
   preload() {
     this.doLoad();
   }

@@ -135,3 +135,6 @@ export const EnemyInfos = {
     ],
   },
 };
+
+export type GameState = typeof GameInitState;
+export type Character = typeof GameInitState.character;

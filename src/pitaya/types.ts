@@ -8,6 +8,8 @@ export interface IApplication {
 
 export interface IComponent {
   update: (delta: number, ...arg: any[]) => void;
+  pause?: () => void;
+  resume?: (args: unknown) => void;
 }
 
 export interface ResizeOptions {

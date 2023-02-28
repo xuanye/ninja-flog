@@ -5,6 +5,7 @@ import type { IApplicationOptions } from './Application';
 
 import type { EventHandler } from './eventService';
 import { eventService } from './eventService';
+import { debug } from '@/services/debug';
 
 export interface ISceneState extends IApplicationOptions {
   width: number;
@@ -27,7 +28,7 @@ export class Scene extends Container {
     this.app = app;
     this.loader = app.loader;
     this.syncItems = [];
-    this.init();
+    this.initState();
     this.preload();
   }
 
@@ -45,7 +46,7 @@ export class Scene extends Container {
     return eventService.unsubscribe(eventName, handler);
   }
 
-  init() {
+  initState() {
     this.state = { ...this.app.options };
     this.state.width = this.state.designWidth;
     this.state.height = this.state.designHeight;
@@ -59,12 +60,34 @@ export class Scene extends Container {
     }
   }
   preload() {}
-  resume(...args: any[]) {}
-  pause() {}
+  resume(args?: unknown) {
+    // 显示的方法
+    this.visible = true;
+    this.paused = false;
+    if (this.syncItems) {
+      this.syncItems.forEach((item: IComponent) => {
+        if (item?.resume) {
+          item.resume(args);
+        }
+      });
+    }
+  }
+  pause() {
+    this.visible = false;
+    this.paused = true;
+    if (this.syncItems) {
+      this.syncItems.forEach((item) => {
+        if (item?.pause) {
+          item.pause();
+        }
+      });
+    }
+  }
+
   isPaused() {
     return this.paused;
   }
-  create() {}
+
   /**
    * 注册需要同步的元素，该元素必须有update方法
    * @param {Object} item  需要同步的元素，该元素必须有update方法
@@ -72,9 +95,26 @@ export class Scene extends Container {
   sync(component: IComponent) {
     this.syncItems.push(component);
   }
-  cancelSync() {}
-  update(delta: number, ...args: any[]) {}
+  cancelSync(component: IComponent) {
+    const index = this.syncItems.indexOf(component);
+    if (index > -1) {
+      this.syncItems.splice(index, 1);
+    }
+  }
+  update(delta: number, ...args: any[]) {
+    if (this.syncItems) {
+      this.syncItems.forEach((item) => {
+        if (item?.update) {
+          item.update(delta, ...args);
+        }
+      });
+    }
+  }
   onResize(options: ResizeOptions): void {}
+
+  create() {
+    debug.warn('Scene Created');
+  }
 }
 
 export type SceneType = typeof Scene;

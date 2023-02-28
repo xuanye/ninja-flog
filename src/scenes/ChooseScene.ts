@@ -1,36 +1,31 @@
-import type { IApplication, ResizeOptions } from '@/pitaya';
+import type { ResizeOptions } from '@/pitaya';
 import { Scene } from '@/pitaya';
-import { Rectangle, Texture, BitmapText } from 'pixi.js';
-import { EventNames, GameInitState, Levels, ObjectType } from '@/constants';
+import { Texture, BitmapText } from 'pixi.js';
+import type { GameState } from '@/constants';
+import { GameInitState, Levels, Character } from '@/constants';
 import { TileUtilities } from '@/tiled';
 import type { TiledLevel } from '@/tiled';
 import { TiledMap } from '@/components';
-import { debug } from '@/services/debug';
+import { Background } from './components/Background';
 
-type GameState = typeof GameInitState;
-type Character = typeof GameInitState.character;
+// type Character = typeof GameInitState.character;
 export class ChooseScene extends Scene {
   static sceneName = 'choose';
 
-  public gameState!: GameState;
-  public groundTiles?: TiledMap;
+  gameState!: GameState;
+  groundTiles?: TiledMap;
 
-  constructor(app: IApplication) {
-    super(app);
-    debug.log('实例化ChooseScene');
-  }
+  initState() {
+    super.initState();
 
-  init() {
-    super.init(); // 调用父方法用于初始化场景状态
     this.gameState = { ...GameInitState };
+
     this.gameState.world.screenWidth = this.state.realWidth;
     this.gameState.world.screenHeight = this.state.realHeight;
-    debug.log('初始化ChooseScene', this.gameState);
   }
 
   create() {
     this.createBackground();
-    console.log('🚀 ~ ChooseScene ~ create ~ this:', this);
 
     // 加载和解析地图信息
     const tiled = new TileUtilities();
@@ -39,7 +34,7 @@ export class ChooseScene extends Scene {
     this.gameState.world.width = chooseMapData.worldWidth;
     this.gameState.world.height = chooseMapData.worldHeight;
 
-    this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
+    this.gameState.world.startY = this.gameState!.world.screenHeight - this.gameState!.world.height;
 
     this.createMap(chooseMapData);
 
@@ -55,7 +50,20 @@ export class ChooseScene extends Scene {
     this.addChild(text);
   }
 
-  createBackground() {}
+  createBackground() {
+    const background = new Background({
+      width: this.state.realWidth,
+      height: this.state.realHeight,
+      designWidth: this.state.designWidth,
+      designHeight: this.state.designHeight,
+    });
+    this.addChild(background);
+    this.sync(background);
+  }
+
+  /***
+   * 创建地图
+   */
   createMap(map: TiledLevel) {
     const textures: Texture[] = [];
     map.tilesets.forEach((tileset: { name: string }) => {
@@ -63,28 +71,56 @@ export class ChooseScene extends Scene {
     });
 
     this.groundTiles = new TiledMap();
-    let rect = new Rectangle(0, 0, map.tileWidth, map.tileHeight);
+
     map.groups.forEach((group: any) => {
       group.data.forEach(
-        (d: { tileset: { index: number }; tilesetX: number; tilesetY: number }) => {
-          this.groundTiles?.tile(textures[d.tileset.index], d.tilesetX, d.tilesetY, {
+        (d: {
+          x: number;
+          y: number;
+          tileset: { index: number };
+          tilesetX: number;
+          tilesetY: number;
+        }) => {
+          this.groundTiles?.tile(textures[d.tileset.index], d.x, d.y, {
+            u: d.tilesetX,
+            v: d.tilesetY,
             tileWidth: map.tileWidth,
             tileHeight: map.tileHeight,
           });
         }
       );
     });
+
     this.groundTiles.y = this.gameState.world.startY;
     this.sync(this.groundTiles);
     this.addChild(this.groundTiles);
   }
+  createCharacter(character: Character) {
+    /// console.log('PlayScene -> createCharacter -> character', character);
+    this.gameState.character.x = character.x;
+    this.gameState.character.y = character.y;
+    this.gameState.character.startX = character.x;
+    this.gameState.character.startY = character.y;
 
-  update(delta: number) {
-    super.update(delta, this.gameState);
+    let charSprite = Character.create(character.characterType, this.gameState);
+
+    if (charSprite) {
+      charSprite.interactive = true;
+      charSprite.buttonMode = true;
+      charSprite.on('pointerdown', () => {
+        this.chooseCharacter(charSprite);
+      });
+      this.addChild(charSprite);
+    }
+  }
+
+  update(_delta: number) {
+    // super.update(delta, this.gameState);
   }
   /**
    * 自动调用的方法
    */
+
   onResize(options: ResizeOptions) {
     this.state.realWidth = options.realWidth;
     this.state.realHeight = options.realHeight;

@@ -1,14 +1,14 @@
-import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
-import eslint from "vite-plugin-eslint";
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
-  base: "./",
+  base: './',
   plugins: [eslint()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 
@@ -17,12 +17,12 @@ export default defineConfig(({ command }) => ({
     open: true,
   },
   build: {
-    assetsDir: "./",
-    sourcemap: command === "serve",
+    assetsDir: './',
+    sourcemap: command === 'serve',
     rollupOptions: {
       output: {
         manualChunks: {
-          "pixi-venders": ["pixi-js", "@pixi/tilemap"],
+          'pixi-venders': ['pixi.js', '@pixi/tilemap'],
         },
       },
     },

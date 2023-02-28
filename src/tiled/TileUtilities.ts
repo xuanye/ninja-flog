@@ -131,7 +131,7 @@ export class TileUtilities {
           // layerGroup.width = world.width;
           // layerGroup.height = world.height;
           if (object.properties) {
-            object.properties.forEach((p) => {
+            object.properties.forEach((p: any) => {
               if (!object.hasOwnProperty(p.name)) {
                 object[p.name] = p.value;
               }

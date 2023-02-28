@@ -1,5 +1,5 @@
-import { LoadScene } from './load';
-import { ChooseScene } from './choose';
+import { LoadScene } from './LoadScene';
+import { ChooseScene } from './ChooseScene';
 export default {
   [LoadScene.sceneName]: LoadScene,
   [ChooseScene.sceneName]: ChooseScene,

@@ -7,6 +7,7 @@ import { stateService, StateNames } from '@/services/stateService';
 import type { IApplicationOptions } from '@/pitaya';
 import { debug } from './services/debug';
 import { Assets, EventNames } from './constants';
+import { ChooseScene } from './scenes/ChooseScene';
 
 export class App extends Application {
   constructor(options: IApplicationOptions) {
@@ -21,6 +22,7 @@ export class App extends Application {
       this.view.setAttribute('height', options.height + 'px');
     }
 
+    /*
     if (import.meta.env.DEV) {
       import('stats.js').then(({ default: Stats }) => {
         const stats = new Stats();
@@ -28,6 +30,7 @@ export class App extends Application {
         document.body.appendChild(stats.dom);
       });
     }
+    */
 
     /*
     this.sound = new Howl({
@@ -40,7 +43,6 @@ export class App extends Application {
     */
   }
   init() {
-    debug.log('🚀 ~ App ~ init ~ scenes:', scenes);
     // 注册场景
     this.addScenes(scenes);
 
@@ -71,7 +73,17 @@ export class App extends Application {
     // TODO: 事件处理
     if (state.value !== StateNames.NONE) {
       debug.log(`状态机事件:${state.value}`);
-      this.startScene(state.value);
+
+      if (state.value === StateNames.CHOOSE) {
+        const choose = new ChooseScene(this);
+
+        choose.create();
+        choose.resume();
+        this.stage.removeChildAt(0);
+        this.stage.addChildAt(choose, 0);
+      } else {
+        this.startScene(state.value);
+      }
     }
   }
 }
