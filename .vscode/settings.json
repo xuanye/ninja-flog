@@ -1,20 +1,23 @@
 {
-    "cSpell.words": [
-        "Tiledmap",
-        "charactor",
-        "charactors",
-        "d",
-        "keyborad",
-        "moneda",
-        "pitaya",
-        "playboard",
-        "pubsub",
-        "tilelayer",
-        "tilemap",
-        "tileset",
-        "tilesets",
-        "touchboard",
-        "xuanye"
-    ],
-    "commentTranslate.targetLanguage": "zh-CN"
+  "cSpell.words": [
+    "charactor",
+    "charactors",
+    "d",
+    "IPIXI",
+    "keyborad",
+    "moneda",
+    "pitaya",
+    "playboard",
+    "pubsub",
+    "Tiledmap",
+    "tilelayer",
+    "tilemap",
+    "tileset",
+    "tilesets",
+    "touchboard",
+    "vconsole",
+    "xstate",
+    "xuanye"
+  ],
+  "commentTranslate.targetLanguage": "zh-CN"
 }
