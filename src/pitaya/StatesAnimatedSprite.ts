@@ -1,17 +1,15 @@
 import { debug } from '@/services/debug';
 import { AnimatedSprite, Texture } from 'pixi.js';
 
-export interface AnimateState {
-  name: string;
-  range: number[];
-}
+export type AnimateStates = Record<string, number[]>;
 
 export class StatesAnimatedSprite extends AnimatedSprite {
   animatedStates: Record<string, Texture[]>;
   currentState?: string;
-  constructor(frameBaseName: string, states: Record<string, AnimateState>, initState: string) {
+  constructor(frameBaseName: string, states: AnimateStates, initState: string) {
     const arrName = frameBaseName.split('.');
     const extName = arrName.pop();
+    const baseName = arrName.pop();
 
     const animatedStates: Record<string, Texture[]> = {};
     const stateKeys = Object.keys(states);
@@ -24,9 +22,9 @@ export class StatesAnimatedSprite extends AnimatedSprite {
     }
 
     Object.keys(states).forEach((key) => {
-      let range = states[key].range;
-      let baseName = states[key].name;
-      let textures = [];
+      const range = states[key];
+
+      const textures = [];
       if (range.length === 1) {
         textures.push(Texture.from(`${baseName}${range[0]}.${extName}`));
       } else {

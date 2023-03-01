@@ -11,6 +11,7 @@ export enum CharacterMode {
   Fall = 4, // 下坠，
   Hit = 5, // 被撞击了
   WalkJump = 6, // 我都不知道干嘛
+  Slide = 7, // 蹲 实际没用
 }
 export enum EnemyState {
   Idle = 0, // 空闲状态
@@ -20,10 +21,17 @@ export enum EnemyState {
 }
 
 export enum JumpType {
+  Slide = -1,
   Nope = 0, // 没跳
   Jump = 1, // 一级跳
   WalkJump = 2, // 边走边跳
   DoubleJump = 3, // 二级跳
+}
+
+export enum WorldStatus {
+  Initial = 0,
+  ArrivalTerminal = 1,
+  End = 2,
 }
 
 export const GameInitState = {
@@ -41,6 +49,8 @@ export const GameInitState = {
     maxJumpSpeed: 0, // 最大跳跃初始速度，程序中计算
     minJumpSpeed: 0, // 最小跳跃初始速度，程序中计算 大小跳的处理，本例中没有
     doubleJumpSpeed: 0, // 二段速度，程序中计算
+    status: WorldStatus.Initial,
+    isEndPart: false,
   },
   collision: {
     x: 0,
@@ -64,7 +74,14 @@ export const GameInitState = {
     health: 1,
     isDead: false,
     invincible: false, // true时不和怪物碰撞
+    moving: false, // 设置角色是否移动中
+    onTheGround: false,
   },
+};
+
+export const CollisionThreshold = {
+  x: 1.3,
+  y: 1,
 };
 
 export enum ObjectType {

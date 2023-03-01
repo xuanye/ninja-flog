@@ -2,10 +2,12 @@ import type { GameState } from '@/constants';
 import { TextureNames } from '@/constants';
 import { Character } from './Character';
 
-export class VirtualGuy extends Character {
+export class NinjaFlog extends Character {
   constructor(initState: GameState) {
+    // console.log('NinjaFlog -> constructor -> resources', resources);
+
     super(
-      TextureNames.virtualGuy,
+      TextureNames.ninjaFlog,
       {
         Idle: [14, 24], // 空闲状态
         Run: [26, 37], // 跑起来
@@ -17,6 +19,5 @@ export class VirtualGuy extends Character {
       },
       initState // 初始状态
     );
-    this.characterName = 'VirtualGuy';
   }
 }

@@ -1,12 +1,14 @@
 import type { ResizeOptions } from '@/pitaya';
 import { Scene } from '@/pitaya';
 import { Texture, BitmapText } from 'pixi.js';
-import type { GameState } from '@/constants';
-import { GameInitState, Levels, Character } from '@/constants';
+import type { GameState, Character } from '@/constants';
+import { GameInitState, Levels, ObjectType } from '@/constants';
 import { TileUtilities } from '@/tiled';
 import type { TiledLevel } from '@/tiled';
 import { TiledMap } from '@/components';
 import { Background } from './components/Background';
+import { characterFactory } from '@/characters';
+import { debug } from '@/services/debug';
 
 // type Character = typeof GameInitState.character;
 export class ChooseScene extends Scene {
@@ -35,10 +37,23 @@ export class ChooseScene extends Scene {
     this.gameState.world.height = chooseMapData.worldHeight;
 
     this.gameState.world.startY = this.gameState!.world.screenHeight - this.gameState!.world.height;
+    console.log('🚀 ~ world:', this.gameState!.world);
 
     this.createMap(chooseMapData);
 
     this.createTip();
+
+    // 创建角色和碰撞题
+    chooseMapData.objects.forEach((o) => {
+      o.y += this.gameState.world.startY;
+      // o.y -= 16;
+
+      // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
+
+      if (o.type === ObjectType.Character || o.class === ObjectType.Character) {
+        this.createCharacter(o);
+      }
+    });
   }
   createTip() {
     const text = new BitmapText('Tap to Choose Character', {
@@ -102,13 +117,14 @@ export class ChooseScene extends Scene {
     this.gameState.character.startX = character.x;
     this.gameState.character.startY = character.y;
 
-    let charSprite = Character.create(character.characterType, this.gameState);
+    const charSprite = characterFactory.create(character.characterType, this.gameState);
 
     if (charSprite) {
       charSprite.interactive = true;
       charSprite.buttonMode = true;
       charSprite.on('pointerdown', () => {
-        this.chooseCharacter(charSprite);
+        debug.log('character clicked');
+        // this.chooseCharacter(charSprite);
       });
       this.addChild(charSprite);
     }

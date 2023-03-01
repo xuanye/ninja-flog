@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="331">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="331">
  <editorsettings>
   <export target="choose.json" format="json"/>
  </editorsettings>
@@ -206,48 +206,48 @@
 </data>
  </layer>
  <objectgroup id="13" name="对象层">
-  <object id="3" name="charactorPostion" type="character" x="80" y="128" width="16" height="16">
+  <object id="3" name="charactorPostion" class="character" x="66" y="111.333" width="32" height="32">
    <properties>
     <property name="characterType" value="ninja-flog"/>
    </properties>
   </object>
-  <object id="6" type="collisionObject" x="0" y="146" width="97" height="27"/>
-  <object id="7" type="collisionObject" x="99" y="150">
+  <object id="6" class="collisionObject" x="0" y="146" width="97" height="27"/>
+  <object id="7" class="collisionObject" x="99" y="150">
    <polygon points="0,0 10,12 -2,13"/>
   </object>
-  <object id="9" type="collisionObject" x="109" y="161" width="28" height="18"/>
-  <object id="10" type="collisionObject" x="75" y="305" width="47" height="20"/>
-  <object id="11" type="collisionObject" x="57" y="287" width="17" height="19"/>
-  <object id="12" type="collisionObject" x="48" y="218" width="16" height="67"/>
-  <object id="13" type="collisionObject" x="65" y="194" width="22" height="22"/>
-  <object id="14" type="collisionObject" x="89" y="185" width="44" height="22"/>
-  <object id="15" type="collisionObject" x="125" y="321" width="203" height="16"/>
-  <object id="16" type="collisionObject" x="330" y="336" width="46" height="16"/>
-  <object id="19" type="collisionObject" x="246" y="240" width="50" height="44.6667"/>
-  <object id="213" type="collisionObject" x="228.667" y="254.333" width="16" height="30"/>
-  <object id="274" type="enemyObject" x="885" y="293" width="192" height="24" visible="0">
+  <object id="9" class="collisionObject" x="109" y="161" width="28" height="18"/>
+  <object id="10" class="collisionObject" x="75" y="305" width="47" height="20"/>
+  <object id="11" class="collisionObject" x="57" y="287" width="17" height="19"/>
+  <object id="12" class="collisionObject" x="48" y="218" width="16" height="67"/>
+  <object id="13" class="collisionObject" x="65" y="194" width="22" height="22"/>
+  <object id="14" class="collisionObject" x="89" y="185" width="44" height="22"/>
+  <object id="15" class="collisionObject" x="125" y="321" width="203" height="16"/>
+  <object id="16" class="collisionObject" x="330" y="336" width="46" height="16"/>
+  <object id="19" class="collisionObject" x="246" y="240" width="50" height="44.6667"/>
+  <object id="213" class="collisionObject" x="228.667" y="254.333" width="16" height="30"/>
+  <object id="274" class="enemyObject" x="885" y="293" width="192" height="24" visible="0">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="292" type="collisionObject" x="377.5" y="324" width="114" height="61"/>
-  <object id="293" type="collisionObject" x="531" y="242.5" width="88" height="138"/>
-  <object id="294" type="collisionObject" x="691" y="178.5" width="71" height="43"/>
-  <object id="296" type="collisionObject" x="882.5" y="130.5" width="73" height="45"/>
-  <object id="298" type="collisionObject" x="876.5" y="322.5" width="215" height="63"/>
-  <object id="299" type="collisionObject" x="1092.5" y="212.5" width="28" height="172"/>
-  <object id="319" type="collisionObject" x="817.5" y="273.5" width="56" height="109"/>
-  <object id="328" name="charactorPostion" type="character" x="268" y="224" width="16" height="16">
+  <object id="292" class="collisionObject" x="377.5" y="324" width="114" height="61"/>
+  <object id="293" class="collisionObject" x="531" y="242.5" width="88" height="138"/>
+  <object id="294" class="collisionObject" x="691" y="178.5" width="71" height="43"/>
+  <object id="296" class="collisionObject" x="882.5" y="130.5" width="73" height="45"/>
+  <object id="298" class="collisionObject" x="876.5" y="322.5" width="215" height="63"/>
+  <object id="299" class="collisionObject" x="1092.5" y="212.5" width="28" height="172"/>
+  <object id="319" class="collisionObject" x="817.5" y="273.5" width="56" height="109"/>
+  <object id="328" name="charactorPostion" class="character" x="257.333" y="207.333" width="32" height="32">
    <properties>
     <property name="characterType" value="mask-dude"/>
    </properties>
   </object>
-  <object id="329" name="charactorPostion" type="character" x="404" y="305" width="16" height="16">
+  <object id="329" name="charactorPostion" class="character" x="407.333" y="287" width="32" height="32">
    <properties>
     <property name="characterType" value="virtual-guy"/>
    </properties>
   </object>
-  <object id="330" name="charactorPostion" type="character" x="158" y="305" width="16" height="16">
+  <object id="330" name="charactorPostion" class="character" x="158" y="287.667" width="32" height="32">
    <properties>
     <property name="characterType" value="pink-man"/>
    </properties>
