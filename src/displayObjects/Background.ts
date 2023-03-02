@@ -72,8 +72,8 @@ export class Background extends Component {
     this.cloudsBack!.tilePosition.x -= 0.4 * delta + gameState.world.pivotOffsetX * 0.25;
     this.cloudFront!.tilePosition.x -= 0.3 * delta + gameState.world.pivotOffsetX * 0.25;
 
-    this.bgBack!.tilePosition.x -= gameState.world.pivotOffsetX * 0.25;
-    this.bgFront!.tilePosition.x -= gameState.world.pivotOffsetX * 0.22;
+    this.bgBack!.tilePosition.x -= gameState.world.pivotOffsetX * 0.5;
+    this.bgFront!.tilePosition.x -= gameState.world.pivotOffsetX * 0.4;
   }
   onResize(options: ResizeOptions) {
     let width = Math.max(options.width, options.height);

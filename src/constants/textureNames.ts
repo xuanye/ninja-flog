@@ -27,3 +27,5 @@ export const TextureNames = {
     BarBackRight: 'barBack_horizontalRight.png',
   },
 };
+
+export type AwardName = 'award_collected' | 'award_moneda_d';

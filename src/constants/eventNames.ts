@@ -5,4 +5,5 @@ export const EventNames = {
   ChooseCharacter: 'ChooseCharacter',
   ToMenu: 'ToMenu',
   Restart: 'Restart',
+  Award: 'Award',
 };

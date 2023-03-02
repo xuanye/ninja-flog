@@ -4,5 +4,4 @@ export interface TiledObject {
 
   class?: string;
   type?: string;
-  characterType?: string;
 }

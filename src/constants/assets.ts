@@ -15,8 +15,8 @@ export const Assets = {
 
     { name: 'tileset', url: './assets/levels/tileset.png' },
 
-    { name: 'award_collected', url: './assets/awards/collected.png' },
-    { name: 'award_moneda_d', url: './assets/awards/moneda_d.png' },
+    { name: 'collected', url: './assets/awards/collected.json' },
+    { name: 'moneda_d', url: './assets/awards/moneda_d.json' },
 
     { name: 'ninja-frog', url: './assets/characters/ninja-frog.json' },
     { name: 'mask-dude', url: './assets/characters/mask-dude.json' },

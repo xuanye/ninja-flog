@@ -6,11 +6,12 @@ import { Levels, ObjectType, EventNames } from '@/constants';
 import { TileUtilities } from '@/tiled';
 import type { TiledLevel, TiledObject } from '@/tiled';
 import { TiledMap } from '@/components';
-import { Background } from './components';
-
-import { characterFactory } from '@/characters';
+import { Background } from '@/displayObjects';
+import { characterFactory } from '@/displayObjects/characters';
 import { debug } from '@/services';
 import { gameStateService } from '@/services/gameStateService';
+import type { CharacterObjectType } from '@/displayObjects/characters/types';
+import { EnumCharacterStatus } from '@/displayObjects/characters/types';
 
 interface ChooseSceneState {
   screenWidth: number;
@@ -96,38 +97,20 @@ export class ChooseScene extends Scene {
     });
 
     this.groundTiles = new TiledMap();
-
-    map.groups.forEach((group: any) => {
-      group.data.forEach(
-        (d: {
-          x: number;
-          y: number;
-          tileset: { index: number };
-          tilesetX: number;
-          tilesetY: number;
-        }) => {
-          this.groundTiles?.tile(textures[d.tileset.index], d.x, d.y, {
-            u: d.tilesetX,
-            v: d.tilesetY,
-            tileWidth: map.tileWidth,
-            tileHeight: map.tileHeight,
-          });
-        }
-      );
-    });
+    this.groundTiles.tileMap(map, textures);
 
     this.groundTiles.y = this.sceneState.startY;
     this.sync(this.groundTiles);
     this.addChild(this.groundTiles);
   }
-  createCharacter(character: TiledObject) {
+  createCharacter(character: CharacterObjectType) {
     const characterType = character.characterType as CharacterTypeName;
     const charSprite = characterFactory.create(characterType, {
       startX: character.x,
       startY: character.y,
       x: character.x,
       y: character.y,
-      mode: 'Idle',
+      mode: EnumCharacterStatus.Idle,
     });
 
     if (charSprite) {

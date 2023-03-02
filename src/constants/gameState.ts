@@ -112,15 +112,7 @@ export const Levels = {
   Level2: 'level2',
   Choose: 'choose',
 };
-// 奖励的名称
-export const AwardNames = {
-  Collected: 'Collected',
-  MonedaD: 'MonedaD',
-};
-export const AwardSize = {
-  Width: 16,
-  Height: 16,
-};
+
 export const EnemyInfos = {
   AngryPig: {
     name: 'angry-pig',
