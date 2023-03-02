@@ -1,6 +1,7 @@
 import type { GameState } from '@/constants';
 import type { ResizeOptions } from '@/pitaya';
 import { Component } from '@/pitaya';
+import { gameStateService } from '@/services/gameStateService';
 import { Texture, TilingSprite } from 'pixi.js';
 
 interface BackgroundOptions {
@@ -65,7 +66,8 @@ export class Background extends Component {
 
     this.addChild(this.cloudsBack, this.cloudFront, this.bgBack, this.bgFront);
   }
-  update(delta: number, gameState: GameState) {
+  update(delta: number) {
+    const gameState = gameStateService.state;
     // 背景移动
     this.cloudsBack!.tilePosition.x -= 0.4 * delta + gameState.world.pivotOffsetX * 0.25;
     this.cloudFront!.tilePosition.x -= 0.3 * delta + gameState.world.pivotOffsetX * 0.25;

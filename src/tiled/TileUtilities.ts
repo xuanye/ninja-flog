@@ -1,7 +1,7 @@
 import { TiledLevel } from './TiledLevel';
 
 export class TileUtilities {
-  loadTiledMap(jsonTiledMap: { data: any }) {
+  static loadTiledMap(jsonTiledMap: { data: any }) {
     let tiledMap = jsonTiledMap.data;
     let world = new TiledLevel();
 

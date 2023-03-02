@@ -7,7 +7,8 @@ export interface IApplication {
 }
 
 export interface IComponent {
-  update: (delta: number, ...arg: any[]) => void;
+  update: (delta: number) => void;
+  _update?: (delta: number) => void;
   pause?: () => void;
   resume?: (args: unknown) => void;
 }

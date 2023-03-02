@@ -3,9 +3,16 @@ import type { IComponent, ResizeOptions } from './types';
 import type { EventHandler } from './eventService';
 import { eventService } from './eventService';
 
+export interface IComponentOptions {
+  screenWidth: number;
+  screenHeight: number;
+}
+
 export class Component extends Container implements IComponent {
-  constructor() {
+  state: IComponentOptions;
+  constructor(options: IComponentOptions) {
     super();
+    this.state = options;
     this.init();
   }
   init() {}
@@ -25,6 +32,6 @@ export class Component extends Container implements IComponent {
     return eventService.unsubscribe(eventName, handler);
   }
 
-  update(_delta: number, ..._args: any[]) {}
+  update(_delta: number) {}
   onResize(_options: ResizeOptions): void {}
 }

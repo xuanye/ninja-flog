@@ -1,9 +1,14 @@
 import type { GameState } from '@/constants';
+import { CharacterDirections } from '@/constants';
 import { WorldStatus } from '@/constants';
-import { CharacterMode, EventNames, CollisionThreshold, JumpType } from '@/constants';
+import { CharacterMode, EventNames, JumpType } from '@/constants';
 import type { AnimateStates } from '@/pitaya';
 import { StatesAnimatedSprite, eventService } from '@/pitaya';
 import type { EventHandler } from '@/pitaya';
+import type { CharacterState } from './types';
+import { gameStateService } from '@/services/gameStateService';
+import { debug } from '@/services';
+// import { Graphics } from 'pixi.js';
 
 interface Vector {
   vx: number;
@@ -12,37 +17,44 @@ interface Vector {
 export class Character extends StatesAnimatedSprite {
   modeNames: string[];
   mode = CharacterMode.Idle;
-  characterName?: string;
-  constructor(baseTextureName: string, states: AnimateStates, gameState: GameState) {
+  direction = CharacterDirections.None;
+  characterName = '';
+  constructor(baseTextureName: string, states: AnimateStates, state: CharacterState) {
     const modeNames: string[] = [];
     Object.keys(states).forEach((name) => {
       modeNames.push(name);
     });
-    super(baseTextureName, states, modeNames[gameState.character.mode]);
+
+    super(baseTextureName, states, state.mode);
 
     this.modeNames = modeNames;
-    this.init(gameState);
+    this.init(state);
   }
-  init(gameState: GameState) {
-    this.x = gameState.character.x;
-    this.y = gameState.character.y;
+  init(state: CharacterState) {
+    this.anchor.set(0.5, 0.5);
+    this.x = state.startX;
+    this.y = state.startY;
     // console.log('Character -> init -> initGameState', initGameState);
-    this.animationSpeed = 0.3;
-    this.playStateIndex(gameState.character.mode);
+    this.animationSpeed = 0.15;
+    this.playState(state.mode);
 
     /*
-        let g = new Graphics();
-        g.lineStyle(2, 0x00aabb);
-        g.drawRect(0, 0, initGameState.character.area[0], initGameState.character.area[1]);
 
-        this.addChild(g);
-        */
+    const area = gameStateService.state.character.effectiveArea;
+    let g = new Graphics();
+    g.lineStyle(2, 0x00aabb);
+    g.drawRect(area[0], area[1], area[2], area[3]);
+
+    this.addChild(g);
+
+    */
+
     // this.createParticle();
   }
 
-  playStateIndex(state: number) {
-    let name = this.modeNames[state];
-    // console.log('Character -> playStateIndex -> this.modeNames', this.modeNames);
+  playStateIndex(modeIndex: number) {
+    const name = this.modeNames[modeIndex];
+
     this.playState(name);
   }
   playDeadState(gameState: GameState) {
@@ -72,28 +84,53 @@ export class Character extends StatesAnimatedSprite {
    * @param {*} _
    * @param {*} gameState
    */
-  _update(_: number, gameState: GameState) {
+  _update(_: number) {
+    const gameState = gameStateService.state;
+
     if (!this.checkWorldStatus(gameState)) {
+      debug.log('check world status fail');
       return;
     }
+
     const { vx, vy } = this.getVector(gameState);
 
-    let { character, collision, world } = gameState;
-
-    character.moving = true;
+    const { collision, character, world } = gameState;
     this.y += vy;
 
-    if (this.x <= 0) {
-      character.health = 0;
-    } else if (world.isEndPart) {
-      this.x += gameState.world.moveSpeed;
-      if (this.x > world.screenWidth - 80) {
-        this.x = world.screenWidth - 80;
-        character.moving = false;
-        world.status = WorldStatus.ArrivalTerminal;
+    if (vx > 0) {
+      if (this.x + vx > 200) {
+        world.pivotOffsetX = this.x + vx - 201; // 201 是用于修正碰撞
+        // 场景尽头
+        if (world.pivotX + world.pivotOffsetX + world.screenWidth > world.width) {
+          world.pivotOffsetX = world.width - world.screenWidth - world.pivotX;
+        }
+        this.x += vx - world.pivotOffsetX;
+      } else {
+        this.x += vx;
+      }
+    } else if (vx < 0) {
+      if (this.x + vx < 200) {
+        world.pivotOffsetX = vx;
+        if (world.pivotOffsetX + world.pivotX <= 0) {
+          world.pivotOffsetX = 0 - world.pivotX;
+          this.x += vx - world.pivotOffsetX;
+        }
+      } else {
+        this.x += vx;
       }
     } else {
-      this.x += vx;
+      world.pivotOffsetX = 0;
+    }
+
+    if (this.x + this.width >= world.screenWidth) {
+      this.x = world.screenWidth - this.width;
+    }
+    if (this.x < 0) {
+      this.x = 0;
+    }
+    if (this.direction !== character.direction) {
+      this.direction = character.direction;
+      this.scale.x = character.direction ? Number(character.direction) : 1;
     }
 
     // 设置角色状态
@@ -101,9 +138,6 @@ export class Character extends StatesAnimatedSprite {
       character.mode = CharacterMode.DoubleJump;
     } else if (character.jumpType === JumpType.Jump) {
       character.mode = CharacterMode.Jump;
-    } else if (character.jumpType === JumpType.Slide) {
-      // 蹲
-      character.mode = CharacterMode.Slide;
     } else if (!character.onTheGround && collision.y > 1) {
       character.mode = CharacterMode.Fall;
     } else if (character.moving) {
@@ -125,7 +159,7 @@ export class Character extends StatesAnimatedSprite {
     character.y = this.y;
   }
   private checkWorldStatus(gameState: GameState) {
-    let { character, collision, world } = gameState;
+    const { character, collision, world } = gameState;
 
     if (!character || !collision) {
       return false;
@@ -137,34 +171,42 @@ export class Character extends StatesAnimatedSprite {
     if (character.isDead || world.status === WorldStatus.End) {
       return false;
     }
+    if (character.health <= 0) {
+      world.pivotOffsetX = 0;
+      character.isDead = true;
+      this.playDeadState(gameState);
+      return false;
+    }
     return true;
   }
   private getVector(gameState: GameState): Vector {
-    let { character, collision } = gameState;
-    character.moving = character.vx > 0;
+    const { collision, character } = gameState;
+
     let vx = 0;
     let vy = 0;
-
-    // 碰撞补偿
     if (collision.collision) {
-      // 碰撞设置了一个阈值
-      if (collision.x !== 0 && collision.x > CollisionThreshold.x) {
-        if (collision.y > 0 && collision.y < CollisionThreshold.y) {
-          vx = this.x < character.startX ? 2 : 0;
-        } else {
-          vx = character.vx - collision.x;
-        }
-      } else {
-        vx = this.x < character.startX ? 2 : 0;
-      }
-
+      vx = character.vx - collision.x;
       vy = character.vy - collision.y;
+
       vx = vx > 0 ? Math.floor(vx) : Math.ceil(vx);
-      vy = vy < 0 ? Math.floor(vy) : Math.ceil(vy);
+      vy = vy > 0 ? Math.floor(vy) : Math.ceil(vy);
+
+      if (vx !== 0) {
+        // console.log('update -> vx', collision, vx);
+        // this.x += vx;
+      }
+      if (vy !== 0) {
+        // console.log('update ->vy', vy);
+        // this.y += vy;
+      }
     } else {
-      vx = 0;
+      // console.log('===>', character.vx, character.vy);
+      vx = character.vx;
       vy = character.vy;
+      // this.x += character.vx;
+      // this.y += character.vy;
     }
+
     return { vx, vy };
   }
 }

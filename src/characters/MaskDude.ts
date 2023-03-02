@@ -1,9 +1,9 @@
-import type { GameState } from '@/constants';
 import { TextureNames } from '@/constants';
 import { Character } from './Character';
+import type { CharacterState } from './types';
 
 export class MaskDude extends Character {
-  constructor(initState: GameState) {
+  constructor(initState: CharacterState) {
     // console.log('NinjaFlog -> constructor -> resources', resources);
 
     super(

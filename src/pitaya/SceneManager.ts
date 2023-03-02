@@ -32,9 +32,9 @@ export class SceneManager {
       }
     }
   }
-  update(delta: number, ...args: any[]) {
+  update(delta: number) {
     if (this.activeScene && !this.activeScene.isPaused()) {
-      this.activeScene.update(delta, ...args);
+      this.activeScene.update(delta);
     }
   }
   /**
@@ -49,7 +49,6 @@ export class SceneManager {
       }
 
       const ActiveScene = this.scenes[name];
-      console.log('🚀 ~ SceneManager ~ setTimeout ~ ActiveScene:', ActiveScene);
 
       if (!ActiveScene) throw new Error(`${name} scene is not exist`);
 
@@ -57,8 +56,6 @@ export class SceneManager {
 
       if (!instance) {
         instance = new ActiveScene(this.app);
-
-        console.log('🚀 ~ SceneManager ~ setTimeout ~ instance:', instance);
 
         this.sceneInstances[name] = instance;
         if (instance.create) {
@@ -70,6 +67,7 @@ export class SceneManager {
       if (instance.resume) {
         instance.resume(args);
       }
+      this.activeScene = instance;
     }, 50);
   }
 }

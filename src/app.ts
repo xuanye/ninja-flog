@@ -2,19 +2,18 @@ import { utils } from 'pixi.js';
 
 import { Application } from '@/pitaya';
 import scenes from './scenes';
-import { stateService, StateNames } from '@/services/stateService';
+import { stateMachineService, StateNames } from '@/services/stateMachineService';
 
 import type { IApplicationOptions } from '@/pitaya';
 import { debug } from './services/debug';
 import { Assets, EventNames } from './constants';
-import { ChooseScene } from './scenes/ChooseScene';
 
 export class App extends Application {
   constructor(options: IApplicationOptions) {
     super(options);
 
     document.body.appendChild(this.view);
-    this.options = { ...options };
+
     if (utils.isMobile.any) {
       this.detectOrient();
     } else {
@@ -42,48 +41,56 @@ export class App extends Application {
     });
     */
   }
-  init() {
+
+  load() {
+    debug.log('Application starting');
+    this.doLoad();
+    debug.log('Application started');
+  }
+
+  protected init() {
+    super.init();
     // 注册场景
     this.addScenes(scenes);
 
-    stateService.subscribe(this.onTransition.bind(this));
+    stateMachineService.subscribe(this.onTransition.bind(this));
 
     this.subscribe(EventNames.LoadCompleted, () => {
-      stateService.send(StateNames.CHOOSE);
+      // stateMachineService.send(StateNames.CHOOSE);
+      stateMachineService.send(StateNames.PALY);
+    });
+
+    // 选中角色后，去游戏场景
+    this.subscribe(EventNames.ChooseCharacter, () => {
+      stateMachineService.send(StateNames.PALY);
+    });
+
+    this.subscribe(EventNames.ToMenu, () => {
+      stateMachineService.send(StateNames.MENU);
+    });
+    debug.log('Application initialization completed');
+  }
+
+  private doLoad() {
+    debug.log('Assets loading');
+    this.loader.add(Assets.loading);
+    this.loader.load(() => {
+      debug.log('Assets load completed');
+      // 跳转到Load界面
+      stateMachineService.send(StateNames.LOAD);
     });
   }
 
-  preload() {
-    this.doLoad();
-  }
-  doLoad() {
-    this.loader.add(Assets.loading);
-    this.loader.load(() => {
-      debug.log('Load completed');
-      // 跳转到Load界面
-      stateService.send(StateNames.LOAD);
-    });
-  }
-  detectOrient(): void {}
+  private detectOrient() {}
 
   // ------------------------
   // 状态机的事件
   // -----------------------
-  onTransition(state: { value: string }) {
-    // TODO: 事件处理
+  private onTransition(state: { value: string }) {
     if (state.value !== StateNames.NONE) {
       debug.log(`状态机事件:${state.value}`);
 
-      if (state.value === StateNames.CHOOSE) {
-        const choose = new ChooseScene(this);
-
-        choose.create();
-        choose.resume();
-        this.stage.removeChildAt(0);
-        this.stage.addChildAt(choose, 0);
-      } else {
-        this.startScene(state.value);
-      }
+      this.startScene(state.value);
     }
   }
 }

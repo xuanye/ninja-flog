@@ -1,43 +1,53 @@
 import type { ResizeOptions } from '@/pitaya';
 import { Scene } from '@/pitaya';
 import { Texture, BitmapText } from 'pixi.js';
-import type { GameState, Character } from '@/constants';
-import { GameInitState, Levels, ObjectType } from '@/constants';
+import type { CharacterType, CharacterTypeName } from '@/constants';
+import { Levels, ObjectType, EventNames } from '@/constants';
 import { TileUtilities } from '@/tiled';
-import type { TiledLevel } from '@/tiled';
+import type { TiledLevel, TiledObject } from '@/tiled';
 import { TiledMap } from '@/components';
-import { Background } from './components/Background';
-import { characterFactory } from '@/characters';
-import { debug } from '@/services/debug';
+import { Background } from './components';
 
+import { characterFactory } from '@/characters';
+import { debug } from '@/services';
+import { gameStateService } from '@/services/gameStateService';
+
+interface ChooseSceneState {
+  screenWidth: number;
+  screenHeight: number;
+  worldWidth: number;
+  worldHeight: number;
+  startY: number;
+}
 // type Character = typeof GameInitState.character;
 export class ChooseScene extends Scene {
   static sceneName = 'choose';
 
-  gameState!: GameState;
+  sceneState!: ChooseSceneState;
   groundTiles?: TiledMap;
 
   initState() {
     super.initState();
 
-    this.gameState = { ...GameInitState };
-
-    this.gameState.world.screenWidth = this.state.realWidth;
-    this.gameState.world.screenHeight = this.state.realHeight;
+    this.sceneState = {
+      screenWidth: this.state.realWidth,
+      screenHeight: this.state.realHeight,
+      worldWidth: this.state.realWidth,
+      worldHeight: this.state.realHeight,
+      startY: 0,
+    };
   }
 
   create() {
     this.createBackground();
 
     // 加载和解析地图信息
-    const tiled = new TileUtilities();
-    const chooseMapData = tiled.loadTiledMap(this.loader.resources[Levels.Choose]);
+    const chooseMapData = TileUtilities.loadTiledMap(this.loader.resources[Levels.Choose]);
 
-    this.gameState.world.width = chooseMapData.worldWidth;
-    this.gameState.world.height = chooseMapData.worldHeight;
+    this.sceneState.worldWidth = chooseMapData.worldWidth;
+    this.sceneState.worldHeight = chooseMapData.worldHeight;
 
-    this.gameState.world.startY = this.gameState!.world.screenHeight - this.gameState!.world.height;
-    console.log('🚀 ~ world:', this.gameState!.world);
+    this.sceneState.startY = this.sceneState.screenHeight - this.sceneState.worldHeight;
 
     this.createMap(chooseMapData);
 
@@ -45,7 +55,7 @@ export class ChooseScene extends Scene {
 
     // 创建角色和碰撞题
     chooseMapData.objects.forEach((o) => {
-      o.y += this.gameState.world.startY;
+      o.y += this.sceneState.startY;
       // o.y -= 16;
 
       // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
@@ -106,28 +116,33 @@ export class ChooseScene extends Scene {
       );
     });
 
-    this.groundTiles.y = this.gameState.world.startY;
+    this.groundTiles.y = this.sceneState.startY;
     this.sync(this.groundTiles);
     this.addChild(this.groundTiles);
   }
-  createCharacter(character: Character) {
-    /// console.log('PlayScene -> createCharacter -> character', character);
-    this.gameState.character.x = character.x;
-    this.gameState.character.y = character.y;
-    this.gameState.character.startX = character.x;
-    this.gameState.character.startY = character.y;
-
-    const charSprite = characterFactory.create(character.characterType, this.gameState);
+  createCharacter(character: TiledObject) {
+    const characterType = character.characterType as CharacterTypeName;
+    const charSprite = characterFactory.create(characterType, {
+      startX: character.x,
+      startY: character.y,
+      x: character.x,
+      y: character.y,
+      mode: 'Idle',
+    });
 
     if (charSprite) {
       charSprite.interactive = true;
       charSprite.buttonMode = true;
       charSprite.on('pointerdown', () => {
-        debug.log('character clicked');
-        // this.chooseCharacter(charSprite);
+        this.chooseCharacter(charSprite.characterName);
       });
       this.addChild(charSprite);
     }
+  }
+  chooseCharacter(characterName: string) {
+    debug.log(`use character:${characterName} `);
+    gameStateService.setCharacterType(characterName as CharacterType);
+    this.publish(EventNames.ChooseCharacter);
   }
 
   update(_delta: number) {
@@ -140,13 +155,5 @@ export class ChooseScene extends Scene {
   onResize(options: ResizeOptions) {
     this.state.realWidth = options.realWidth;
     this.state.realHeight = options.realHeight;
-
-    // this.background.onResize(options);
-
-    this.gameState.world.screenWidth = this.state.realWidth;
-    this.gameState.world.screenHeight = this.state.realHeight;
-
-    // 这里实际上如果手机屏幕发生大小变化，背景和地图会有错位，要每个元素修正？
-    this.gameState.world.startY = this.gameState.world.screenHeight - this.gameState.world.height;
   }
 }

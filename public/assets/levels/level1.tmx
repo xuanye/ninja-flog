@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2020.02.26" orientation="orthogonal" renderorder="right-down" width="420" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="325">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="420" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="325">
  <editorsettings>
   <export target="level1.json" format="json"/>
  </editorsettings>
@@ -205,379 +205,379 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="13" name="对象层" visible="0">
-  <object id="3" name="charactorPostion" type="character" x="73" y="7"/>
-  <object id="4" type="awardObject" x="261.667" y="221.667" width="16" height="16">
+ <objectgroup id="13" name="对象层">
+  <object id="3" name="charactorPostion" class="character" x="73" y="7"/>
+  <object id="4" class="awardObject" x="261.667" y="221.667" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="6" type="collisionObject" x="0" y="146" width="97" height="27"/>
-  <object id="7" type="collisionObject" x="99" y="150">
+  <object id="6" class="collisionObject" x="0" y="146" width="97" height="27"/>
+  <object id="7" class="collisionObject" x="99" y="151">
    <polygon points="0,0 10,12 -2,13"/>
   </object>
-  <object id="9" type="collisionObject" x="109" y="161" width="28" height="18"/>
-  <object id="10" type="collisionObject" x="75" y="305" width="47" height="20"/>
-  <object id="11" type="collisionObject" x="57" y="287" width="17" height="19"/>
-  <object id="12" type="collisionObject" x="48" y="218" width="16" height="67"/>
-  <object id="13" type="collisionObject" x="65" y="194" width="22" height="22"/>
-  <object id="14" type="collisionObject" x="89" y="185" width="44" height="22"/>
-  <object id="15" type="collisionObject" x="125" y="321" width="203" height="16"/>
-  <object id="16" type="collisionObject" x="330" y="336" width="46" height="16"/>
-  <object id="19" type="collisionObject" x="246" y="240" width="50" height="44.6667"/>
-  <object id="187" type="awardObject" x="342" y="286" width="16" height="16">
+  <object id="9" class="collisionObject" x="109" y="161" width="28" height="18"/>
+  <object id="10" class="collisionObject" x="75" y="305" width="47" height="20"/>
+  <object id="11" class="collisionObject" x="57" y="287" width="17" height="19"/>
+  <object id="12" class="collisionObject" x="48" y="218" width="16" height="67"/>
+  <object id="13" class="collisionObject" x="65" y="194" width="22" height="22"/>
+  <object id="14" class="collisionObject" x="89" y="185" width="44" height="22"/>
+  <object id="15" class="collisionObject" x="125" y="321" width="203" height="16"/>
+  <object id="16" class="collisionObject" x="330" y="336" width="46" height="16"/>
+  <object id="19" class="collisionObject" x="246" y="240" width="50" height="44.6667"/>
+  <object id="187" class="awardObject" x="342" y="286" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="213" type="collisionObject" x="228.667" y="254.333" width="16" height="30"/>
-  <object id="214" type="enemyObject" x="141.334" y="294" width="176" height="24">
+  <object id="213" class="collisionObject" x="228.667" y="254.333" width="16" height="30"/>
+  <object id="214" class="enemyObject" x="141.334" y="294" width="176" height="24">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="221" type="enemyObject" x="2360" y="98.6667" width="274.667" height="21.3333">
+  <object id="221" class="enemyObject" x="2360" y="98.6667" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="244" type="awardObject" x="565.5" y="214.167" width="16" height="16">
+  <object id="244" class="awardObject" x="565.5" y="214.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="245" type="awardObject" x="715.5" y="149.167" width="16" height="16">
+  <object id="245" class="awardObject" x="715.5" y="149.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="246" type="awardObject" x="912.5" y="103.167" width="16" height="16">
+  <object id="246" class="awardObject" x="912.5" y="103.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="247" type="awardObject" x="1024.5" y="296.167" width="16" height="16">
+  <object id="247" class="awardObject" x="1024.5" y="296.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="248" type="awardObject" x="1124.5" y="183.167" width="16" height="16">
+  <object id="248" class="awardObject" x="1124.5" y="183.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="249" type="awardObject" x="1319.5" y="252.167" width="16" height="16">
+  <object id="249" class="awardObject" x="1319.5" y="252.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="250" type="awardObject" x="1469.5" y="168.167" width="16" height="16">
+  <object id="250" class="awardObject" x="1469.5" y="168.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="251" type="awardObject" x="1523.5" y="168.167" width="16" height="16">
+  <object id="251" class="awardObject" x="1523.5" y="168.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="252" type="awardObject" x="1726.5" y="187.167" width="16" height="16">
+  <object id="252" class="awardObject" x="1726.5" y="187.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="253" type="awardObject" x="1576.5" y="297.167" width="16" height="16">
+  <object id="253" class="awardObject" x="1576.5" y="297.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="254" type="awardObject" x="1903.5" y="301.167" width="16" height="16">
+  <object id="254" class="awardObject" x="1903.5" y="301.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="255" type="awardObject" x="1747.5" y="299.167" width="16" height="16">
+  <object id="255" class="awardObject" x="1747.5" y="299.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="256" type="awardObject" x="2021.5" y="201.167" width="16" height="16">
+  <object id="256" class="awardObject" x="2021.5" y="201.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="257" type="awardObject" x="2198.5" y="163.167" width="16" height="16">
+  <object id="257" class="awardObject" x="2198.5" y="163.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="258" type="awardObject" x="2406.5" y="194.167" width="17" height="19.6667">
+  <object id="258" class="awardObject" x="2406.5" y="194.167" width="17" height="19.6667">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="259" type="awardObject" x="2593.5" y="181.167" width="16" height="16">
+  <object id="259" class="awardObject" x="2593.5" y="181.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="260" type="awardObject" x="2768.5" y="164.167" width="16" height="16">
+  <object id="260" class="awardObject" x="2768.5" y="164.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="261" type="awardObject" x="2503.5" y="101.167" width="16" height="16">
+  <object id="261" class="awardObject" x="2503.5" y="101.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="262" type="awardObject" x="2932.5" y="70.1667" width="16" height="16">
+  <object id="262" class="awardObject" x="2932.5" y="70.1667" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="264" type="awardObject" x="3088.5" y="217.167" width="16" height="16">
+  <object id="264" class="awardObject" x="3088.5" y="217.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="265" type="awardObject" x="3304.5" y="185.167" width="16" height="16">
+  <object id="265" class="awardObject" x="3304.5" y="185.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="266" type="awardObject" x="3630.5" y="300.167" width="16" height="16">
+  <object id="266" class="awardObject" x="3630.5" y="300.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="267" type="awardObject" x="3962.5" y="299.167" width="16" height="16">
+  <object id="267" class="awardObject" x="3962.5" y="299.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="268" type="awardObject" x="4466.5" y="299.167" width="16" height="16">
+  <object id="268" class="awardObject" x="4466.5" y="299.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="269" type="awardObject" x="4972.5" y="295.167" width="16" height="16">
+  <object id="269" class="awardObject" x="4972.5" y="295.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="270" type="awardObject" x="5866.5" y="217.167" width="16" height="16">
+  <object id="270" class="awardObject" x="5866.5" y="217.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="271" type="awardObject" x="6018.5" y="215.167" width="16" height="16">
+  <object id="271" class="awardObject" x="6018.5" y="215.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="272" type="awardObject" x="6535.5" y="252.167" width="17" height="19.6667">
+  <object id="272" class="awardObject" x="6535.5" y="252.167" width="17" height="19.6667">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="273" type="awardObject" x="6670.5" y="256.167" width="17" height="19.6667">
+  <object id="273" class="awardObject" x="6670.5" y="256.167" width="17" height="19.6667">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="274" type="enemyObject" x="885" y="293" width="192" height="24" visible="0">
+  <object id="274" class="enemyObject" x="885" y="293" width="192" height="24" visible="0">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="275" type="enemyObject" x="1555" y="295" width="178" height="24">
+  <object id="275" class="enemyObject" x="1555" y="295" width="178" height="24">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="276" type="enemyObject" x="1727" y="295" width="178" height="24">
+  <object id="276" class="enemyObject" x="1727" y="295" width="178" height="24">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="277" type="enemyObject" x="1964.67" y="103.333" width="274.667" height="21.3333">
+  <object id="277" class="enemyObject" x="1964.67" y="103.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="278" type="enemyObject" x="1565.67" y="103.333" width="274.667" height="21.3333">
+  <object id="278" class="enemyObject" x="1565.67" y="103.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="279" type="enemyObject" x="2705.67" y="82.3333" width="274.667" height="21.3333">
+  <object id="279" class="enemyObject" x="2705.67" y="82.3333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="280" type="enemyObject" x="3148.67" y="103.333" width="274.667" height="21.3333">
+  <object id="280" class="enemyObject" x="3148.67" y="103.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="281" type="enemyObject" x="3523.67" y="163.333" width="274.667" height="21.3333">
+  <object id="281" class="enemyObject" x="3523.67" y="163.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="282" type="enemyObject" x="3804.67" y="295.333" width="274.667" height="21.3333">
+  <object id="282" class="enemyObject" x="3804.67" y="295.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="Chicken"/>
    </properties>
   </object>
-  <object id="283" type="enemyObject" x="4127.67" y="296.333" width="274.667" height="21.3333">
+  <object id="283" class="enemyObject" x="4127.67" y="296.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="284" type="enemyObject" x="4512.67" y="295.333" width="274.667" height="21.3333">
+  <object id="284" class="enemyObject" x="4512.67" y="295.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="AngryPig"/>
    </properties>
   </object>
-  <object id="285" type="enemyObject" x="4074.67" y="207.333" width="274.667" height="21.3333">
+  <object id="285" class="enemyObject" x="4074.67" y="207.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="286" type="enemyObject" x="4882.67" y="231.333" width="274.667" height="21.3333">
+  <object id="286" class="enemyObject" x="4882.67" y="231.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="287" type="enemyObject" x="3466.67" y="296.333" width="274.667" height="21.3333">
+  <object id="287" class="enemyObject" x="3466.67" y="296.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="Chicken"/>
    </properties>
   </object>
-  <object id="288" type="enemyObject" x="5245.67" y="295.333" width="274.667" height="21.3333">
+  <object id="288" class="enemyObject" x="5245.67" y="295.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="Chicken"/>
    </properties>
   </object>
-  <object id="289" type="enemyObject" x="5721.67" y="296.333" width="274.667" height="21.3333">
+  <object id="289" class="enemyObject" x="5721.67" y="296.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="Chicken"/>
    </properties>
   </object>
-  <object id="290" type="enemyObject" x="6107.67" y="295.333" width="274.667" height="21.3333">
+  <object id="290" class="enemyObject" x="6107.67" y="295.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="Chicken"/>
    </properties>
   </object>
-  <object id="291" type="enemyObject" x="5910.67" y="215.333" width="274.667" height="21.3333">
+  <object id="291" class="enemyObject" x="5910.67" y="215.333" width="274.667" height="21.3333">
    <properties>
     <property name="enemyType" value="BlueBird"/>
    </properties>
   </object>
-  <object id="292" type="collisionObject" x="377.5" y="324" width="114" height="61"/>
-  <object id="293" type="collisionObject" x="531" y="242.5" width="88" height="138"/>
-  <object id="294" type="collisionObject" x="691" y="178.5" width="71" height="43"/>
-  <object id="296" type="collisionObject" x="882.5" y="130.5" width="73" height="45"/>
-  <object id="298" type="collisionObject" x="876.5" y="322.5" width="215" height="63"/>
-  <object id="299" type="collisionObject" x="1092.5" y="210.5" width="85" height="175"/>
-  <object id="300" type="collisionObject" x="1181.5" y="322.5" width="65" height="61"/>
-  <object id="301" type="collisionObject" x="1297.5" y="274.5" width="72" height="41"/>
-  <object id="302" type="collisionObject" x="1460.5" y="194.5" width="87" height="189"/>
-  <object id="303" type="collisionObject" x="1445.5" y="321.5" width="13" height="45"/>
-  <object id="304" type="collisionObject" x="1699.5" y="210.5" width="71" height="38"/>
-  <object id="305" type="collisionObject" x="1989.5" y="225.5" width="87" height="158"/>
-  <object id="306" type="collisionObject" x="2163.5" y="192.5" width="89" height="189"/>
-  <object id="307" type="collisionObject" x="2371.5" y="226.5" width="91" height="157"/>
-  <object id="308" type="collisionObject" x="2564.5" y="209.5" width="88" height="174"/>
-  <object id="309" type="collisionObject" x="2736.5" y="193.5" width="95" height="190"/>
-  <object id="310" type="collisionObject" x="2898.5" y="146" width="89" height="238"/>
-  <object id="311" type="collisionObject" x="3057.5" y="242" width="89" height="142"/>
-  <object id="312" type="collisionObject" x="3265.5" y="209" width="89" height="173"/>
-  <object id="313" type="collisionObject" x="3458.5" y="322" width="3260" height="61"/>
-  <object id="314" type="awardObject" x="5943.5" y="299.167" width="16" height="16">
+  <object id="292" class="collisionObject" x="377.5" y="324" width="114" height="61"/>
+  <object id="293" class="collisionObject" x="531" y="242.5" width="88" height="138"/>
+  <object id="294" class="collisionObject" x="691" y="178.5" width="71" height="43"/>
+  <object id="296" class="collisionObject" x="882.5" y="130.5" width="73" height="45"/>
+  <object id="298" class="collisionObject" x="876.5" y="322.5" width="215" height="63"/>
+  <object id="299" class="collisionObject" x="1092.5" y="210.5" width="85" height="175"/>
+  <object id="300" class="collisionObject" x="1181.5" y="322.5" width="65" height="61"/>
+  <object id="301" class="collisionObject" x="1297.5" y="274.5" width="72" height="41"/>
+  <object id="302" class="collisionObject" x="1460.5" y="194.5" width="87" height="189"/>
+  <object id="303" class="collisionObject" x="1445.5" y="321.5" width="13" height="45"/>
+  <object id="304" class="collisionObject" x="1699.5" y="210.5" width="71" height="38"/>
+  <object id="305" class="collisionObject" x="1989.5" y="225.5" width="87" height="158"/>
+  <object id="306" class="collisionObject" x="2163.5" y="192.5" width="89" height="189"/>
+  <object id="307" class="collisionObject" x="2371.5" y="226.5" width="91" height="157"/>
+  <object id="308" class="collisionObject" x="2564.5" y="209.5" width="88" height="174"/>
+  <object id="309" class="collisionObject" x="2736.5" y="193.5" width="95" height="190"/>
+  <object id="310" class="collisionObject" x="2898.5" y="146" width="89" height="238"/>
+  <object id="311" class="collisionObject" x="3057.5" y="242" width="89" height="142"/>
+  <object id="312" class="collisionObject" x="3265.5" y="209" width="89" height="173"/>
+  <object id="313" class="collisionObject" x="3458.5" y="322" width="3260" height="61"/>
+  <object id="314" class="awardObject" x="5943.5" y="299.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="315" type="awardObject" x="5653.5" y="299.167" width="16" height="16">
+  <object id="315" class="awardObject" x="5653.5" y="299.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="316" type="awardObject" x="6406.5" y="298.167" width="16" height="16">
+  <object id="316" class="awardObject" x="6406.5" y="298.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="317" type="awardObject" x="1439.5" y="297.167" width="16" height="16">
+  <object id="317" class="awardObject" x="1439.5" y="297.167" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="318" type="collisionObject" x="1546.5" y="323" width="367" height="62"/>
-  <object id="319" type="collisionObject" x="817.5" y="273.5" width="56" height="109"/>
-  <object id="320" type="awardObject" x="1209" y="286" width="16" height="16">
+  <object id="318" class="collisionObject" x="1546.5" y="323" width="367" height="62"/>
+  <object id="319" class="collisionObject" x="817.5" y="273.5" width="56" height="109"/>
+  <object id="320" class="awardObject" x="1209" y="286" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="321" type="awardObject" x="837" y="253" width="16" height="16">
+  <object id="321" class="awardObject" x="837" y="253" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="322" type="awardObject" x="1903" y="277" width="16" height="16">
+  <object id="322" class="awardObject" x="1903" y="277" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="323" type="awardObject" x="1876" y="277" width="16" height="16">
+  <object id="323" class="awardObject" x="1876" y="277" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="324" type="awardObject" x="1876" y="299" width="16" height="16">
+  <object id="324" class="awardObject" x="1876" y="299" width="16" height="16">
    <properties>
     <property name="awardType" value="MonedaD"/>
    </properties>

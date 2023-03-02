@@ -36,7 +36,6 @@ export class Scene extends Container {
   // 发布/订阅模式的简单封装
   // ---------------------
   subscribe(eventName: string, handler: EventHandler<unknown>) {
-    // TODO:订阅事件
     eventService.subscribe(eventName, handler);
   }
   publish(eventName: string, args?: unknown) {
@@ -101,16 +100,20 @@ export class Scene extends Container {
       this.syncItems.splice(index, 1);
     }
   }
-  update(delta: number, ...args: any[]) {
+  update(delta: number) {
     if (this.syncItems) {
       this.syncItems.forEach((item) => {
-        if (item?.update) {
-          item.update(delta, ...args);
+        if (item) {
+          if (item._update) {
+            item._update(delta);
+          } else if (item.update) {
+            item.update(delta);
+          }
         }
       });
     }
   }
-  onResize(options: ResizeOptions): void {}
+  onResize(_options: ResizeOptions): void {}
 
   create() {
     debug.warn('Scene Created');

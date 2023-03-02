@@ -13,7 +13,7 @@ const state = {
   initial: 'none',
   states: {
     none: { on: { load: 'load' } },
-    load: { on: { choose: 'choose' } },
+    load: { on: { choose: 'choose', play: 'play' } },
     choose: { on: { play: 'play' } },
     play: { on: { menu: 'choose' } },
   },
@@ -21,4 +21,4 @@ const state = {
 
 const stateMachine = createMachine(state);
 
-export const stateService = interpret(stateMachine).start();
+export const stateMachineService = interpret(stateMachine).start();

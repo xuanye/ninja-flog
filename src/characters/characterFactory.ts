@@ -1,28 +1,32 @@
 import { VirtualGuy } from './VirtualGuy';
-import type { GameState } from '@/constants';
+import type { CharacterTypeName } from '@/constants';
+import { CharacterType } from '@/constants';
 import { NinjaFlog } from './NinjaFlog';
 import { PinkMan } from './PinkMan';
 import { MaskDude } from './MaskDude';
+import type { Character } from './Character';
+import type { CharacterState } from './types';
 
 export const characterFactory = {
-  create(name: string, gameState: GameState) {
-    let charSprite;
+  create(name: CharacterTypeName, state: CharacterState) {
+    let charSprite: Character;
 
     switch (name) {
-      case 'ninja-flog':
-        charSprite = new NinjaFlog(gameState);
+      case CharacterType.NinjaFlog:
+        charSprite = new NinjaFlog(state);
         break;
-      case 'pink-man':
-        charSprite = new PinkMan(gameState);
+      case CharacterType.PinkMan:
+        charSprite = new PinkMan(state);
         break;
-      case 'mask-dude':
-        charSprite = new MaskDude(gameState);
+      case CharacterType.MaskDude:
+        charSprite = new MaskDude(state);
         break;
-      case 'virtual-guy':
+      case CharacterType.VirtualGuy:
       default:
-        charSprite = new VirtualGuy(gameState);
+        charSprite = new VirtualGuy(state);
         break;
     }
+    charSprite.characterName = name;
     return charSprite;
   },
 };

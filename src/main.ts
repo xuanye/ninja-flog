@@ -1,5 +1,5 @@
 import { utils } from 'pixi.js';
-import { App } from './app';
+import { App } from './App';
 
 const designWidth = 667;
 const designHeight = 375;
@@ -7,7 +7,7 @@ const designHeight = 375;
 const screenWidth = utils.isMobile.any ? window.innerWidth : designWidth;
 const screenHeight = utils.isMobile.any ? window.innerHeight : designHeight;
 
-const app = new App({
+const options = {
   width: designWidth,
   height: designHeight,
   screenWidth,
@@ -16,4 +16,8 @@ const app = new App({
   designHeight,
   backgroundColor: 0x3f7cb6,
   antialias: true,
-});
+};
+
+const app = new App(options);
+
+app.load();

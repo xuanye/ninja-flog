@@ -1,11 +1,9 @@
-import type { GameState } from '@/constants';
 import { TextureNames } from '@/constants';
 import { Character } from './Character';
+import type { CharacterState } from './types';
 
 export class NinjaFlog extends Character {
-  constructor(initState: GameState) {
-    // console.log('NinjaFlog -> constructor -> resources', resources);
-
+  constructor(initState: CharacterState) {
     super(
       TextureNames.ninjaFlog,
       {
