@@ -14,12 +14,6 @@ export enum CharacterMode {
   WalkJump = 6, // 我都不知道干嘛
   Slide = 7, // 蹲 实际没用
 }
-export enum EnemyState {
-  Idle = 0, // 空闲状态
-  Run = 1, // 跑起来
-  Hit = 2, // 被主角搞定了
-  Walk = 3, // 走路
-}
 
 export enum JumpType {
   Slide = -1,
@@ -113,47 +107,6 @@ export const Levels = {
   Choose: 'choose',
 };
 
-export const EnemyInfos = {
-  AngryPig: {
-    name: 'angry-pig',
-    width: 36,
-    height: 30,
-    texture: 'angry-pig_image',
-    initState: EnemyState.Idle,
-    states: [
-      [5, 13], // 空闲状态
-      [14, 25], // 跑起来
-      [0, 4], // 被打中
-      [26, 41], // 我都不知道干嘛
-    ],
-  },
-  Chicken: {
-    name: 'chicken',
-    width: 32,
-    height: 34,
-    texture: 'chicken_image',
-    initState: EnemyState.Idle,
-    states: [
-      [5, 17], // 空闲状态
-      [18, 31], // 跑起来
-      [0, 4], // 被打中
-      [18, 31], // 我都不知道干嘛
-    ],
-  },
-  BlueBird: {
-    name: 'blue-bird',
-    width: 32,
-    height: 32,
-    texture: 'blue-bird_image',
-    initState: EnemyState.Idle,
-    states: [
-      [0, 8], // 空闲状态
-      [0, 8], // 跑起来
-      [9, 13], // 被打中
-      [0, 8], // 我都不知道干嘛
-    ],
-  },
-};
 export const World = {
   MinJumpThreshold: 1.75, // 跳跃的阈值,1.75个单位
   MaxJumpThreshold: 4.5, // 跳跃的阈值,4.5个单位

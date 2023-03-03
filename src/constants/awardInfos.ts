@@ -1,5 +1,5 @@
 // 奖励的名称
-export const AwardInfos: Record<string, Award> = {
+export const AwardInfos: Record<string, AwardOptions> = {
   MonedaD: {
     name: 'moneda_d',
     texture: 'moneda_d.png',
@@ -31,7 +31,7 @@ export enum AwardNames {
   Collected = 'Collected',
 }
 
-export interface Award {
+export interface AwardOptions {
   name: string;
   texture: string;
   initState: string;

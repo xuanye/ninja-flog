@@ -1,4 +1,4 @@
-import { debug } from '@/services/debug';
+import { debug } from '@/modules/debug';
 import { AnimatedSprite, Texture } from 'pixi.js';
 
 export type AnimateStates = Record<string, number[]>;

@@ -1,7 +1,7 @@
 import Sat from 'sat';
 import type { IComponentOptions } from '@/pitaya';
 import { Component } from '@/pitaya';
-import { gameStateService } from '@/services/gameStateService';
+import { gameStateService } from '@/services';
 
 export interface Point {
   x: number;
@@ -90,38 +90,39 @@ export class CollisionManager extends Component {
 
     this.parentPivotX = gameState.world.pivotX;
 
-    let anchorOffsetX = gameState.character.sprite.width * gameState.character.sprite.anchor.x;
-
-    let anchorOffsetY = gameState.character.sprite.height * gameState.character.sprite.anchor.y;
+    const anchorOffsetX = gameState.character.sprite.width * gameState.character.sprite.anchor.x;
+    const anchorOffsetY = gameState.character.sprite.height * gameState.character.sprite.anchor.y;
 
     if (!gameState.character.box) {
-      gameState.character.box = new Sat.Box(
-        new Sat.Vector(
-          gameState.character.x - anchorOffsetX + gameState.character.effectiveArea[0],
-          gameState.character.y - anchorOffsetY + gameState.character.effectiveArea[1]
-        ),
-        gameState.character.effectiveArea[2],
-        gameState.character.effectiveArea[3]
-      ).toPolygon();
+      gameStateService.setCharacterBox(
+        new Sat.Box(
+          new Sat.Vector(
+            gameState.character.x - anchorOffsetX + gameState.character.effectiveArea[0],
+            gameState.character.y - anchorOffsetY + gameState.character.effectiveArea[1]
+          ),
+          gameState.character.effectiveArea[2],
+          gameState.character.effectiveArea[3]
+        ).toPolygon()
+      );
     }
-    gameState.character.box.pos.x =
+    const x =
       gameState.character.x -
       anchorOffsetX +
       gameState.character.vx +
       gameState.character.effectiveArea[0];
-    gameState.character.box.pos.y =
+    const y =
       gameState.character.y -
       anchorOffsetY +
       gameState.character.vy +
       gameState.character.effectiveArea[1];
 
-    gameState.collision.x = 0;
-    gameState.collision.y = 0;
-    gameState.collision.collision = false;
+    gameStateService.resetCharacterPos(x, y);
+    gameStateService.resetCollision();
 
     this.collisionObjects.forEach((obj) => {
       // 处理主角和每个物体的碰撞情况
       obj.item!.pos.x = obj.realX - this.parentPivotX;
+
       let collision = false;
       if (obj.ellipse) {
         // 圆形，椭圆形
@@ -138,14 +139,12 @@ export class CollisionManager extends Component {
         );
       }
       if (collision) {
-        gameState.collision.collision = true;
-        // console.log(this.collisionResult.overlapV);
-        if (this.collisionResult.overlapN.x !== 0 && gameState.collision.x === 0) {
-          gameState.collision.x = this.collisionResult.overlapV.x;
-        }
-        if (this.collisionResult.overlapN.y !== 0 && gameState.collision.y === 0) {
-          gameState.collision.y = this.collisionResult.overlapV.y;
-        }
+        console.log('🚀 ~ collision:', collision, this.collisionResult.overlapV);
+        gameStateService.setCollision(
+          true,
+          this.collisionResult.overlapV.x,
+          this.collisionResult.overlapV.y
+        );
       }
       this.collisionResult.clear();
     });

@@ -7,7 +7,7 @@ import { StatesAnimatedSprite, eventService } from '@/pitaya';
 import type { EventHandler } from '@/pitaya';
 import type { CharacterState } from './types';
 import { gameStateService } from '@/services/gameStateService';
-import { debug } from '@/services';
+
 // import { Graphics } from 'pixi.js';
 
 interface Vector {
@@ -57,12 +57,12 @@ export class Character extends StatesAnimatedSprite {
 
     this.playState(name);
   }
-  playDeadState(gameState: GameState) {
+  playDeadState() {
     this.playStateIndex(CharacterMode.Hit);
     setTimeout(() => {
       this.visible = false;
     }, 1000);
-    this.publish(EventNames.HeroDied, gameState);
+    this.publish(EventNames.HeroDied);
   }
 
   // ---------------------
@@ -88,7 +88,6 @@ export class Character extends StatesAnimatedSprite {
     const gameState = gameStateService.state;
 
     if (!this.checkWorldStatus(gameState)) {
-      debug.log('check world status fail');
       return;
     }
 
@@ -97,30 +96,32 @@ export class Character extends StatesAnimatedSprite {
     const { collision, character, world } = gameState;
     this.y += vy;
 
+    let pivotOffsetX = world.pivotOffsetX;
     if (vx > 0) {
       if (this.x + vx > 200) {
-        world.pivotOffsetX = this.x + vx - 201; // 201 是用于修正碰撞
+        pivotOffsetX = this.x + vx - 201; // 201 是用于修正碰撞
         // 场景尽头
-        if (world.pivotX + world.pivotOffsetX + world.screenWidth > world.width) {
-          world.pivotOffsetX = world.width - world.screenWidth - world.pivotX;
+        if (world.pivotX + pivotOffsetX + world.screenWidth > world.width) {
+          pivotOffsetX = world.width - world.screenWidth - world.pivotX;
         }
-        this.x += vx - world.pivotOffsetX;
+        this.x += vx - pivotOffsetX;
       } else {
         this.x += vx;
       }
     } else if (vx < 0) {
       if (this.x + vx < 200) {
-        world.pivotOffsetX = vx;
-        if (world.pivotOffsetX + world.pivotX <= 0) {
-          world.pivotOffsetX = 0 - world.pivotX;
-          this.x += vx - world.pivotOffsetX;
+        pivotOffsetX = vx;
+        if (pivotOffsetX + world.pivotX <= 0) {
+          pivotOffsetX = 0 - world.pivotX;
+          this.x += vx - pivotOffsetX;
         }
       } else {
         this.x += vx;
       }
     } else {
-      world.pivotOffsetX = 0;
+      pivotOffsetX = 0;
     }
+    gameStateService.setPivotOffsetX(pivotOffsetX);
 
     if (this.x + this.width >= world.screenWidth) {
       this.x = world.screenWidth - this.width;
@@ -133,30 +134,31 @@ export class Character extends StatesAnimatedSprite {
       this.scale.x = character.direction ? Number(character.direction) : 1;
     }
 
+    let mode = CharacterMode.Idle;
+
     // 设置角色状态
     if (character.jumpType === JumpType.DoubleJump) {
-      character.mode = CharacterMode.DoubleJump;
+      mode = CharacterMode.DoubleJump;
     } else if (character.jumpType === JumpType.Jump) {
-      character.mode = CharacterMode.Jump;
+      mode = CharacterMode.Jump;
     } else if (!character.onTheGround && collision.y > 1) {
-      character.mode = CharacterMode.Fall;
+      mode = CharacterMode.Fall;
     } else if (character.moving) {
-      character.mode = CharacterMode.Run;
+      mode = CharacterMode.Run;
     } else {
-      character.mode = CharacterMode.Idle;
+      mode = CharacterMode.Idle;
     }
 
-    if (this.mode !== character.mode) {
-      this.mode = character.mode;
+    gameStateService.setCharacterMode(mode);
+    if (this.mode !== mode) {
+      this.mode = mode;
       this.playStateIndex(this.mode);
     }
 
     if (this.y > world.screenHeight) {
-      character.health = 0;
+      gameStateService.setHeroDied();
     }
-
-    character.x = this.x;
-    character.y = this.y;
+    gameStateService.setCharacterPos(this.x, this.y);
   }
   private checkWorldStatus(gameState: GameState) {
     const { character, collision, world } = gameState;
@@ -166,15 +168,15 @@ export class Character extends StatesAnimatedSprite {
     }
     if (world.status === WorldStatus.ArrivalTerminal) {
       this.publish(EventNames.ArrivalTerminal, gameState);
-      world.status = WorldStatus.End;
+      // 状态在此设置不合理
+      gameStateService.setWorldEndStatus();
     }
     if (character.isDead || world.status === WorldStatus.End) {
       return false;
     }
     if (character.health <= 0) {
-      world.pivotOffsetX = 0;
-      character.isDead = true;
-      this.playDeadState(gameState);
+      gameStateService.setHeroDied();
+      this.playDeadState();
       return false;
     }
     return true;

@@ -1,5 +1,6 @@
 import type { CharacterTypeName, GameState, CharacterDirections } from '@/constants';
-import { GameInitState, JumpType, World } from '@/constants';
+import { WorldStatus } from '@/constants';
+import { GameInitState, JumpType, World, CharacterMode } from '@/constants';
 
 interface WorldSize {
   screenWidth: number;
@@ -59,8 +60,17 @@ class GameStateService {
   setCharacter(character: any) {
     this.state.character.sprite = character;
   }
+  setCharacterHit() {
+    this.state.character.health -= 1;
+    this.state.character.invincible = true;
+    this.state.character.mode = CharacterMode.Hit;
+  }
   setCharacterDirection(direction: CharacterDirections) {
     this.state.character.direction = direction;
+  }
+  setCharacterPos(x: number, y: number) {
+    this.state.character.x = x;
+    this.state.character.y = y;
   }
   isOnTheGround() {
     return this.state.collision.collision && this.state.collision.y > 0;
@@ -81,6 +91,42 @@ class GameStateService {
   }
   setPivotX(value: number) {
     this.state.world.pivotX = value;
+  }
+  setCharacterBox(box: unknown) {
+    this.state.character.box = box;
+  }
+  setCharacterMode(mode: CharacterMode) {
+    this.state.character.mode = mode;
+  }
+  resetCharacterPos(x: number, y: number) {
+    this.state.character.box.pos.x = x;
+    this.state.character.box.pos.y = y;
+  }
+  resetCollision() {
+    this.state.collision.collision = false;
+    this.state.collision.x = 0;
+    this.state.collision.y = 0;
+  }
+  setCollision(collision: boolean, vX: number, vY: number) {
+    this.state.collision.collision = collision;
+
+    if (vX !== 0 && this.state.collision.x === 0) {
+      this.state.collision.x = vX;
+    }
+    if (vY !== 0 && this.state.collision.y === 0) {
+      this.state.collision.y = vY;
+    }
+  }
+  setWorldEndStatus() {
+    this.state.world.status = WorldStatus.End;
+  }
+  setHeroDied() {
+    this.state.character.health = 0;
+    this.state.world.pivotOffsetX = 0;
+    this.state.character.isDead = true;
+  }
+  setPivotOffsetX(x: number) {
+    this.state.world.pivotOffsetX = x;
   }
 }
 

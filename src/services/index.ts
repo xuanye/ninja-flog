@@ -1,2 +1,2 @@
 export * from './stateMachineService';
-export * from './debug';
+export * from './gameStateService';

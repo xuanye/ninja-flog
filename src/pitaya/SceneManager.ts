@@ -1,4 +1,4 @@
-import { debug } from '@/services/debug';
+import { debug } from '@/modules/debug';
 import type { Scene, SceneType } from './Scene';
 import type { IApplication, ResizeOptions } from './types';
 

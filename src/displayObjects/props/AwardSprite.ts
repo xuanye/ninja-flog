@@ -1,10 +1,10 @@
-import type { Award } from '@/constants';
+import type { AwardOptions } from '@/constants';
 
 import { StatesAnimatedSprite } from '@/pitaya';
 
 export class AwardSprite extends StatesAnimatedSprite {
-  data: Award;
-  constructor(award: Award) {
+  data: AwardOptions;
+  constructor(award: AwardOptions) {
     super(award.texture, award.states, award.initState);
     this.data = award;
     this.animationSpeed = award.animationSpeed;

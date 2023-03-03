@@ -5,7 +5,7 @@ import scenes from './scenes';
 import { stateMachineService, StateNames } from '@/services/stateMachineService';
 
 import type { IApplicationOptions } from '@/pitaya';
-import { debug } from './services/debug';
+import { debug } from './modules/debug';
 import { Assets, EventNames } from './constants';
 
 export class App extends Application {

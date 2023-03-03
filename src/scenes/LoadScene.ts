@@ -4,7 +4,7 @@ import type { ResizeOptions } from '@/pitaya';
 import { Scene } from '@/pitaya';
 
 import { EventNames, Assets } from '@/constants';
-import { debug } from '@/services/debug';
+import { debug } from '@/modules/debug';
 
 export class LoadScene extends Scene {
   static sceneName = 'load';

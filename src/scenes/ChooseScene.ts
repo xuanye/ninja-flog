@@ -4,11 +4,9 @@ import { Texture, BitmapText } from 'pixi.js';
 import type { CharacterType, CharacterTypeName } from '@/constants';
 import { Levels, ObjectType, EventNames } from '@/constants';
 import { TileUtilities } from '@/tiled';
-import type { TiledLevel, TiledObject } from '@/tiled';
-import { TiledMap } from '@/components';
-import { Background } from '@/displayObjects';
+import type { TiledLevel } from '@/tiled';
+import { Background, TiledMap } from '@/displayObjects';
 import { characterFactory } from '@/displayObjects/characters';
-import { debug } from '@/services';
 import { gameStateService } from '@/services/gameStateService';
 import type { CharacterObjectType } from '@/displayObjects/characters/types';
 import { EnumCharacterStatus } from '@/displayObjects/characters/types';
@@ -123,7 +121,6 @@ export class ChooseScene extends Scene {
     }
   }
   chooseCharacter(characterName: string) {
-    debug.log(`use character:${characterName} `);
     gameStateService.setCharacterType(characterName as CharacterType);
     this.publish(EventNames.ChooseCharacter);
   }

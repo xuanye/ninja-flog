@@ -2,17 +2,19 @@ import { Texture } from 'pixi.js';
 import { Scene } from '@/pitaya';
 import type { CharacterTypeName } from '@/constants';
 import { Levels, ObjectType } from '@/constants';
-import { Background } from '@/displayObjects';
+import { Background, TiledMap } from '@/displayObjects';
 import { TileUtilities } from '@/tiled';
 import type { TiledLevel, TiledObject } from '@/tiled';
 import type { ControllerBoard } from '@/components';
-import { CollisionManager, TiledMap, KeyboardController } from '@/components';
+import { CollisionManager, KeyboardController } from '@/components';
 import type { Character } from '@/displayObjects/characters';
 import { characterFactory } from '@/displayObjects/characters';
 import { gameStateService } from '@/services/gameStateService';
 import type { CharacterObjectType } from '@/displayObjects/characters/types';
-import { AwardManager } from '@/displayObjects/props/AwardManager';
-import type { AwardObjectType } from '@/displayObjects/props/types';
+import { AwardManager } from '@/displayObjects/props';
+import type { AwardObjectType } from '@/displayObjects/props';
+import type { EnemyObjectType } from '@/displayObjects/enemies';
+import { EnemyManager } from '@/displayObjects/enemies';
 // import { CollisionDebugPanel } from '@/components/CollisionDebugPanel';
 
 export class PlayScene extends Scene {
@@ -24,6 +26,7 @@ export class PlayScene extends Scene {
   map?: TiledLevel;
   collisionManager?: CollisionManager;
   awardManager?: AwardManager;
+  enemyManager?: EnemyManager;
   initState() {
     super.initState(); // 调用父方法用于初始化场景状态
   }
@@ -60,6 +63,10 @@ export class PlayScene extends Scene {
     // 奖励道具管理器
     this.awardManager = new AwardManager(this);
     this.sync(this.awardManager); // 同步道具
+
+    // 敌人管理器
+    this.enemyManager = new EnemyManager(this);
+    this.sync(this.enemyManager);
 
     if (this.map) {
       this.createMap(this.map);
@@ -109,7 +116,7 @@ export class PlayScene extends Scene {
       } else if (type === ObjectType.AwardObject) {
         this.createAward(o as AwardObjectType);
       } else if (type === ObjectType.EnemyObject) {
-        // this.createEnemy(o);
+        this.createEnemy(o as EnemyObjectType);
       }
     });
   }
@@ -135,7 +142,10 @@ export class PlayScene extends Scene {
     // console.log(this.awardManager)
     this.awardManager!.createAward(awardObject);
   }
-  createEnemy() {}
+  createEnemy(enemyObject: EnemyObjectType) {
+    // console.log('🚀 ~ PlayScene ~ createEnemy ~ enemyObject:', enemyObject);
+    this.enemyManager!.createEnemy(enemyObject);
+  }
   createBackground() {
     const background = new Background({
       width: this.state.realWidth,

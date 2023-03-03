@@ -6,4 +6,5 @@ export const EventNames = {
   ToMenu: 'ToMenu',
   Restart: 'Restart',
   Award: 'Award',
+  BeHit: 'BeHit',
 };

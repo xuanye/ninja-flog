@@ -7,7 +7,7 @@ import type { AwardSprite } from './AwardSprite';
 import { eventService } from '@/pitaya';
 import type { Container } from 'pixi.js';
 import { gameStateService } from '@/services/gameStateService';
-import { debug } from '@/services';
+import { debug } from '@/modules';
 
 export class AwardProp {
   state: AwardObjectType;

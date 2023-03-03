@@ -5,7 +5,7 @@ import type { IApplicationOptions } from './Application';
 
 import type { EventHandler } from './eventService';
 import { eventService } from './eventService';
-import { debug } from '@/services/debug';
+import { debug } from '@/modules/debug';
 
 export interface ISceneState extends IApplicationOptions {
   width: number;
