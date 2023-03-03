@@ -1,6 +1,6 @@
 import { Container } from 'pixi.js';
 import type { Loader } from 'pixi.js';
-import type { IApplication, IComponent, ResizeOptions } from './types';
+import type { IApplication, ISynchronizable, ResizeOptions } from './types';
 import type { IApplicationOptions } from './Application';
 
 import type { EventHandler } from './eventService';
@@ -19,7 +19,7 @@ export interface ISceneState extends IApplicationOptions {
 export class Scene extends Container {
   app: IApplication; // 应用程序主题
   loader: Loader; // pixi的加载器
-  syncItems: IComponent[]; // 需要同步的元素
+  syncItems: ISynchronizable[]; // 需要同步的元素
   paused = false;
   state!: ISceneState;
 
@@ -64,7 +64,7 @@ export class Scene extends Container {
     this.visible = true;
     this.paused = false;
     if (this.syncItems) {
-      this.syncItems.forEach((item: IComponent) => {
+      this.syncItems.forEach((item: ISynchronizable) => {
         if (item?.resume) {
           item.resume(args);
         }
@@ -91,10 +91,10 @@ export class Scene extends Container {
    * 注册需要同步的元素，该元素必须有update方法
    * @param {Object} item  需要同步的元素，该元素必须有update方法
    */
-  sync(component: IComponent) {
+  sync(component: ISynchronizable) {
     this.syncItems.push(component);
   }
-  cancelSync(component: IComponent) {
+  cancelSync(component: ISynchronizable) {
     const index = this.syncItems.indexOf(component);
     if (index > -1) {
       this.syncItems.splice(index, 1);

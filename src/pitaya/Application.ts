@@ -1,6 +1,6 @@
 import type { IApplicationOptions as IPIXIApplicationOptions } from 'pixi.js';
 import { Application as PIXIApplication } from 'pixi.js';
-import type { IApplication, IComponent } from './types';
+import type { IApplication, ISynchronizable } from './types';
 import type { SceneType } from './Scene';
 import { SceneManager } from './SceneManager';
 import type { EventHandler } from './eventService';
@@ -13,7 +13,7 @@ export interface IApplicationOptions extends IPIXIApplicationOptions {
   designHeight: number;
 }
 
-export class Application extends PIXIApplication implements IApplication, IComponent {
+export class Application extends PIXIApplication implements IApplication, ISynchronizable {
   sceneManager: SceneManager;
   constructor(public options: IApplicationOptions) {
     super(options);

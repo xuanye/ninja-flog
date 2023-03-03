@@ -1,6 +1,6 @@
-import type { IComponent } from '@/pitaya';
+import type { ISynchronizable } from '@/pitaya';
 
-export interface IController extends IComponent {
+export interface IController extends ISynchronizable {
   name: string;
   create: () => void;
 }

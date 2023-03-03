@@ -7,6 +7,7 @@ import { StatesAnimatedSprite, eventService } from '@/pitaya';
 import type { EventHandler } from '@/pitaya';
 import type { CharacterState } from './types';
 import { gameStateService } from '@/services/gameStateService';
+import { debug } from '@/modules';
 
 // import { Graphics } from 'pixi.js';
 
@@ -136,12 +137,13 @@ export class Character extends StatesAnimatedSprite {
 
     let mode = CharacterMode.Idle;
 
+    const onTheGround = gameStateService.isOnTheGround();
     // 设置角色状态
     if (character.jumpType === JumpType.DoubleJump) {
       mode = CharacterMode.DoubleJump;
     } else if (character.jumpType === JumpType.Jump) {
       mode = CharacterMode.Jump;
-    } else if (!character.onTheGround && collision.y > 1) {
+    } else if (!onTheGround && collision.y > 1) {
       mode = CharacterMode.Fall;
     } else if (character.moving) {
       mode = CharacterMode.Run;
@@ -156,7 +158,7 @@ export class Character extends StatesAnimatedSprite {
     }
 
     if (this.y > world.screenHeight) {
-      gameStateService.setHeroDied();
+      gameStateService.deductHealth();
     }
     gameStateService.setCharacterPos(this.x, this.y);
   }

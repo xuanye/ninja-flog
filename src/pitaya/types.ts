@@ -6,7 +6,7 @@ export interface IApplication {
   stage: Container;
 }
 
-export interface IComponent {
+export interface ISynchronizable {
   update: (delta: number) => void;
   _update?: (delta: number) => void;
   pause?: () => void;

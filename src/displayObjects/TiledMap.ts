@@ -1,10 +1,10 @@
-import type { IComponent } from '@/pitaya';
+import type { ISynchronizable } from '@/pitaya';
 import { gameStateService } from '@/services/gameStateService';
 import type { TiledLevel } from '@/tiled';
 import { CompositeTilemap } from '@pixi/tilemap';
 import type { Texture } from 'pixi.js';
 
-export class TiledMap extends CompositeTilemap implements IComponent {
+export class TiledMap extends CompositeTilemap implements ISynchronizable {
   tileMap(map: TiledLevel, textures: Texture[]) {
     map.groups.forEach((group: any) => {
       group.data.forEach(

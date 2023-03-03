@@ -1,5 +1,5 @@
 import { Container } from 'pixi.js';
-import type { IComponent, ResizeOptions } from './types';
+import type { ISynchronizable, ResizeOptions } from './types';
 import type { EventHandler } from './eventService';
 import { eventService } from './eventService';
 
@@ -8,7 +8,7 @@ export interface IComponentOptions {
   screenHeight: number;
 }
 
-export class Component extends Container implements IComponent {
+export class Component extends Container implements ISynchronizable {
   state: IComponentOptions;
   constructor(options: IComponentOptions) {
     super();

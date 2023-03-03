@@ -1,10 +1,10 @@
 import type { Container } from 'pixi.js';
-import type { IComponent } from '@/pitaya';
+import type { ISynchronizable } from '@/pitaya';
 import { AwardProp } from './AwardProp';
 import { AwardSpritePool } from './AwardSpritePool';
 import type { AwardObjectType } from './types';
 
-export class AwardManager implements IComponent {
+export class AwardManager implements ISynchronizable {
   container: Container;
   awards: AwardProp[];
   spritePool: AwardSpritePool;

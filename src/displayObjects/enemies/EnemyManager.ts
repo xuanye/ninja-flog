@@ -1,10 +1,10 @@
 import type { Container } from 'pixi.js';
-import type { IComponent } from '@/pitaya';
+import type { ISynchronizable } from '@/pitaya';
 import { Enemy } from './Enemy';
 import { EnemySpritePool } from './EnemySpritePool';
 import type { EnemyObjectType } from './types';
 
-export class EnemyManager implements IComponent {
+export class EnemyManager implements ISynchronizable {
   container: Container;
   enemies: Enemy[];
   spritePool: EnemySpritePool;

@@ -120,6 +120,9 @@ class GameStateService {
   setWorldEndStatus() {
     this.state.world.status = WorldStatus.End;
   }
+  deductHealth() {
+    this.state.character.health = 0;
+  }
   setHeroDied() {
     this.state.character.health = 0;
     this.state.world.pivotOffsetX = 0;
@@ -127,6 +130,15 @@ class GameStateService {
   }
   setPivotOffsetX(x: number) {
     this.state.world.pivotOffsetX = x;
+  }
+  gravityEffect(delta: number) {
+    this.state.character.vy += delta * this.state.world.gravity;
+  }
+  setMoving(moving: boolean) {
+    this.state.character.vx = moving
+      ? this.state.character.direction * this.state.world.moveSpeed
+      : 0;
+    this.state.character.moving = moving;
   }
 }
 

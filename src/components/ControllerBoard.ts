@@ -64,14 +64,11 @@ export class ControllerBoard extends Component implements IController {
 
     // 无时无刻不受重力影响
     if (!onTheGround) {
-      gameState.character.vy += delta * gameState.world.gravity;
+      gameStateService.gravityEffect(delta);
     }
 
     // X轴上动能
-    gameState.character.vx = moving ? gameState.character.direction * gameState.world.moveSpeed : 0;
-    gameState.character.moving = moving;
-    gameState.character.onTheGround = onTheGround;
-    // console.log('=========>', gameState);
+    gameStateService.setMoving(moving);
   }
   pause() {}
   resume(_args: unknown) {}

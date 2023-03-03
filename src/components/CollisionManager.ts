@@ -139,7 +139,6 @@ export class CollisionManager extends Component {
         );
       }
       if (collision) {
-        console.log('🚀 ~ collision:', collision, this.collisionResult.overlapV);
         gameStateService.setCollision(
           true,
           this.collisionResult.overlapV.x,
