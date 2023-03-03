@@ -1,0 +1,71 @@
+@startuml
+
+
+title Relationships - Class Diagram
+
+
+class Application {
+  +SceneManager sceneManager
+  +void init()
+  +void update(delta:number)
+}
+
+
+class SceneManager{
+  +Map<string,Type> scenes
+  +Scene current
+  +void addScene(name:string,sceneType:Type)
+  +void update(delta:number)
+  +void startScene(sceneName:string)
+}
+
+class Scene{
+ +name
+ +void update(delta:number)
+}
+
+
+class LoadScene
+class ChooseScene
+class PlayScene
+
+class TileMap{
+}
+
+class AwardManager
+class AwardSprite
+class AwardSpritePool
+
+class EnemyManager
+class EnemySprite
+class EnemySpritePool
+
+class StatesAnimatedSprite{
+
+  +void playState(name:string)
+}
+
+class Character
+class AwardProp
+class Enemy
+
+class NinjaFlog
+
+Character <|-down- NinjaFlog: Inheritance
+
+StatesAnimatedSprite <|-down- Character: Inheritance
+StatesAnimatedSprite <|-down- AwardProp: Inheritance
+StatesAnimatedSprite <|-down- Enemy: Inheritance
+
+
+Scene <|-down- LoadScene: Inheritance
+Scene <|-down- ChooseScene: Inheritance
+Scene <|-down- PlayScene: Inheritance
+
+SceneManager "1" *-down- "many" Scene: Composition
+
+
+SceneManager <--left--Application:Use
+
+
+@enduml
