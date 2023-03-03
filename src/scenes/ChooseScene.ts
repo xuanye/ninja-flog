@@ -55,10 +55,8 @@ export class ChooseScene extends Scene {
     // 创建角色和碰撞题
     chooseMapData.objects.forEach((o) => {
       o.y += this.sceneState.startY;
-      // o.y -= 16;
-
-      // console.log('PlayScene -> create -> o.type == ObjectType.Character', o.type == ObjectType.Character);
-
+      o.y += 16; // 中心轴偏离
+      o.x += 16; // 中心轴偏离
       if (o.type === ObjectType.Character || o.class === ObjectType.Character) {
         this.createCharacter(o);
       }
@@ -98,6 +96,7 @@ export class ChooseScene extends Scene {
     this.groundTiles.tileMap(map, textures);
 
     this.groundTiles.y = this.sceneState.startY;
+    console.log('🚀 ~ ChooseScene ~ createMap ~  this.groundTiles.y:', this.groundTiles.y);
     this.sync(this.groundTiles);
     this.addChild(this.groundTiles);
   }

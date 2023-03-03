@@ -121,7 +121,7 @@ export class PlayScene extends Scene {
     });
   }
   createCharacter(character: CharacterObjectType) {
-    const characterType = character.characterType as CharacterTypeName;
+    const characterType = gameStateService.state.character.characterType;
 
     // 角色的位置
     this.character = characterFactory.create(characterType, {

@@ -14,6 +14,7 @@ const options = {
   screenHeight,
   designWidth,
   designHeight,
+  resolution: 1,
   backgroundColor: 0x3f7cb6,
   antialias: true,
 };

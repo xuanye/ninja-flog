@@ -56,8 +56,8 @@ export class App extends Application {
     stateMachineService.subscribe(this.onTransition.bind(this));
 
     this.subscribe(EventNames.LoadCompleted, () => {
-      // stateMachineService.send(StateNames.CHOOSE);
-      stateMachineService.send(StateNames.PALY);
+      stateMachineService.send(StateNames.CHOOSE);
+      // stateMachineService.send(StateNames.PALY);
     });
 
     // 选中角色后，去游戏场景
