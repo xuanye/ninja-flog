@@ -67,5 +67,7 @@ SceneManager "1" *-down- "many" Scene: Composition
 
 SceneManager <--left--Application:Use
 
+EnemySpritePool <--left--EnemyManager:Use
+EnemySprite <--left--EnemySpritePool:Create
 
 @enduml
